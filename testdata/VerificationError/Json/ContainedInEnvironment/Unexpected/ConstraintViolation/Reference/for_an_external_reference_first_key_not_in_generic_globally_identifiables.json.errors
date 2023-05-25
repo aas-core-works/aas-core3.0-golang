@@ -1,0 +1,3 @@
+Submodels[0].SubmodelElements[0].Value: Constraint AASd-121: For References the value of type of the first key of keys shall be one of Globally Identifiables.;
+Submodels[0].SubmodelElements[0].Value: Constraint AASd-122: For external references the value of type of the first key of keys shall be one of Generic Globally Identifiables.;
+Submodels[0].SubmodelElements[0].Value: Constraint AASd-124: For external references the last key of keys shall be either one of Generic Globally Identifiables or one of Generic Fragment Keys.

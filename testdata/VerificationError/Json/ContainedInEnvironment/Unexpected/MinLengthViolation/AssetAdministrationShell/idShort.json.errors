@@ -1,0 +1,2 @@
+AssetAdministrationShells[0].IDShort: The value must not be empty.;
+AssetAdministrationShells[0].IDShort: ID-short of Referables shall only feature letters, digits, underscore (``_``); starting mandatory with a letter. *I.e.* ``[a-zA-Z][a-zA-Z0-9_]*``.

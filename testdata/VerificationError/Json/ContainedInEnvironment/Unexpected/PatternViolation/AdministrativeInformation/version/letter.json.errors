@@ -1,0 +1,2 @@
+AssetAdministrationShells[0].Administration.Version: Version type shall match the version pattern.;
+AssetAdministrationShells[0].Administration.Version: Version type shall have a maximum length of 4 characters.

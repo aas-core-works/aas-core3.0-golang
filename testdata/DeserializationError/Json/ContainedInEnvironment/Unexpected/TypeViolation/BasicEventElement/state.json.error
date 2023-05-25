@@ -1,0 +1,1 @@
+submodels[0].submodelElements[0].state: Expected a string representation of StateOfEvent, but got []interface {}
