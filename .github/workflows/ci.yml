@@ -34,7 +34,7 @@ jobs:
         env:
           AAS_CORE_3_0_GOLANG_TEST_DATA_DIR: ${{ github.workspace }}/testdata
         run: |
-          go test -covermode atomic -coverprofile=covprofile ./...
+          go test -covermode atomic -coverpkg=./... -coverprofile=covprofile ./...
 
       - name: Send coverage
         env:
