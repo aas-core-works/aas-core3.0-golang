@@ -1,0 +1,2 @@
+Submodels[0].SubmodelElements[0].ContentType: The value must not be empty.;
+Submodels[0].SubmodelElements[0].ContentType: The value must represent a valid content MIME type according to RFC 2046.

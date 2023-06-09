@@ -1,0 +1,2 @@
+Submodels[0].SubmodelElements[0].Value: Constraint AASd-121: For References the value of type of the first key of keys shall be one of Globally Identifiables.;
+Submodels[0].SubmodelElements[0].Value: Constraint AASd-123: For model references the value of type of the first key of keys shall be one of AAS identifiables.

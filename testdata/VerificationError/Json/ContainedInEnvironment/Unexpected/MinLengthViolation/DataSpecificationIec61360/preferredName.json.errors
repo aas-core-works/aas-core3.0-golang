@@ -1,0 +1,2 @@
+AssetAdministrationShells[0].EmbeddedDataSpecifications[0].DataSpecificationContent: Preferred name must have at least one item.;
+AssetAdministrationShells[0].EmbeddedDataSpecifications[0].DataSpecificationContent: Constraint AASc-002: preferred name shall be provided at least in English.
