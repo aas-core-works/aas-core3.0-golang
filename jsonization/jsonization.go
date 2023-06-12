@@ -14039,7 +14039,7 @@ func extensionToMap(
 		if err != nil {
 			err.Path.PrependName(
 				&aasreporting.NameSegment{
-					Name: "SemanticID",
+					Name: "SemanticID()",
 				},
 			)
 
@@ -14067,7 +14067,7 @@ func extensionToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "SupplementalSemanticIDs",
+						Name: "SupplementalSemanticIDs()",
 					},
 				)
 
@@ -14088,7 +14088,7 @@ func extensionToMap(
 		if err != nil {
 			err.Path.PrependName(
 				&aasreporting.NameSegment{
-					Name: "ValueType",
+					Name: "ValueType()",
 				},
 			)
 
@@ -14120,7 +14120,7 @@ func extensionToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "RefersTo",
+						Name: "RefersTo()",
 					},
 				)
 
@@ -14164,7 +14164,7 @@ func administrativeInformationToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "EmbeddedDataSpecifications",
+						Name: "EmbeddedDataSpecifications()",
 					},
 				)
 
@@ -14191,7 +14191,7 @@ func administrativeInformationToMap(
 		if err != nil {
 			err.Path.PrependName(
 				&aasreporting.NameSegment{
-					Name: "Creator",
+					Name: "Creator()",
 				},
 			)
 
@@ -14226,7 +14226,7 @@ func qualifierToMap(
 		if err != nil {
 			err.Path.PrependName(
 				&aasreporting.NameSegment{
-					Name: "SemanticID",
+					Name: "SemanticID()",
 				},
 			)
 
@@ -14254,7 +14254,7 @@ func qualifierToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "SupplementalSemanticIDs",
+						Name: "SupplementalSemanticIDs()",
 					},
 				)
 
@@ -14273,7 +14273,7 @@ func qualifierToMap(
 		if err != nil {
 			err.Path.PrependName(
 				&aasreporting.NameSegment{
-					Name: "Kind",
+					Name: "Kind()",
 				},
 			)
 
@@ -14291,7 +14291,7 @@ func qualifierToMap(
 	if err != nil {
 		err.Path.PrependName(
 			&aasreporting.NameSegment{
-				Name: "ValueType",
+				Name: "ValueType()",
 			},
 		)
 
@@ -14311,7 +14311,7 @@ func qualifierToMap(
 		if err != nil {
 			err.Path.PrependName(
 				&aasreporting.NameSegment{
-					Name: "ValueID",
+					Name: "ValueID()",
 				},
 			)
 
@@ -14353,7 +14353,7 @@ func assetAdministrationShellToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "Extensions",
+						Name: "Extensions()",
 					},
 				)
 
@@ -14391,7 +14391,7 @@ func assetAdministrationShellToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "DisplayName",
+						Name: "DisplayName()",
 					},
 				)
 
@@ -14421,7 +14421,7 @@ func assetAdministrationShellToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "Description",
+						Name: "Description()",
 					},
 				)
 
@@ -14440,7 +14440,7 @@ func assetAdministrationShellToMap(
 		if err != nil {
 			err.Path.PrependName(
 				&aasreporting.NameSegment{
-					Name: "Administration",
+					Name: "Administration()",
 				},
 			)
 
@@ -14470,7 +14470,7 @@ func assetAdministrationShellToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "EmbeddedDataSpecifications",
+						Name: "EmbeddedDataSpecifications()",
 					},
 				)
 
@@ -14489,7 +14489,7 @@ func assetAdministrationShellToMap(
 		if err != nil {
 			err.Path.PrependName(
 				&aasreporting.NameSegment{
-					Name: "DerivedFrom",
+					Name: "DerivedFrom()",
 				},
 			)
 
@@ -14505,7 +14505,7 @@ func assetAdministrationShellToMap(
 	if err != nil {
 		err.Path.PrependName(
 			&aasreporting.NameSegment{
-				Name: "AssetInformation",
+				Name: "AssetInformation()",
 			},
 		)
 
@@ -14532,7 +14532,7 @@ func assetAdministrationShellToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "Submodels",
+						Name: "Submodels()",
 					},
 				)
 
@@ -14566,7 +14566,7 @@ func assetInformationToMap(
 	if err != nil {
 		err.Path.PrependName(
 			&aasreporting.NameSegment{
-				Name: "AssetKind",
+				Name: "AssetKind()",
 			},
 		)
 
@@ -14597,7 +14597,7 @@ func assetInformationToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "SpecificAssetIDs",
+						Name: "SpecificAssetIDs()",
 					},
 				)
 
@@ -14620,7 +14620,7 @@ func assetInformationToMap(
 		if err != nil {
 			err.Path.PrependName(
 				&aasreporting.NameSegment{
-					Name: "DefaultThumbnail",
+					Name: "DefaultThumbnail()",
 				},
 			)
 
@@ -14671,7 +14671,7 @@ func specificAssetIDToMap(
 		if err != nil {
 			err.Path.PrependName(
 				&aasreporting.NameSegment{
-					Name: "SemanticID",
+					Name: "SemanticID()",
 				},
 			)
 
@@ -14699,7 +14699,7 @@ func specificAssetIDToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "SupplementalSemanticIDs",
+						Name: "SupplementalSemanticIDs()",
 					},
 				)
 
@@ -14722,7 +14722,7 @@ func specificAssetIDToMap(
 		if err != nil {
 			err.Path.PrependName(
 				&aasreporting.NameSegment{
-					Name: "ExternalSubjectID",
+					Name: "ExternalSubjectID()",
 				},
 			)
 
@@ -14764,7 +14764,7 @@ func submodelToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "Extensions",
+						Name: "Extensions()",
 					},
 				)
 
@@ -14802,7 +14802,7 @@ func submodelToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "DisplayName",
+						Name: "DisplayName()",
 					},
 				)
 
@@ -14832,7 +14832,7 @@ func submodelToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "Description",
+						Name: "Description()",
 					},
 				)
 
@@ -14851,7 +14851,7 @@ func submodelToMap(
 		if err != nil {
 			err.Path.PrependName(
 				&aasreporting.NameSegment{
-					Name: "Administration",
+					Name: "Administration()",
 				},
 			)
 
@@ -14870,7 +14870,7 @@ func submodelToMap(
 		if err != nil {
 			err.Path.PrependName(
 				&aasreporting.NameSegment{
-					Name: "Kind",
+					Name: "Kind()",
 				},
 			)
 
@@ -14887,7 +14887,7 @@ func submodelToMap(
 		if err != nil {
 			err.Path.PrependName(
 				&aasreporting.NameSegment{
-					Name: "SemanticID",
+					Name: "SemanticID()",
 				},
 			)
 
@@ -14915,7 +14915,7 @@ func submodelToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "SupplementalSemanticIDs",
+						Name: "SupplementalSemanticIDs()",
 					},
 				)
 
@@ -14945,7 +14945,7 @@ func submodelToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "Qualifiers",
+						Name: "Qualifiers()",
 					},
 				)
 
@@ -14975,7 +14975,7 @@ func submodelToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "EmbeddedDataSpecifications",
+						Name: "EmbeddedDataSpecifications()",
 					},
 				)
 
@@ -15005,7 +15005,7 @@ func submodelToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "SubmodelElements",
+						Name: "SubmodelElements()",
 					},
 				)
 
@@ -15051,7 +15051,7 @@ func relationshipElementToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "Extensions",
+						Name: "Extensions()",
 					},
 				)
 
@@ -15089,7 +15089,7 @@ func relationshipElementToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "DisplayName",
+						Name: "DisplayName()",
 					},
 				)
 
@@ -15119,7 +15119,7 @@ func relationshipElementToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "Description",
+						Name: "Description()",
 					},
 				)
 
@@ -15138,7 +15138,7 @@ func relationshipElementToMap(
 		if err != nil {
 			err.Path.PrependName(
 				&aasreporting.NameSegment{
-					Name: "SemanticID",
+					Name: "SemanticID()",
 				},
 			)
 
@@ -15166,7 +15166,7 @@ func relationshipElementToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "SupplementalSemanticIDs",
+						Name: "SupplementalSemanticIDs()",
 					},
 				)
 
@@ -15196,7 +15196,7 @@ func relationshipElementToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "Qualifiers",
+						Name: "Qualifiers()",
 					},
 				)
 
@@ -15226,7 +15226,7 @@ func relationshipElementToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "EmbeddedDataSpecifications",
+						Name: "EmbeddedDataSpecifications()",
 					},
 				)
 
@@ -15244,7 +15244,7 @@ func relationshipElementToMap(
 	if err != nil {
 		err.Path.PrependName(
 			&aasreporting.NameSegment{
-				Name: "First",
+				Name: "First()",
 			},
 		)
 
@@ -15259,7 +15259,7 @@ func relationshipElementToMap(
 	if err != nil {
 		err.Path.PrependName(
 			&aasreporting.NameSegment{
-				Name: "Second",
+				Name: "Second()",
 			},
 		)
 
@@ -15302,7 +15302,7 @@ func submodelElementListToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "Extensions",
+						Name: "Extensions()",
 					},
 				)
 
@@ -15340,7 +15340,7 @@ func submodelElementListToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "DisplayName",
+						Name: "DisplayName()",
 					},
 				)
 
@@ -15370,7 +15370,7 @@ func submodelElementListToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "Description",
+						Name: "Description()",
 					},
 				)
 
@@ -15389,7 +15389,7 @@ func submodelElementListToMap(
 		if err != nil {
 			err.Path.PrependName(
 				&aasreporting.NameSegment{
-					Name: "SemanticID",
+					Name: "SemanticID()",
 				},
 			)
 
@@ -15417,7 +15417,7 @@ func submodelElementListToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "SupplementalSemanticIDs",
+						Name: "SupplementalSemanticIDs()",
 					},
 				)
 
@@ -15447,7 +15447,7 @@ func submodelElementListToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "Qualifiers",
+						Name: "Qualifiers()",
 					},
 				)
 
@@ -15477,7 +15477,7 @@ func submodelElementListToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "EmbeddedDataSpecifications",
+						Name: "EmbeddedDataSpecifications()",
 					},
 				)
 
@@ -15500,7 +15500,7 @@ func submodelElementListToMap(
 		if err != nil {
 			err.Path.PrependName(
 				&aasreporting.NameSegment{
-					Name: "SemanticIDListElement",
+					Name: "SemanticIDListElement()",
 				},
 			)
 
@@ -15516,7 +15516,7 @@ func submodelElementListToMap(
 	if err != nil {
 		err.Path.PrependName(
 			&aasreporting.NameSegment{
-				Name: "TypeValueListElement",
+				Name: "TypeValueListElement()",
 			},
 		)
 
@@ -15532,7 +15532,7 @@ func submodelElementListToMap(
 		if err != nil {
 			err.Path.PrependName(
 				&aasreporting.NameSegment{
-					Name: "ValueTypeListElement",
+					Name: "ValueTypeListElement()",
 				},
 			)
 
@@ -15560,7 +15560,7 @@ func submodelElementListToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "Value",
+						Name: "Value()",
 					},
 				)
 
@@ -15606,7 +15606,7 @@ func submodelElementCollectionToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "Extensions",
+						Name: "Extensions()",
 					},
 				)
 
@@ -15644,7 +15644,7 @@ func submodelElementCollectionToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "DisplayName",
+						Name: "DisplayName()",
 					},
 				)
 
@@ -15674,7 +15674,7 @@ func submodelElementCollectionToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "Description",
+						Name: "Description()",
 					},
 				)
 
@@ -15693,7 +15693,7 @@ func submodelElementCollectionToMap(
 		if err != nil {
 			err.Path.PrependName(
 				&aasreporting.NameSegment{
-					Name: "SemanticID",
+					Name: "SemanticID()",
 				},
 			)
 
@@ -15721,7 +15721,7 @@ func submodelElementCollectionToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "SupplementalSemanticIDs",
+						Name: "SupplementalSemanticIDs()",
 					},
 				)
 
@@ -15751,7 +15751,7 @@ func submodelElementCollectionToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "Qualifiers",
+						Name: "Qualifiers()",
 					},
 				)
 
@@ -15781,7 +15781,7 @@ func submodelElementCollectionToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "EmbeddedDataSpecifications",
+						Name: "EmbeddedDataSpecifications()",
 					},
 				)
 
@@ -15811,7 +15811,7 @@ func submodelElementCollectionToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "Value",
+						Name: "Value()",
 					},
 				)
 
@@ -15857,7 +15857,7 @@ func propertyToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "Extensions",
+						Name: "Extensions()",
 					},
 				)
 
@@ -15895,7 +15895,7 @@ func propertyToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "DisplayName",
+						Name: "DisplayName()",
 					},
 				)
 
@@ -15925,7 +15925,7 @@ func propertyToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "Description",
+						Name: "Description()",
 					},
 				)
 
@@ -15944,7 +15944,7 @@ func propertyToMap(
 		if err != nil {
 			err.Path.PrependName(
 				&aasreporting.NameSegment{
-					Name: "SemanticID",
+					Name: "SemanticID()",
 				},
 			)
 
@@ -15972,7 +15972,7 @@ func propertyToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "SupplementalSemanticIDs",
+						Name: "SupplementalSemanticIDs()",
 					},
 				)
 
@@ -16002,7 +16002,7 @@ func propertyToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "Qualifiers",
+						Name: "Qualifiers()",
 					},
 				)
 
@@ -16032,7 +16032,7 @@ func propertyToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "EmbeddedDataSpecifications",
+						Name: "EmbeddedDataSpecifications()",
 					},
 				)
 
@@ -16050,7 +16050,7 @@ func propertyToMap(
 	if err != nil {
 		err.Path.PrependName(
 			&aasreporting.NameSegment{
-				Name: "ValueType",
+				Name: "ValueType()",
 			},
 		)
 
@@ -16070,7 +16070,7 @@ func propertyToMap(
 		if err != nil {
 			err.Path.PrependName(
 				&aasreporting.NameSegment{
-					Name: "ValueID",
+					Name: "ValueID()",
 				},
 			)
 
@@ -16114,7 +16114,7 @@ func multiLanguagePropertyToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "Extensions",
+						Name: "Extensions()",
 					},
 				)
 
@@ -16152,7 +16152,7 @@ func multiLanguagePropertyToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "DisplayName",
+						Name: "DisplayName()",
 					},
 				)
 
@@ -16182,7 +16182,7 @@ func multiLanguagePropertyToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "Description",
+						Name: "Description()",
 					},
 				)
 
@@ -16201,7 +16201,7 @@ func multiLanguagePropertyToMap(
 		if err != nil {
 			err.Path.PrependName(
 				&aasreporting.NameSegment{
-					Name: "SemanticID",
+					Name: "SemanticID()",
 				},
 			)
 
@@ -16229,7 +16229,7 @@ func multiLanguagePropertyToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "SupplementalSemanticIDs",
+						Name: "SupplementalSemanticIDs()",
 					},
 				)
 
@@ -16259,7 +16259,7 @@ func multiLanguagePropertyToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "Qualifiers",
+						Name: "Qualifiers()",
 					},
 				)
 
@@ -16289,7 +16289,7 @@ func multiLanguagePropertyToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "EmbeddedDataSpecifications",
+						Name: "EmbeddedDataSpecifications()",
 					},
 				)
 
@@ -16319,7 +16319,7 @@ func multiLanguagePropertyToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "Value",
+						Name: "Value()",
 					},
 				)
 
@@ -16338,7 +16338,7 @@ func multiLanguagePropertyToMap(
 		if err != nil {
 			err.Path.PrependName(
 				&aasreporting.NameSegment{
-					Name: "ValueID",
+					Name: "ValueID()",
 				},
 			)
 
@@ -16382,7 +16382,7 @@ func rangeToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "Extensions",
+						Name: "Extensions()",
 					},
 				)
 
@@ -16420,7 +16420,7 @@ func rangeToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "DisplayName",
+						Name: "DisplayName()",
 					},
 				)
 
@@ -16450,7 +16450,7 @@ func rangeToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "Description",
+						Name: "Description()",
 					},
 				)
 
@@ -16469,7 +16469,7 @@ func rangeToMap(
 		if err != nil {
 			err.Path.PrependName(
 				&aasreporting.NameSegment{
-					Name: "SemanticID",
+					Name: "SemanticID()",
 				},
 			)
 
@@ -16497,7 +16497,7 @@ func rangeToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "SupplementalSemanticIDs",
+						Name: "SupplementalSemanticIDs()",
 					},
 				)
 
@@ -16527,7 +16527,7 @@ func rangeToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "Qualifiers",
+						Name: "Qualifiers()",
 					},
 				)
 
@@ -16557,7 +16557,7 @@ func rangeToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "EmbeddedDataSpecifications",
+						Name: "EmbeddedDataSpecifications()",
 					},
 				)
 
@@ -16575,7 +16575,7 @@ func rangeToMap(
 	if err != nil {
 		err.Path.PrependName(
 			&aasreporting.NameSegment{
-				Name: "ValueType",
+				Name: "ValueType()",
 			},
 		)
 
@@ -16626,7 +16626,7 @@ func referenceElementToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "Extensions",
+						Name: "Extensions()",
 					},
 				)
 
@@ -16664,7 +16664,7 @@ func referenceElementToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "DisplayName",
+						Name: "DisplayName()",
 					},
 				)
 
@@ -16694,7 +16694,7 @@ func referenceElementToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "Description",
+						Name: "Description()",
 					},
 				)
 
@@ -16713,7 +16713,7 @@ func referenceElementToMap(
 		if err != nil {
 			err.Path.PrependName(
 				&aasreporting.NameSegment{
-					Name: "SemanticID",
+					Name: "SemanticID()",
 				},
 			)
 
@@ -16741,7 +16741,7 @@ func referenceElementToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "SupplementalSemanticIDs",
+						Name: "SupplementalSemanticIDs()",
 					},
 				)
 
@@ -16771,7 +16771,7 @@ func referenceElementToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "Qualifiers",
+						Name: "Qualifiers()",
 					},
 				)
 
@@ -16801,7 +16801,7 @@ func referenceElementToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "EmbeddedDataSpecifications",
+						Name: "EmbeddedDataSpecifications()",
 					},
 				)
 
@@ -16820,7 +16820,7 @@ func referenceElementToMap(
 		if err != nil {
 			err.Path.PrependName(
 				&aasreporting.NameSegment{
-					Name: "Value",
+					Name: "Value()",
 				},
 			)
 
@@ -16864,7 +16864,7 @@ func blobToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "Extensions",
+						Name: "Extensions()",
 					},
 				)
 
@@ -16902,7 +16902,7 @@ func blobToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "DisplayName",
+						Name: "DisplayName()",
 					},
 				)
 
@@ -16932,7 +16932,7 @@ func blobToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "Description",
+						Name: "Description()",
 					},
 				)
 
@@ -16951,7 +16951,7 @@ func blobToMap(
 		if err != nil {
 			err.Path.PrependName(
 				&aasreporting.NameSegment{
-					Name: "SemanticID",
+					Name: "SemanticID()",
 				},
 			)
 
@@ -16979,7 +16979,7 @@ func blobToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "SupplementalSemanticIDs",
+						Name: "SupplementalSemanticIDs()",
 					},
 				)
 
@@ -17009,7 +17009,7 @@ func blobToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "Qualifiers",
+						Name: "Qualifiers()",
 					},
 				)
 
@@ -17039,7 +17039,7 @@ func blobToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "EmbeddedDataSpecifications",
+						Name: "EmbeddedDataSpecifications()",
 					},
 				)
 
@@ -17058,7 +17058,7 @@ func blobToMap(
 		if err != nil {
 			err.Path.PrependName(
 				&aasreporting.NameSegment{
-					Name: "Value",
+					Name: "Value()",
 				},
 			)
 
@@ -17104,7 +17104,7 @@ func fileToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "Extensions",
+						Name: "Extensions()",
 					},
 				)
 
@@ -17142,7 +17142,7 @@ func fileToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "DisplayName",
+						Name: "DisplayName()",
 					},
 				)
 
@@ -17172,7 +17172,7 @@ func fileToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "Description",
+						Name: "Description()",
 					},
 				)
 
@@ -17191,7 +17191,7 @@ func fileToMap(
 		if err != nil {
 			err.Path.PrependName(
 				&aasreporting.NameSegment{
-					Name: "SemanticID",
+					Name: "SemanticID()",
 				},
 			)
 
@@ -17219,7 +17219,7 @@ func fileToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "SupplementalSemanticIDs",
+						Name: "SupplementalSemanticIDs()",
 					},
 				)
 
@@ -17249,7 +17249,7 @@ func fileToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "Qualifiers",
+						Name: "Qualifiers()",
 					},
 				)
 
@@ -17279,7 +17279,7 @@ func fileToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "EmbeddedDataSpecifications",
+						Name: "EmbeddedDataSpecifications()",
 					},
 				)
 
@@ -17331,7 +17331,7 @@ func annotatedRelationshipElementToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "Extensions",
+						Name: "Extensions()",
 					},
 				)
 
@@ -17369,7 +17369,7 @@ func annotatedRelationshipElementToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "DisplayName",
+						Name: "DisplayName()",
 					},
 				)
 
@@ -17399,7 +17399,7 @@ func annotatedRelationshipElementToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "Description",
+						Name: "Description()",
 					},
 				)
 
@@ -17418,7 +17418,7 @@ func annotatedRelationshipElementToMap(
 		if err != nil {
 			err.Path.PrependName(
 				&aasreporting.NameSegment{
-					Name: "SemanticID",
+					Name: "SemanticID()",
 				},
 			)
 
@@ -17446,7 +17446,7 @@ func annotatedRelationshipElementToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "SupplementalSemanticIDs",
+						Name: "SupplementalSemanticIDs()",
 					},
 				)
 
@@ -17476,7 +17476,7 @@ func annotatedRelationshipElementToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "Qualifiers",
+						Name: "Qualifiers()",
 					},
 				)
 
@@ -17506,7 +17506,7 @@ func annotatedRelationshipElementToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "EmbeddedDataSpecifications",
+						Name: "EmbeddedDataSpecifications()",
 					},
 				)
 
@@ -17524,7 +17524,7 @@ func annotatedRelationshipElementToMap(
 	if err != nil {
 		err.Path.PrependName(
 			&aasreporting.NameSegment{
-				Name: "First",
+				Name: "First()",
 			},
 		)
 
@@ -17539,7 +17539,7 @@ func annotatedRelationshipElementToMap(
 	if err != nil {
 		err.Path.PrependName(
 			&aasreporting.NameSegment{
-				Name: "Second",
+				Name: "Second()",
 			},
 		)
 
@@ -17566,7 +17566,7 @@ func annotatedRelationshipElementToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "Annotations",
+						Name: "Annotations()",
 					},
 				)
 
@@ -17612,7 +17612,7 @@ func entityToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "Extensions",
+						Name: "Extensions()",
 					},
 				)
 
@@ -17650,7 +17650,7 @@ func entityToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "DisplayName",
+						Name: "DisplayName()",
 					},
 				)
 
@@ -17680,7 +17680,7 @@ func entityToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "Description",
+						Name: "Description()",
 					},
 				)
 
@@ -17699,7 +17699,7 @@ func entityToMap(
 		if err != nil {
 			err.Path.PrependName(
 				&aasreporting.NameSegment{
-					Name: "SemanticID",
+					Name: "SemanticID()",
 				},
 			)
 
@@ -17727,7 +17727,7 @@ func entityToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "SupplementalSemanticIDs",
+						Name: "SupplementalSemanticIDs()",
 					},
 				)
 
@@ -17757,7 +17757,7 @@ func entityToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "Qualifiers",
+						Name: "Qualifiers()",
 					},
 				)
 
@@ -17787,7 +17787,7 @@ func entityToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "EmbeddedDataSpecifications",
+						Name: "EmbeddedDataSpecifications()",
 					},
 				)
 
@@ -17817,7 +17817,7 @@ func entityToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "Statements",
+						Name: "Statements()",
 					},
 				)
 
@@ -17835,7 +17835,7 @@ func entityToMap(
 	if err != nil {
 		err.Path.PrependName(
 			&aasreporting.NameSegment{
-				Name: "EntityType",
+				Name: "EntityType()",
 			},
 		)
 
@@ -17866,7 +17866,7 @@ func entityToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "SpecificAssetIDs",
+						Name: "SpecificAssetIDs()",
 					},
 				)
 
@@ -17900,7 +17900,7 @@ func eventPayloadToMap(
 	if err != nil {
 		err.Path.PrependName(
 			&aasreporting.NameSegment{
-				Name: "Source",
+				Name: "Source()",
 			},
 		)
 
@@ -17916,7 +17916,7 @@ func eventPayloadToMap(
 		if err != nil {
 			err.Path.PrependName(
 				&aasreporting.NameSegment{
-					Name: "SourceSemanticID",
+					Name: "SourceSemanticID()",
 				},
 			)
 
@@ -17932,7 +17932,7 @@ func eventPayloadToMap(
 	if err != nil {
 		err.Path.PrependName(
 			&aasreporting.NameSegment{
-				Name: "ObservableReference",
+				Name: "ObservableReference()",
 			},
 		)
 
@@ -17948,7 +17948,7 @@ func eventPayloadToMap(
 		if err != nil {
 			err.Path.PrependName(
 				&aasreporting.NameSegment{
-					Name: "ObservableSemanticID",
+					Name: "ObservableSemanticID()",
 				},
 			)
 
@@ -17969,7 +17969,7 @@ func eventPayloadToMap(
 		if err != nil {
 			err.Path.PrependName(
 				&aasreporting.NameSegment{
-					Name: "SubjectID",
+					Name: "SubjectID()",
 				},
 			)
 
@@ -17988,7 +17988,7 @@ func eventPayloadToMap(
 		if err != nil {
 			err.Path.PrependName(
 				&aasreporting.NameSegment{
-					Name: "Payload",
+					Name: "Payload()",
 				},
 			)
 
@@ -18030,7 +18030,7 @@ func basicEventElementToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "Extensions",
+						Name: "Extensions()",
 					},
 				)
 
@@ -18068,7 +18068,7 @@ func basicEventElementToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "DisplayName",
+						Name: "DisplayName()",
 					},
 				)
 
@@ -18098,7 +18098,7 @@ func basicEventElementToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "Description",
+						Name: "Description()",
 					},
 				)
 
@@ -18117,7 +18117,7 @@ func basicEventElementToMap(
 		if err != nil {
 			err.Path.PrependName(
 				&aasreporting.NameSegment{
-					Name: "SemanticID",
+					Name: "SemanticID()",
 				},
 			)
 
@@ -18145,7 +18145,7 @@ func basicEventElementToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "SupplementalSemanticIDs",
+						Name: "SupplementalSemanticIDs()",
 					},
 				)
 
@@ -18175,7 +18175,7 @@ func basicEventElementToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "Qualifiers",
+						Name: "Qualifiers()",
 					},
 				)
 
@@ -18205,7 +18205,7 @@ func basicEventElementToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "EmbeddedDataSpecifications",
+						Name: "EmbeddedDataSpecifications()",
 					},
 				)
 
@@ -18223,7 +18223,7 @@ func basicEventElementToMap(
 	if err != nil {
 		err.Path.PrependName(
 			&aasreporting.NameSegment{
-				Name: "Observed",
+				Name: "Observed()",
 			},
 		)
 
@@ -18238,7 +18238,7 @@ func basicEventElementToMap(
 	if err != nil {
 		err.Path.PrependName(
 			&aasreporting.NameSegment{
-				Name: "Direction",
+				Name: "Direction()",
 			},
 		)
 
@@ -18253,7 +18253,7 @@ func basicEventElementToMap(
 	if err != nil {
 		err.Path.PrependName(
 			&aasreporting.NameSegment{
-				Name: "State",
+				Name: "State()",
 			},
 		)
 
@@ -18273,7 +18273,7 @@ func basicEventElementToMap(
 		if err != nil {
 			err.Path.PrependName(
 				&aasreporting.NameSegment{
-					Name: "MessageBroker",
+					Name: "MessageBroker()",
 				},
 			)
 
@@ -18329,7 +18329,7 @@ func operationToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "Extensions",
+						Name: "Extensions()",
 					},
 				)
 
@@ -18367,7 +18367,7 @@ func operationToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "DisplayName",
+						Name: "DisplayName()",
 					},
 				)
 
@@ -18397,7 +18397,7 @@ func operationToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "Description",
+						Name: "Description()",
 					},
 				)
 
@@ -18416,7 +18416,7 @@ func operationToMap(
 		if err != nil {
 			err.Path.PrependName(
 				&aasreporting.NameSegment{
-					Name: "SemanticID",
+					Name: "SemanticID()",
 				},
 			)
 
@@ -18444,7 +18444,7 @@ func operationToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "SupplementalSemanticIDs",
+						Name: "SupplementalSemanticIDs()",
 					},
 				)
 
@@ -18474,7 +18474,7 @@ func operationToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "Qualifiers",
+						Name: "Qualifiers()",
 					},
 				)
 
@@ -18504,7 +18504,7 @@ func operationToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "EmbeddedDataSpecifications",
+						Name: "EmbeddedDataSpecifications()",
 					},
 				)
 
@@ -18534,7 +18534,7 @@ func operationToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "InputVariables",
+						Name: "InputVariables()",
 					},
 				)
 
@@ -18564,7 +18564,7 @@ func operationToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "OutputVariables",
+						Name: "OutputVariables()",
 					},
 				)
 
@@ -18594,7 +18594,7 @@ func operationToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "InoutputVariables",
+						Name: "InoutputVariables()",
 					},
 				)
 
@@ -18628,7 +18628,7 @@ func operationVariableToMap(
 	if err != nil {
 		err.Path.PrependName(
 			&aasreporting.NameSegment{
-				Name: "Value",
+				Name: "Value()",
 			},
 		)
 
@@ -18669,7 +18669,7 @@ func capabilityToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "Extensions",
+						Name: "Extensions()",
 					},
 				)
 
@@ -18707,7 +18707,7 @@ func capabilityToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "DisplayName",
+						Name: "DisplayName()",
 					},
 				)
 
@@ -18737,7 +18737,7 @@ func capabilityToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "Description",
+						Name: "Description()",
 					},
 				)
 
@@ -18756,7 +18756,7 @@ func capabilityToMap(
 		if err != nil {
 			err.Path.PrependName(
 				&aasreporting.NameSegment{
-					Name: "SemanticID",
+					Name: "SemanticID()",
 				},
 			)
 
@@ -18784,7 +18784,7 @@ func capabilityToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "SupplementalSemanticIDs",
+						Name: "SupplementalSemanticIDs()",
 					},
 				)
 
@@ -18814,7 +18814,7 @@ func capabilityToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "Qualifiers",
+						Name: "Qualifiers()",
 					},
 				)
 
@@ -18844,7 +18844,7 @@ func capabilityToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "EmbeddedDataSpecifications",
+						Name: "EmbeddedDataSpecifications()",
 					},
 				)
 
@@ -18890,7 +18890,7 @@ func conceptDescriptionToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "Extensions",
+						Name: "Extensions()",
 					},
 				)
 
@@ -18928,7 +18928,7 @@ func conceptDescriptionToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "DisplayName",
+						Name: "DisplayName()",
 					},
 				)
 
@@ -18958,7 +18958,7 @@ func conceptDescriptionToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "Description",
+						Name: "Description()",
 					},
 				)
 
@@ -18977,7 +18977,7 @@ func conceptDescriptionToMap(
 		if err != nil {
 			err.Path.PrependName(
 				&aasreporting.NameSegment{
-					Name: "Administration",
+					Name: "Administration()",
 				},
 			)
 
@@ -19007,7 +19007,7 @@ func conceptDescriptionToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "EmbeddedDataSpecifications",
+						Name: "EmbeddedDataSpecifications()",
 					},
 				)
 
@@ -19037,7 +19037,7 @@ func conceptDescriptionToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "IsCaseOf",
+						Name: "IsCaseOf()",
 					},
 				)
 
@@ -19071,7 +19071,7 @@ func referenceToMap(
 	if err != nil {
 		err.Path.PrependName(
 			&aasreporting.NameSegment{
-				Name: "Type",
+				Name: "Type()",
 			},
 		)
 
@@ -19087,7 +19087,7 @@ func referenceToMap(
 		if err != nil {
 			err.Path.PrependName(
 				&aasreporting.NameSegment{
-					Name: "ReferredSemanticID",
+					Name: "ReferredSemanticID()",
 				},
 			)
 
@@ -19114,7 +19114,7 @@ func referenceToMap(
 
 			err.Path.PrependName(
 				&aasreporting.NameSegment{
-					Name: "Keys",
+					Name: "Keys()",
 				},
 			)
 
@@ -19145,7 +19145,7 @@ func keyToMap(
 	if err != nil {
 		err.Path.PrependName(
 			&aasreporting.NameSegment{
-				Name: "Type",
+				Name: "Type()",
 			},
 		)
 
@@ -19224,7 +19224,7 @@ func environmentToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "AssetAdministrationShells",
+						Name: "AssetAdministrationShells()",
 					},
 				)
 
@@ -19254,7 +19254,7 @@ func environmentToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "Submodels",
+						Name: "Submodels()",
 					},
 				)
 
@@ -19284,7 +19284,7 @@ func environmentToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "ConceptDescriptions",
+						Name: "ConceptDescriptions()",
 					},
 				)
 
@@ -19316,7 +19316,7 @@ func embeddedDataSpecificationToMap(
 	if err != nil {
 		err.Path.PrependName(
 			&aasreporting.NameSegment{
-				Name: "DataSpecification",
+				Name: "DataSpecification()",
 			},
 		)
 
@@ -19331,7 +19331,7 @@ func embeddedDataSpecificationToMap(
 	if err != nil {
 		err.Path.PrependName(
 			&aasreporting.NameSegment{
-				Name: "DataSpecificationContent",
+				Name: "DataSpecificationContent()",
 			},
 		)
 
@@ -19384,7 +19384,7 @@ func valueReferencePairToMap(
 	if err != nil {
 		err.Path.PrependName(
 			&aasreporting.NameSegment{
-				Name: "ValueID",
+				Name: "ValueID()",
 			},
 		)
 
@@ -19424,7 +19424,7 @@ func valueListToMap(
 
 			err.Path.PrependName(
 				&aasreporting.NameSegment{
-					Name: "ValueReferencePairs",
+					Name: "ValueReferencePairs()",
 				},
 			)
 
@@ -19520,7 +19520,7 @@ func dataSpecificationIEC61360ToMap(
 
 			err.Path.PrependName(
 				&aasreporting.NameSegment{
-					Name: "PreferredName",
+					Name: "PreferredName()",
 				},
 			)
 
@@ -19549,7 +19549,7 @@ func dataSpecificationIEC61360ToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "ShortName",
+						Name: "ShortName()",
 					},
 				)
 
@@ -19572,7 +19572,7 @@ func dataSpecificationIEC61360ToMap(
 		if err != nil {
 			err.Path.PrependName(
 				&aasreporting.NameSegment{
-					Name: "UnitID",
+					Name: "UnitID()",
 				},
 			)
 
@@ -19597,7 +19597,7 @@ func dataSpecificationIEC61360ToMap(
 		if err != nil {
 			err.Path.PrependName(
 				&aasreporting.NameSegment{
-					Name: "DataType",
+					Name: "DataType()",
 				},
 			)
 
@@ -19625,7 +19625,7 @@ func dataSpecificationIEC61360ToMap(
 
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
-						Name: "Definition",
+						Name: "Definition()",
 					},
 				)
 
@@ -19648,7 +19648,7 @@ func dataSpecificationIEC61360ToMap(
 		if err != nil {
 			err.Path.PrependName(
 				&aasreporting.NameSegment{
-					Name: "ValueList",
+					Name: "ValueList()",
 				},
 			)
 
@@ -19669,7 +19669,7 @@ func dataSpecificationIEC61360ToMap(
 		if err != nil {
 			err.Path.PrependName(
 				&aasreporting.NameSegment{
-					Name: "LevelType",
+					Name: "LevelType()",
 				},
 			)
 

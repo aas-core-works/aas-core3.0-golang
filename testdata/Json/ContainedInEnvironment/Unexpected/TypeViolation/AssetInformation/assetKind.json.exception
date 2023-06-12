@@ -1,1 +1,0 @@
-assetAdministrationShells[0].assetInformation.assetKind: Expected a str, but got: {type(jsonable)}

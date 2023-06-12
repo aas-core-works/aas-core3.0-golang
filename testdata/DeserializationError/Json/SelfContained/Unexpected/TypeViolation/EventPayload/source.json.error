@@ -1,1 +1,1 @@
-source: Expected a JSON object, but got []interface {}
+source: Expected a JSON object, but got string

@@ -1,1 +1,1 @@
-assetAdministrationShells[0].derivedFrom: Expected a JSON object, but got []interface {}
+assetAdministrationShells[0].derivedFrom: Expected a JSON object, but got string

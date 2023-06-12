@@ -1,1 +1,1 @@
-observableSemanticId: Expected a JSON object, but got []interface {}
+observableSemanticId: Expected a JSON object, but got string
