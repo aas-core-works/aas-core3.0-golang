@@ -288,7 +288,15 @@ def _replace_test_data(
 
     for pth in [
         test_data_dir / name
-        for name in ("Descend", "DescendOnce", "Json", "XOrDefault")
+        for name in (
+                "Descend",
+                "DescendOnce",
+                "DeserializationError",
+                "Json",
+                "VerificationError",
+                "Xml",
+                "XxxOrDefault"
+        )
     ]:
         if pth.exists():
             print(f"Removing {pth} ...")
@@ -302,13 +310,17 @@ def _replace_test_data(
     assert pth.exists(), f"Expected the test data directory to exist: {pth=}"
     shutil.copytree(pth, target_pth)
 
+    pth = aas_core_testgen_repo / "test_data/Xml"
+    target_pth = test_data_dir / pth.name
+    assert not target_pth.exists()
+    assert pth.exists(), f"Expected the test data directory to exist: {pth=}"
+    shutil.copytree(pth, target_pth)
+
 
 def _reformat_code(our_repo: pathlib.Path) -> None:
     """Reformat the generated code."""
     print("Re-formatting the code...")
-
-    # TODO (mristin, 2023-05-26): adapt to golang
-    subprocess.check_call([_NPM, "run", "format"], cwd=our_repo)
+    subprocess.check_call(["gofmt", "-w", "."], cwd=our_repo)
 
 
 def _run_tests_and_rerecord(our_repo: pathlib.Path) -> None:
@@ -316,11 +328,10 @@ def _run_tests_and_rerecord(our_repo: pathlib.Path) -> None:
     print("Running tests & re-recording the test traces...")
 
     env = os.environ.copy()
-    env["AAS_CORE3_0_GOLANG_TEST_DATA_DIR"] = str(our_repo / "test_data")
+    env["AAS_CORE3_0_GOLANG_TEST_DATA_DIR"] = str(our_repo / "testdata")
     env["AAS_CORE3_0_GOLANG_RECORD_MODE"] = "true"
 
-    # TODO (mristin, 2023-05-26): adapt to golang
-    subprocess.check_call([_NPM, "run", "test"], env=env, cwd=our_repo)
+    subprocess.check_call(["go", "test", "./..."], env=env, cwd=our_repo)
 
 
 def _run_check(our_repo: pathlib.Path) -> None:
@@ -331,10 +342,7 @@ def _run_check(our_repo: pathlib.Path) -> None:
     env["AAS_CORE3_0_GOLANG_TEST_DATA_DIR"] = str(our_repo / "testdata")
 
     # TODO (mristin, 2023-05-26): adapt for golang
-    subprocess.check_call([_NPM, "run", "lint"], cwd=our_repo)
-    subprocess.check_call([_NPM, "run", "build"], cwd=our_repo)
-    subprocess.check_call([_NPM, "run", "test"], env=env, cwd=our_repo)
-
+    subprocess.check_call(["go", "vet", "./..."], cwd=our_repo)
 
 def _create_branch_commit_and_push(
     our_repo: pathlib.Path,
