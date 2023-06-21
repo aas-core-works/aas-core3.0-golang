@@ -1,1 +1,1 @@
-assetAdministrationShells[0].extensions[0].semanticId: Expected a JSON object, but got []interface {}
+assetAdministrationShells[0].extensions[0].semanticId: Expected a JSON object, but got string

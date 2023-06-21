@@ -241,7 +241,7 @@ func {test_name}(t *testing.T) {{
 {IIII}{contained_in_literal},
 {IIII}"Unexpected",
 {IIII}cause,
-{III}{model_type_literal},
+{IIII}{model_type_literal},
 {III}),
 {III}".json",
 {II})
