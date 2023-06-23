@@ -78,7 +78,6 @@ def main() -> int:
 
     # noinspection PyListCreation
     blocks = [
-        Stripped("// Test [aastypes.DescendOnce] functions."),
         Stripped("package types_descend_test"),
         warning,
         Stripped(

@@ -100,7 +100,6 @@ def main() -> int:
 
     # noinspection PyListCreation
     blocks = [
-        Stripped("// Test `IsXxx` functions."),
         Stripped("package types_is_xxx_test"),
         warning,
         Stripped(
