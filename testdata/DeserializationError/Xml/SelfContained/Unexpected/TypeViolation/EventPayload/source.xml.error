@@ -1,1 +1,1 @@
-: Expected a start element with local name environment, but got a start element with local name eventPayload
+source: Expected a sequence of XML elements representing properties of IReference, but got text: Unexpected string value
