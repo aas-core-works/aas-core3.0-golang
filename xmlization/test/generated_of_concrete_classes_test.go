@@ -6,16 +6,16 @@ package xmlization_test
 
 import (
 	"bytes"
-	"encoding/xml"
-	"fmt"
-	aastesting "github.com/aas-core-works/aas-core3.0-golang/aastesting"
-	aastypes "github.com/aas-core-works/aas-core3.0-golang/types"
-	aasxmlization "github.com/aas-core-works/aas-core3.0-golang/xmlization"
-	"os"
 	"path/filepath"
+	"fmt"
+	"os"
 	"sort"
 	"strings"
 	"testing"
+	"encoding/xml"
+	aastesting "github.com/aas-core-works/aas-core3.0-golang/aastesting"
+	aastypes "github.com/aas-core-works/aas-core3.0-golang/types"
+	aasxmlization "github.com/aas-core-works/aas-core3.0-golang/xmlization"
 )
 
 func TestExtensionRoundTripOK(t *testing.T) {
@@ -25,7 +25,7 @@ func TestExtensionRoundTripOK(t *testing.T) {
 			"Xml",
 			"ContainedInEnvironment",
 			"Expected",
-			"Extension",
+			"extension",
 		),
 		".xml",
 	)
@@ -54,7 +54,7 @@ func TestExtensionRoundTripOK(t *testing.T) {
 				deserialized, deserialized,
 			)
 			return
-		}
+		} 
 
 		buf := &bytes.Buffer{}
 		encoder := xml.NewEncoder(buf)
@@ -89,7 +89,7 @@ func TestExtensionDeserializationFail(t *testing.T) {
 				"ContainedInEnvironment",
 				"Unexpected",
 				cause,
-				"Extension",
+				"extension",
 			),
 			".xml",
 		)
@@ -140,7 +140,7 @@ func TestAdministrativeInformationRoundTripOK(t *testing.T) {
 			"Xml",
 			"ContainedInEnvironment",
 			"Expected",
-			"AdministrativeInformation",
+			"administrativeInformation",
 		),
 		".xml",
 	)
@@ -169,7 +169,7 @@ func TestAdministrativeInformationRoundTripOK(t *testing.T) {
 				deserialized, deserialized,
 			)
 			return
-		}
+		} 
 
 		buf := &bytes.Buffer{}
 		encoder := xml.NewEncoder(buf)
@@ -204,7 +204,7 @@ func TestAdministrativeInformationDeserializationFail(t *testing.T) {
 				"ContainedInEnvironment",
 				"Unexpected",
 				cause,
-				"AdministrativeInformation",
+				"administrativeInformation",
 			),
 			".xml",
 		)
@@ -255,7 +255,7 @@ func TestQualifierRoundTripOK(t *testing.T) {
 			"Xml",
 			"ContainedInEnvironment",
 			"Expected",
-			"Qualifier",
+			"qualifier",
 		),
 		".xml",
 	)
@@ -284,7 +284,7 @@ func TestQualifierRoundTripOK(t *testing.T) {
 				deserialized, deserialized,
 			)
 			return
-		}
+		} 
 
 		buf := &bytes.Buffer{}
 		encoder := xml.NewEncoder(buf)
@@ -319,7 +319,7 @@ func TestQualifierDeserializationFail(t *testing.T) {
 				"ContainedInEnvironment",
 				"Unexpected",
 				cause,
-				"Qualifier",
+				"qualifier",
 			),
 			".xml",
 		)
@@ -370,7 +370,7 @@ func TestAssetAdministrationShellRoundTripOK(t *testing.T) {
 			"Xml",
 			"ContainedInEnvironment",
 			"Expected",
-			"AssetAdministrationShell",
+			"assetAdministrationShell",
 		),
 		".xml",
 	)
@@ -399,7 +399,7 @@ func TestAssetAdministrationShellRoundTripOK(t *testing.T) {
 				deserialized, deserialized,
 			)
 			return
-		}
+		} 
 
 		buf := &bytes.Buffer{}
 		encoder := xml.NewEncoder(buf)
@@ -434,7 +434,7 @@ func TestAssetAdministrationShellDeserializationFail(t *testing.T) {
 				"ContainedInEnvironment",
 				"Unexpected",
 				cause,
-				"AssetAdministrationShell",
+				"assetAdministrationShell",
 			),
 			".xml",
 		)
@@ -485,7 +485,7 @@ func TestAssetInformationRoundTripOK(t *testing.T) {
 			"Xml",
 			"ContainedInEnvironment",
 			"Expected",
-			"AssetInformation",
+			"assetInformation",
 		),
 		".xml",
 	)
@@ -514,7 +514,7 @@ func TestAssetInformationRoundTripOK(t *testing.T) {
 				deserialized, deserialized,
 			)
 			return
-		}
+		} 
 
 		buf := &bytes.Buffer{}
 		encoder := xml.NewEncoder(buf)
@@ -549,7 +549,7 @@ func TestAssetInformationDeserializationFail(t *testing.T) {
 				"ContainedInEnvironment",
 				"Unexpected",
 				cause,
-				"AssetInformation",
+				"assetInformation",
 			),
 			".xml",
 		)
@@ -600,7 +600,7 @@ func TestResourceRoundTripOK(t *testing.T) {
 			"Xml",
 			"ContainedInEnvironment",
 			"Expected",
-			"Resource",
+			"resource",
 		),
 		".xml",
 	)
@@ -629,7 +629,7 @@ func TestResourceRoundTripOK(t *testing.T) {
 				deserialized, deserialized,
 			)
 			return
-		}
+		} 
 
 		buf := &bytes.Buffer{}
 		encoder := xml.NewEncoder(buf)
@@ -664,7 +664,7 @@ func TestResourceDeserializationFail(t *testing.T) {
 				"ContainedInEnvironment",
 				"Unexpected",
 				cause,
-				"Resource",
+				"resource",
 			),
 			".xml",
 		)
@@ -715,7 +715,7 @@ func TestSpecificAssetIDRoundTripOK(t *testing.T) {
 			"Xml",
 			"ContainedInEnvironment",
 			"Expected",
-			"SpecificAssetId",
+			"specificAssetId",
 		),
 		".xml",
 	)
@@ -744,7 +744,7 @@ func TestSpecificAssetIDRoundTripOK(t *testing.T) {
 				deserialized, deserialized,
 			)
 			return
-		}
+		} 
 
 		buf := &bytes.Buffer{}
 		encoder := xml.NewEncoder(buf)
@@ -779,7 +779,7 @@ func TestSpecificAssetIDDeserializationFail(t *testing.T) {
 				"ContainedInEnvironment",
 				"Unexpected",
 				cause,
-				"SpecificAssetId",
+				"specificAssetId",
 			),
 			".xml",
 		)
@@ -830,7 +830,7 @@ func TestSubmodelRoundTripOK(t *testing.T) {
 			"Xml",
 			"ContainedInEnvironment",
 			"Expected",
-			"Submodel",
+			"submodel",
 		),
 		".xml",
 	)
@@ -859,7 +859,7 @@ func TestSubmodelRoundTripOK(t *testing.T) {
 				deserialized, deserialized,
 			)
 			return
-		}
+		} 
 
 		buf := &bytes.Buffer{}
 		encoder := xml.NewEncoder(buf)
@@ -894,7 +894,7 @@ func TestSubmodelDeserializationFail(t *testing.T) {
 				"ContainedInEnvironment",
 				"Unexpected",
 				cause,
-				"Submodel",
+				"submodel",
 			),
 			".xml",
 		)
@@ -945,7 +945,7 @@ func TestRelationshipElementRoundTripOK(t *testing.T) {
 			"Xml",
 			"ContainedInEnvironment",
 			"Expected",
-			"RelationshipElement",
+			"relationshipElement",
 		),
 		".xml",
 	)
@@ -974,7 +974,7 @@ func TestRelationshipElementRoundTripOK(t *testing.T) {
 				deserialized, deserialized,
 			)
 			return
-		}
+		} 
 
 		buf := &bytes.Buffer{}
 		encoder := xml.NewEncoder(buf)
@@ -1009,7 +1009,7 @@ func TestRelationshipElementDeserializationFail(t *testing.T) {
 				"ContainedInEnvironment",
 				"Unexpected",
 				cause,
-				"RelationshipElement",
+				"relationshipElement",
 			),
 			".xml",
 		)
@@ -1060,7 +1060,7 @@ func TestSubmodelElementListRoundTripOK(t *testing.T) {
 			"Xml",
 			"ContainedInEnvironment",
 			"Expected",
-			"SubmodelElementList",
+			"submodelElementList",
 		),
 		".xml",
 	)
@@ -1089,7 +1089,7 @@ func TestSubmodelElementListRoundTripOK(t *testing.T) {
 				deserialized, deserialized,
 			)
 			return
-		}
+		} 
 
 		buf := &bytes.Buffer{}
 		encoder := xml.NewEncoder(buf)
@@ -1124,7 +1124,7 @@ func TestSubmodelElementListDeserializationFail(t *testing.T) {
 				"ContainedInEnvironment",
 				"Unexpected",
 				cause,
-				"SubmodelElementList",
+				"submodelElementList",
 			),
 			".xml",
 		)
@@ -1175,7 +1175,7 @@ func TestSubmodelElementCollectionRoundTripOK(t *testing.T) {
 			"Xml",
 			"ContainedInEnvironment",
 			"Expected",
-			"SubmodelElementCollection",
+			"submodelElementCollection",
 		),
 		".xml",
 	)
@@ -1204,7 +1204,7 @@ func TestSubmodelElementCollectionRoundTripOK(t *testing.T) {
 				deserialized, deserialized,
 			)
 			return
-		}
+		} 
 
 		buf := &bytes.Buffer{}
 		encoder := xml.NewEncoder(buf)
@@ -1239,7 +1239,7 @@ func TestSubmodelElementCollectionDeserializationFail(t *testing.T) {
 				"ContainedInEnvironment",
 				"Unexpected",
 				cause,
-				"SubmodelElementCollection",
+				"submodelElementCollection",
 			),
 			".xml",
 		)
@@ -1290,7 +1290,7 @@ func TestPropertyRoundTripOK(t *testing.T) {
 			"Xml",
 			"ContainedInEnvironment",
 			"Expected",
-			"Property",
+			"property",
 		),
 		".xml",
 	)
@@ -1319,7 +1319,7 @@ func TestPropertyRoundTripOK(t *testing.T) {
 				deserialized, deserialized,
 			)
 			return
-		}
+		} 
 
 		buf := &bytes.Buffer{}
 		encoder := xml.NewEncoder(buf)
@@ -1354,7 +1354,7 @@ func TestPropertyDeserializationFail(t *testing.T) {
 				"ContainedInEnvironment",
 				"Unexpected",
 				cause,
-				"Property",
+				"property",
 			),
 			".xml",
 		)
@@ -1405,7 +1405,7 @@ func TestMultiLanguagePropertyRoundTripOK(t *testing.T) {
 			"Xml",
 			"ContainedInEnvironment",
 			"Expected",
-			"MultiLanguageProperty",
+			"multiLanguageProperty",
 		),
 		".xml",
 	)
@@ -1434,7 +1434,7 @@ func TestMultiLanguagePropertyRoundTripOK(t *testing.T) {
 				deserialized, deserialized,
 			)
 			return
-		}
+		} 
 
 		buf := &bytes.Buffer{}
 		encoder := xml.NewEncoder(buf)
@@ -1469,7 +1469,7 @@ func TestMultiLanguagePropertyDeserializationFail(t *testing.T) {
 				"ContainedInEnvironment",
 				"Unexpected",
 				cause,
-				"MultiLanguageProperty",
+				"multiLanguageProperty",
 			),
 			".xml",
 		)
@@ -1520,7 +1520,7 @@ func TestRangeRoundTripOK(t *testing.T) {
 			"Xml",
 			"ContainedInEnvironment",
 			"Expected",
-			"Range",
+			"range",
 		),
 		".xml",
 	)
@@ -1549,7 +1549,7 @@ func TestRangeRoundTripOK(t *testing.T) {
 				deserialized, deserialized,
 			)
 			return
-		}
+		} 
 
 		buf := &bytes.Buffer{}
 		encoder := xml.NewEncoder(buf)
@@ -1584,7 +1584,7 @@ func TestRangeDeserializationFail(t *testing.T) {
 				"ContainedInEnvironment",
 				"Unexpected",
 				cause,
-				"Range",
+				"range",
 			),
 			".xml",
 		)
@@ -1635,7 +1635,7 @@ func TestReferenceElementRoundTripOK(t *testing.T) {
 			"Xml",
 			"ContainedInEnvironment",
 			"Expected",
-			"ReferenceElement",
+			"referenceElement",
 		),
 		".xml",
 	)
@@ -1664,7 +1664,7 @@ func TestReferenceElementRoundTripOK(t *testing.T) {
 				deserialized, deserialized,
 			)
 			return
-		}
+		} 
 
 		buf := &bytes.Buffer{}
 		encoder := xml.NewEncoder(buf)
@@ -1699,7 +1699,7 @@ func TestReferenceElementDeserializationFail(t *testing.T) {
 				"ContainedInEnvironment",
 				"Unexpected",
 				cause,
-				"ReferenceElement",
+				"referenceElement",
 			),
 			".xml",
 		)
@@ -1750,7 +1750,7 @@ func TestBlobRoundTripOK(t *testing.T) {
 			"Xml",
 			"ContainedInEnvironment",
 			"Expected",
-			"Blob",
+			"blob",
 		),
 		".xml",
 	)
@@ -1779,7 +1779,7 @@ func TestBlobRoundTripOK(t *testing.T) {
 				deserialized, deserialized,
 			)
 			return
-		}
+		} 
 
 		buf := &bytes.Buffer{}
 		encoder := xml.NewEncoder(buf)
@@ -1814,7 +1814,7 @@ func TestBlobDeserializationFail(t *testing.T) {
 				"ContainedInEnvironment",
 				"Unexpected",
 				cause,
-				"Blob",
+				"blob",
 			),
 			".xml",
 		)
@@ -1865,7 +1865,7 @@ func TestFileRoundTripOK(t *testing.T) {
 			"Xml",
 			"ContainedInEnvironment",
 			"Expected",
-			"File",
+			"file",
 		),
 		".xml",
 	)
@@ -1894,7 +1894,7 @@ func TestFileRoundTripOK(t *testing.T) {
 				deserialized, deserialized,
 			)
 			return
-		}
+		} 
 
 		buf := &bytes.Buffer{}
 		encoder := xml.NewEncoder(buf)
@@ -1929,7 +1929,7 @@ func TestFileDeserializationFail(t *testing.T) {
 				"ContainedInEnvironment",
 				"Unexpected",
 				cause,
-				"File",
+				"file",
 			),
 			".xml",
 		)
@@ -1980,7 +1980,7 @@ func TestAnnotatedRelationshipElementRoundTripOK(t *testing.T) {
 			"Xml",
 			"ContainedInEnvironment",
 			"Expected",
-			"AnnotatedRelationshipElement",
+			"annotatedRelationshipElement",
 		),
 		".xml",
 	)
@@ -2009,7 +2009,7 @@ func TestAnnotatedRelationshipElementRoundTripOK(t *testing.T) {
 				deserialized, deserialized,
 			)
 			return
-		}
+		} 
 
 		buf := &bytes.Buffer{}
 		encoder := xml.NewEncoder(buf)
@@ -2044,7 +2044,7 @@ func TestAnnotatedRelationshipElementDeserializationFail(t *testing.T) {
 				"ContainedInEnvironment",
 				"Unexpected",
 				cause,
-				"AnnotatedRelationshipElement",
+				"annotatedRelationshipElement",
 			),
 			".xml",
 		)
@@ -2095,7 +2095,7 @@ func TestEntityRoundTripOK(t *testing.T) {
 			"Xml",
 			"ContainedInEnvironment",
 			"Expected",
-			"Entity",
+			"entity",
 		),
 		".xml",
 	)
@@ -2124,7 +2124,7 @@ func TestEntityRoundTripOK(t *testing.T) {
 				deserialized, deserialized,
 			)
 			return
-		}
+		} 
 
 		buf := &bytes.Buffer{}
 		encoder := xml.NewEncoder(buf)
@@ -2159,7 +2159,7 @@ func TestEntityDeserializationFail(t *testing.T) {
 				"ContainedInEnvironment",
 				"Unexpected",
 				cause,
-				"Entity",
+				"entity",
 			),
 			".xml",
 		)
@@ -2210,7 +2210,7 @@ func TestEventPayloadRoundTripOK(t *testing.T) {
 			"Xml",
 			"SelfContained",
 			"Expected",
-			"EventPayload",
+			"eventPayload",
 		),
 		".xml",
 	)
@@ -2239,7 +2239,7 @@ func TestEventPayloadRoundTripOK(t *testing.T) {
 				deserialized, deserialized,
 			)
 			return
-		}
+		} 
 
 		buf := &bytes.Buffer{}
 		encoder := xml.NewEncoder(buf)
@@ -2274,7 +2274,7 @@ func TestEventPayloadDeserializationFail(t *testing.T) {
 				"SelfContained",
 				"Unexpected",
 				cause,
-				"EventPayload",
+				"eventPayload",
 			),
 			".xml",
 		)
@@ -2325,7 +2325,7 @@ func TestBasicEventElementRoundTripOK(t *testing.T) {
 			"Xml",
 			"ContainedInEnvironment",
 			"Expected",
-			"BasicEventElement",
+			"basicEventElement",
 		),
 		".xml",
 	)
@@ -2354,7 +2354,7 @@ func TestBasicEventElementRoundTripOK(t *testing.T) {
 				deserialized, deserialized,
 			)
 			return
-		}
+		} 
 
 		buf := &bytes.Buffer{}
 		encoder := xml.NewEncoder(buf)
@@ -2389,7 +2389,7 @@ func TestBasicEventElementDeserializationFail(t *testing.T) {
 				"ContainedInEnvironment",
 				"Unexpected",
 				cause,
-				"BasicEventElement",
+				"basicEventElement",
 			),
 			".xml",
 		)
@@ -2440,7 +2440,7 @@ func TestOperationRoundTripOK(t *testing.T) {
 			"Xml",
 			"ContainedInEnvironment",
 			"Expected",
-			"Operation",
+			"operation",
 		),
 		".xml",
 	)
@@ -2469,7 +2469,7 @@ func TestOperationRoundTripOK(t *testing.T) {
 				deserialized, deserialized,
 			)
 			return
-		}
+		} 
 
 		buf := &bytes.Buffer{}
 		encoder := xml.NewEncoder(buf)
@@ -2504,7 +2504,7 @@ func TestOperationDeserializationFail(t *testing.T) {
 				"ContainedInEnvironment",
 				"Unexpected",
 				cause,
-				"Operation",
+				"operation",
 			),
 			".xml",
 		)
@@ -2555,7 +2555,7 @@ func TestOperationVariableRoundTripOK(t *testing.T) {
 			"Xml",
 			"ContainedInEnvironment",
 			"Expected",
-			"OperationVariable",
+			"operationVariable",
 		),
 		".xml",
 	)
@@ -2584,7 +2584,7 @@ func TestOperationVariableRoundTripOK(t *testing.T) {
 				deserialized, deserialized,
 			)
 			return
-		}
+		} 
 
 		buf := &bytes.Buffer{}
 		encoder := xml.NewEncoder(buf)
@@ -2619,7 +2619,7 @@ func TestOperationVariableDeserializationFail(t *testing.T) {
 				"ContainedInEnvironment",
 				"Unexpected",
 				cause,
-				"OperationVariable",
+				"operationVariable",
 			),
 			".xml",
 		)
@@ -2670,7 +2670,7 @@ func TestCapabilityRoundTripOK(t *testing.T) {
 			"Xml",
 			"ContainedInEnvironment",
 			"Expected",
-			"Capability",
+			"capability",
 		),
 		".xml",
 	)
@@ -2699,7 +2699,7 @@ func TestCapabilityRoundTripOK(t *testing.T) {
 				deserialized, deserialized,
 			)
 			return
-		}
+		} 
 
 		buf := &bytes.Buffer{}
 		encoder := xml.NewEncoder(buf)
@@ -2734,7 +2734,7 @@ func TestCapabilityDeserializationFail(t *testing.T) {
 				"ContainedInEnvironment",
 				"Unexpected",
 				cause,
-				"Capability",
+				"capability",
 			),
 			".xml",
 		)
@@ -2785,7 +2785,7 @@ func TestConceptDescriptionRoundTripOK(t *testing.T) {
 			"Xml",
 			"ContainedInEnvironment",
 			"Expected",
-			"ConceptDescription",
+			"conceptDescription",
 		),
 		".xml",
 	)
@@ -2814,7 +2814,7 @@ func TestConceptDescriptionRoundTripOK(t *testing.T) {
 				deserialized, deserialized,
 			)
 			return
-		}
+		} 
 
 		buf := &bytes.Buffer{}
 		encoder := xml.NewEncoder(buf)
@@ -2849,7 +2849,7 @@ func TestConceptDescriptionDeserializationFail(t *testing.T) {
 				"ContainedInEnvironment",
 				"Unexpected",
 				cause,
-				"ConceptDescription",
+				"conceptDescription",
 			),
 			".xml",
 		)
@@ -2900,7 +2900,7 @@ func TestReferenceRoundTripOK(t *testing.T) {
 			"Xml",
 			"ContainedInEnvironment",
 			"Expected",
-			"Reference",
+			"reference",
 		),
 		".xml",
 	)
@@ -2929,7 +2929,7 @@ func TestReferenceRoundTripOK(t *testing.T) {
 				deserialized, deserialized,
 			)
 			return
-		}
+		} 
 
 		buf := &bytes.Buffer{}
 		encoder := xml.NewEncoder(buf)
@@ -2964,7 +2964,7 @@ func TestReferenceDeserializationFail(t *testing.T) {
 				"ContainedInEnvironment",
 				"Unexpected",
 				cause,
-				"Reference",
+				"reference",
 			),
 			".xml",
 		)
@@ -3015,7 +3015,7 @@ func TestKeyRoundTripOK(t *testing.T) {
 			"Xml",
 			"ContainedInEnvironment",
 			"Expected",
-			"Key",
+			"key",
 		),
 		".xml",
 	)
@@ -3044,7 +3044,7 @@ func TestKeyRoundTripOK(t *testing.T) {
 				deserialized, deserialized,
 			)
 			return
-		}
+		} 
 
 		buf := &bytes.Buffer{}
 		encoder := xml.NewEncoder(buf)
@@ -3079,7 +3079,7 @@ func TestKeyDeserializationFail(t *testing.T) {
 				"ContainedInEnvironment",
 				"Unexpected",
 				cause,
-				"Key",
+				"key",
 			),
 			".xml",
 		)
@@ -3130,7 +3130,7 @@ func TestLangStringNameTypeRoundTripOK(t *testing.T) {
 			"Xml",
 			"ContainedInEnvironment",
 			"Expected",
-			"LangStringNameType",
+			"langStringNameType",
 		),
 		".xml",
 	)
@@ -3159,7 +3159,7 @@ func TestLangStringNameTypeRoundTripOK(t *testing.T) {
 				deserialized, deserialized,
 			)
 			return
-		}
+		} 
 
 		buf := &bytes.Buffer{}
 		encoder := xml.NewEncoder(buf)
@@ -3194,7 +3194,7 @@ func TestLangStringNameTypeDeserializationFail(t *testing.T) {
 				"ContainedInEnvironment",
 				"Unexpected",
 				cause,
-				"LangStringNameType",
+				"langStringNameType",
 			),
 			".xml",
 		)
@@ -3245,7 +3245,7 @@ func TestLangStringTextTypeRoundTripOK(t *testing.T) {
 			"Xml",
 			"ContainedInEnvironment",
 			"Expected",
-			"LangStringTextType",
+			"langStringTextType",
 		),
 		".xml",
 	)
@@ -3274,7 +3274,7 @@ func TestLangStringTextTypeRoundTripOK(t *testing.T) {
 				deserialized, deserialized,
 			)
 			return
-		}
+		} 
 
 		buf := &bytes.Buffer{}
 		encoder := xml.NewEncoder(buf)
@@ -3309,7 +3309,7 @@ func TestLangStringTextTypeDeserializationFail(t *testing.T) {
 				"ContainedInEnvironment",
 				"Unexpected",
 				cause,
-				"LangStringTextType",
+				"langStringTextType",
 			),
 			".xml",
 		)
@@ -3360,7 +3360,7 @@ func TestEnvironmentRoundTripOK(t *testing.T) {
 			"Xml",
 			"SelfContained",
 			"Expected",
-			"Environment",
+			"environment",
 		),
 		".xml",
 	)
@@ -3389,7 +3389,7 @@ func TestEnvironmentRoundTripOK(t *testing.T) {
 				deserialized, deserialized,
 			)
 			return
-		}
+		} 
 
 		buf := &bytes.Buffer{}
 		encoder := xml.NewEncoder(buf)
@@ -3424,7 +3424,7 @@ func TestEnvironmentDeserializationFail(t *testing.T) {
 				"SelfContained",
 				"Unexpected",
 				cause,
-				"Environment",
+				"environment",
 			),
 			".xml",
 		)
@@ -3475,7 +3475,7 @@ func TestEmbeddedDataSpecificationRoundTripOK(t *testing.T) {
 			"Xml",
 			"ContainedInEnvironment",
 			"Expected",
-			"EmbeddedDataSpecification",
+			"embeddedDataSpecification",
 		),
 		".xml",
 	)
@@ -3504,7 +3504,7 @@ func TestEmbeddedDataSpecificationRoundTripOK(t *testing.T) {
 				deserialized, deserialized,
 			)
 			return
-		}
+		} 
 
 		buf := &bytes.Buffer{}
 		encoder := xml.NewEncoder(buf)
@@ -3539,7 +3539,7 @@ func TestEmbeddedDataSpecificationDeserializationFail(t *testing.T) {
 				"ContainedInEnvironment",
 				"Unexpected",
 				cause,
-				"EmbeddedDataSpecification",
+				"embeddedDataSpecification",
 			),
 			".xml",
 		)
@@ -3590,7 +3590,7 @@ func TestLevelTypeRoundTripOK(t *testing.T) {
 			"Xml",
 			"ContainedInEnvironment",
 			"Expected",
-			"LevelType",
+			"levelType",
 		),
 		".xml",
 	)
@@ -3619,7 +3619,7 @@ func TestLevelTypeRoundTripOK(t *testing.T) {
 				deserialized, deserialized,
 			)
 			return
-		}
+		} 
 
 		buf := &bytes.Buffer{}
 		encoder := xml.NewEncoder(buf)
@@ -3654,7 +3654,7 @@ func TestLevelTypeDeserializationFail(t *testing.T) {
 				"ContainedInEnvironment",
 				"Unexpected",
 				cause,
-				"LevelType",
+				"levelType",
 			),
 			".xml",
 		)
@@ -3705,7 +3705,7 @@ func TestValueReferencePairRoundTripOK(t *testing.T) {
 			"Xml",
 			"ContainedInEnvironment",
 			"Expected",
-			"ValueReferencePair",
+			"valueReferencePair",
 		),
 		".xml",
 	)
@@ -3734,7 +3734,7 @@ func TestValueReferencePairRoundTripOK(t *testing.T) {
 				deserialized, deserialized,
 			)
 			return
-		}
+		} 
 
 		buf := &bytes.Buffer{}
 		encoder := xml.NewEncoder(buf)
@@ -3769,7 +3769,7 @@ func TestValueReferencePairDeserializationFail(t *testing.T) {
 				"ContainedInEnvironment",
 				"Unexpected",
 				cause,
-				"ValueReferencePair",
+				"valueReferencePair",
 			),
 			".xml",
 		)
@@ -3820,7 +3820,7 @@ func TestValueListRoundTripOK(t *testing.T) {
 			"Xml",
 			"ContainedInEnvironment",
 			"Expected",
-			"ValueList",
+			"valueList",
 		),
 		".xml",
 	)
@@ -3849,7 +3849,7 @@ func TestValueListRoundTripOK(t *testing.T) {
 				deserialized, deserialized,
 			)
 			return
-		}
+		} 
 
 		buf := &bytes.Buffer{}
 		encoder := xml.NewEncoder(buf)
@@ -3884,7 +3884,7 @@ func TestValueListDeserializationFail(t *testing.T) {
 				"ContainedInEnvironment",
 				"Unexpected",
 				cause,
-				"ValueList",
+				"valueList",
 			),
 			".xml",
 		)
@@ -3935,7 +3935,7 @@ func TestLangStringPreferredNameTypeIEC61360RoundTripOK(t *testing.T) {
 			"Xml",
 			"ContainedInEnvironment",
 			"Expected",
-			"LangStringPreferredNameTypeIec61360",
+			"langStringPreferredNameTypeIec61360",
 		),
 		".xml",
 	)
@@ -3964,7 +3964,7 @@ func TestLangStringPreferredNameTypeIEC61360RoundTripOK(t *testing.T) {
 				deserialized, deserialized,
 			)
 			return
-		}
+		} 
 
 		buf := &bytes.Buffer{}
 		encoder := xml.NewEncoder(buf)
@@ -3999,7 +3999,7 @@ func TestLangStringPreferredNameTypeIEC61360DeserializationFail(t *testing.T) {
 				"ContainedInEnvironment",
 				"Unexpected",
 				cause,
-				"LangStringPreferredNameTypeIec61360",
+				"langStringPreferredNameTypeIec61360",
 			),
 			".xml",
 		)
@@ -4050,7 +4050,7 @@ func TestLangStringShortNameTypeIEC61360RoundTripOK(t *testing.T) {
 			"Xml",
 			"ContainedInEnvironment",
 			"Expected",
-			"LangStringShortNameTypeIec61360",
+			"langStringShortNameTypeIec61360",
 		),
 		".xml",
 	)
@@ -4079,7 +4079,7 @@ func TestLangStringShortNameTypeIEC61360RoundTripOK(t *testing.T) {
 				deserialized, deserialized,
 			)
 			return
-		}
+		} 
 
 		buf := &bytes.Buffer{}
 		encoder := xml.NewEncoder(buf)
@@ -4114,7 +4114,7 @@ func TestLangStringShortNameTypeIEC61360DeserializationFail(t *testing.T) {
 				"ContainedInEnvironment",
 				"Unexpected",
 				cause,
-				"LangStringShortNameTypeIec61360",
+				"langStringShortNameTypeIec61360",
 			),
 			".xml",
 		)
@@ -4165,7 +4165,7 @@ func TestLangStringDefinitionTypeIEC61360RoundTripOK(t *testing.T) {
 			"Xml",
 			"ContainedInEnvironment",
 			"Expected",
-			"LangStringDefinitionTypeIec61360",
+			"langStringDefinitionTypeIec61360",
 		),
 		".xml",
 	)
@@ -4194,7 +4194,7 @@ func TestLangStringDefinitionTypeIEC61360RoundTripOK(t *testing.T) {
 				deserialized, deserialized,
 			)
 			return
-		}
+		} 
 
 		buf := &bytes.Buffer{}
 		encoder := xml.NewEncoder(buf)
@@ -4229,7 +4229,7 @@ func TestLangStringDefinitionTypeIEC61360DeserializationFail(t *testing.T) {
 				"ContainedInEnvironment",
 				"Unexpected",
 				cause,
-				"LangStringDefinitionTypeIec61360",
+				"langStringDefinitionTypeIec61360",
 			),
 			".xml",
 		)
@@ -4280,7 +4280,7 @@ func TestDataSpecificationIEC61360RoundTripOK(t *testing.T) {
 			"Xml",
 			"ContainedInEnvironment",
 			"Expected",
-			"DataSpecificationIec61360",
+			"dataSpecificationIec61360",
 		),
 		".xml",
 	)
@@ -4309,7 +4309,7 @@ func TestDataSpecificationIEC61360RoundTripOK(t *testing.T) {
 				deserialized, deserialized,
 			)
 			return
-		}
+		} 
 
 		buf := &bytes.Buffer{}
 		encoder := xml.NewEncoder(buf)
@@ -4344,7 +4344,7 @@ func TestDataSpecificationIEC61360DeserializationFail(t *testing.T) {
 				"ContainedInEnvironment",
 				"Unexpected",
 				cause,
-				"DataSpecificationIec61360",
+				"dataSpecificationIec61360",
 			),
 			".xml",
 		)
