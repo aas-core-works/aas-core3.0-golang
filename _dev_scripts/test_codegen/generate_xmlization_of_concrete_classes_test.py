@@ -29,8 +29,8 @@ def _generate_for(
     cls: intermediate.ConcreteClass, container_cls: intermediate.ConcreteClass
 ) -> List[Stripped]:
     """Generate the tests for a self-contained class."""
-    model_type_literal = golang_common.string_literal(
-        aas_core_codegen.naming.json_model_type(cls.name)
+    xml_class_name_literal = golang_common.string_literal(
+        aas_core_codegen.naming.xml_class_name(cls.name)
     )
 
     if cls is container_cls:
@@ -60,7 +60,7 @@ func {test_name}(t *testing.T) {{
 {III}"Xml",
 {III}{contained_in_literal},
 {III}"Expected",
-{III}{model_type_literal},
+{III}{xml_class_name_literal},
 {II}),
 {II}".xml",
 {I})
@@ -133,7 +133,7 @@ func {test_name}(t *testing.T) {{
 {IIII}{contained_in_literal},
 {IIII}"Unexpected",
 {IIII}cause,
-{IIII}{model_type_literal},
+{IIII}{xml_class_name_literal},
 {III}),
 {III}".xml",
 {II})
