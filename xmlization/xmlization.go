@@ -685,7 +685,7 @@ func readHasSemanticsWithLookahead(
 // serialized as an XML element.
 //
 // The XML element must live in the [Namespace] space.
-func UnmarshalHasSemantics(
+func unmarshalHasSemantics(
 	decoder *xml.Decoder,
 ) (instance aastypes.IHasSemantics,
 	err error,
@@ -941,7 +941,7 @@ func readExtensionWithLookahead(
 // serialized as an XML element.
 //
 // The XML element must live in the [Namespace] space.
-func UnmarshalExtension(
+func unmarshalExtension(
 	decoder *xml.Decoder,
 ) (instance aastypes.IExtension,
 	err error,
@@ -1083,7 +1083,7 @@ func readHasExtensionsWithLookahead(
 // serialized as an XML element.
 //
 // The XML element must live in the [Namespace] space.
-func UnmarshalHasExtensions(
+func unmarshalHasExtensions(
 	decoder *xml.Decoder,
 ) (instance aastypes.IHasExtensions,
 	err error,
@@ -1225,7 +1225,7 @@ func readReferableWithLookahead(
 // serialized as an XML element.
 //
 // The XML element must live in the [Namespace] space.
-func UnmarshalReferable(
+func unmarshalReferable(
 	decoder *xml.Decoder,
 ) (instance aastypes.IReferable,
 	err error,
@@ -1311,7 +1311,7 @@ func readIdentifiableWithLookahead(
 // serialized as an XML element.
 //
 // The XML element must live in the [Namespace] space.
-func UnmarshalIdentifiable(
+func unmarshalIdentifiable(
 	decoder *xml.Decoder,
 ) (instance aastypes.IIdentifiable,
 	err error,
@@ -1426,7 +1426,7 @@ func readHasKindWithLookahead(
 // serialized as an XML element.
 //
 // The XML element must live in the [Namespace] space.
-func UnmarshalHasKind(
+func unmarshalHasKind(
 	decoder *xml.Decoder,
 ) (instance aastypes.IHasKind,
 	err error,
@@ -1572,7 +1572,7 @@ func readHasDataSpecificationWithLookahead(
 // serialized as an XML element.
 //
 // The XML element must live in the [Namespace] space.
-func UnmarshalHasDataSpecification(
+func unmarshalHasDataSpecification(
 	decoder *xml.Decoder,
 ) (instance aastypes.IHasDataSpecification,
 	err error,
@@ -1810,7 +1810,7 @@ func readAdministrativeInformationWithLookahead(
 // serialized as an XML element.
 //
 // The XML element must live in the [Namespace] space.
-func UnmarshalAdministrativeInformation(
+func unmarshalAdministrativeInformation(
 	decoder *xml.Decoder,
 ) (instance aastypes.IAdministrativeInformation,
 	err error,
@@ -1944,7 +1944,7 @@ func readQualifiableWithLookahead(
 // serialized as an XML element.
 //
 // The XML element must live in the [Namespace] space.
-func UnmarshalQualifiable(
+func unmarshalQualifiable(
 	decoder *xml.Decoder,
 ) (instance aastypes.IQualifiable,
 	err error,
@@ -2253,7 +2253,7 @@ func readQualifierWithLookahead(
 // serialized as an XML element.
 //
 // The XML element must live in the [Namespace] space.
-func UnmarshalQualifier(
+func unmarshalQualifier(
 	decoder *xml.Decoder,
 ) (instance aastypes.IQualifier,
 	err error,
@@ -2569,7 +2569,7 @@ func readAssetAdministrationShellWithLookahead(
 // serialized as an XML element.
 //
 // The XML element must live in the [Namespace] space.
-func UnmarshalAssetAdministrationShell(
+func unmarshalAssetAdministrationShell(
 	decoder *xml.Decoder,
 ) (instance aastypes.IAssetAdministrationShell,
 	err error,
@@ -2814,7 +2814,7 @@ func readAssetInformationWithLookahead(
 // serialized as an XML element.
 //
 // The XML element must live in the [Namespace] space.
-func UnmarshalAssetInformation(
+func unmarshalAssetInformation(
 	decoder *xml.Decoder,
 ) (instance aastypes.IAssetInformation,
 	err error,
@@ -3026,7 +3026,7 @@ func readResourceWithLookahead(
 // serialized as an XML element.
 //
 // The XML element must live in the [Namespace] space.
-func UnmarshalResource(
+func unmarshalResource(
 	decoder *xml.Decoder,
 ) (instance aastypes.IResource,
 	err error,
@@ -3311,7 +3311,7 @@ func readSpecificAssetIDWithLookahead(
 // serialized as an XML element.
 //
 // The XML element must live in the [Namespace] space.
-func UnmarshalSpecificAssetID(
+func unmarshalSpecificAssetID(
 	decoder *xml.Decoder,
 ) (instance aastypes.ISpecificAssetID,
 	err error,
@@ -3644,7 +3644,7 @@ func readSubmodelWithLookahead(
 // serialized as an XML element.
 //
 // The XML element must live in the [Namespace] space.
-func UnmarshalSubmodel(
+func unmarshalSubmodel(
 	decoder *xml.Decoder,
 ) (instance aastypes.ISubmodel,
 	err error,
@@ -3774,7 +3774,7 @@ func readSubmodelElementWithLookahead(
 // serialized as an XML element.
 //
 // The XML element must live in the [Namespace] space.
-func UnmarshalSubmodelElement(
+func unmarshalSubmodelElement(
 	decoder *xml.Decoder,
 ) (instance aastypes.ISubmodelElement,
 	err error,
@@ -4094,7 +4094,7 @@ func readRelationshipElementWithLookahead(
 // serialized as an XML element.
 //
 // The XML element must live in the [Namespace] space.
-func UnmarshalRelationshipElement(
+func unmarshalRelationshipElement(
 	decoder *xml.Decoder,
 ) (instance aastypes.IRelationshipElement,
 	err error,
@@ -4476,7 +4476,7 @@ func readSubmodelElementListWithLookahead(
 // serialized as an XML element.
 //
 // The XML element must live in the [Namespace] space.
-func UnmarshalSubmodelElementList(
+func unmarshalSubmodelElementList(
 	decoder *xml.Decoder,
 ) (instance aastypes.ISubmodelElementList,
 	err error,
@@ -4768,7 +4768,7 @@ func readSubmodelElementCollectionWithLookahead(
 // serialized as an XML element.
 //
 // The XML element must live in the [Namespace] space.
-func UnmarshalSubmodelElementCollection(
+func unmarshalSubmodelElementCollection(
 	decoder *xml.Decoder,
 ) (instance aastypes.ISubmodelElementCollection,
 	err error,
@@ -4866,7 +4866,7 @@ func readDataElementWithLookahead(
 // serialized as an XML element.
 //
 // The XML element must live in the [Namespace] space.
-func UnmarshalDataElement(
+func unmarshalDataElement(
 	decoder *xml.Decoder,
 ) (instance aastypes.IDataElement,
 	err error,
@@ -5188,7 +5188,7 @@ func readPropertyWithLookahead(
 // serialized as an XML element.
 //
 // The XML element must live in the [Namespace] space.
-func UnmarshalProperty(
+func unmarshalProperty(
 	decoder *xml.Decoder,
 ) (instance aastypes.IProperty,
 	err error,
@@ -5490,7 +5490,7 @@ func readMultiLanguagePropertyWithLookahead(
 // serialized as an XML element.
 //
 // The XML element must live in the [Namespace] space.
-func UnmarshalMultiLanguageProperty(
+func unmarshalMultiLanguageProperty(
 	decoder *xml.Decoder,
 ) (instance aastypes.IMultiLanguageProperty,
 	err error,
@@ -5814,7 +5814,7 @@ func readRangeWithLookahead(
 // serialized as an XML element.
 //
 // The XML element must live in the [Namespace] space.
-func UnmarshalRange(
+func unmarshalRange(
 	decoder *xml.Decoder,
 ) (instance aastypes.IRange,
 	err error,
@@ -6105,7 +6105,7 @@ func readReferenceElementWithLookahead(
 // serialized as an XML element.
 //
 // The XML element must live in the [Namespace] space.
-func UnmarshalReferenceElement(
+func unmarshalReferenceElement(
 	decoder *xml.Decoder,
 ) (instance aastypes.IReferenceElement,
 	err error,
@@ -6415,7 +6415,7 @@ func readBlobWithLookahead(
 // serialized as an XML element.
 //
 // The XML element must live in the [Namespace] space.
-func UnmarshalBlob(
+func unmarshalBlob(
 	decoder *xml.Decoder,
 ) (instance aastypes.IBlob,
 	err error,
@@ -6727,7 +6727,7 @@ func readFileWithLookahead(
 // serialized as an XML element.
 //
 // The XML element must live in the [Namespace] space.
-func UnmarshalFile(
+func unmarshalFile(
 	decoder *xml.Decoder,
 ) (instance aastypes.IFile,
 	err error,
@@ -7055,7 +7055,7 @@ func readAnnotatedRelationshipElementWithLookahead(
 // serialized as an XML element.
 //
 // The XML element must live in the [Namespace] space.
-func UnmarshalAnnotatedRelationshipElement(
+func unmarshalAnnotatedRelationshipElement(
 	decoder *xml.Decoder,
 ) (instance aastypes.IAnnotatedRelationshipElement,
 	err error,
@@ -7389,7 +7389,7 @@ func readEntityWithLookahead(
 // serialized as an XML element.
 //
 // The XML element must live in the [Namespace] space.
-func UnmarshalEntity(
+func unmarshalEntity(
 	decoder *xml.Decoder,
 ) (instance aastypes.IEntity,
 	err error,
@@ -7786,7 +7786,7 @@ func readEventPayloadWithLookahead(
 // serialized as an XML element.
 //
 // The XML element must live in the [Namespace] space.
-func UnmarshalEventPayload(
+func unmarshalEventPayload(
 	decoder *xml.Decoder,
 ) (instance aastypes.IEventPayload,
 	err error,
@@ -7864,7 +7864,7 @@ func readEventElementWithLookahead(
 // serialized as an XML element.
 //
 // The XML element must live in the [Namespace] space.
-func UnmarshalEventElement(
+func unmarshalEventElement(
 	decoder *xml.Decoder,
 ) (instance aastypes.IEventElement,
 	err error,
@@ -8256,7 +8256,7 @@ func readBasicEventElementWithLookahead(
 // serialized as an XML element.
 //
 // The XML element must live in the [Namespace] space.
-func UnmarshalBasicEventElement(
+func unmarshalBasicEventElement(
 	decoder *xml.Decoder,
 ) (instance aastypes.IBasicEventElement,
 	err error,
@@ -8570,7 +8570,7 @@ func readOperationWithLookahead(
 // serialized as an XML element.
 //
 // The XML element must live in the [Namespace] space.
-func UnmarshalOperation(
+func unmarshalOperation(
 	decoder *xml.Decoder,
 ) (instance aastypes.IOperation,
 	err error,
@@ -8650,10 +8650,10 @@ func readOperationVariableAsSequence(
 		var valueErr error
 		switch local {
 		case "value":
-			theValue, valueErr = UnmarshalSubmodelElement(
+			theValue, valueErr = unmarshalSubmodelElement(
 				decoder,
 			)
-			// UnmarshalSubmodelElement stops at the end element,
+			// unmarshalSubmodelElement stops at the end element,
 			// so we look ahead to the next element.
 			if valueErr == nil {
 				current, valueErr = readNext(decoder, current)
@@ -8774,7 +8774,7 @@ func readOperationVariableWithLookahead(
 // serialized as an XML element.
 //
 // The XML element must live in the [Namespace] space.
-func UnmarshalOperationVariable(
+func unmarshalOperationVariable(
 	decoder *xml.Decoder,
 ) (instance aastypes.IOperationVariable,
 	err error,
@@ -9055,7 +9055,7 @@ func readCapabilityWithLookahead(
 // serialized as an XML element.
 //
 // The XML element must live in the [Namespace] space.
-func UnmarshalCapability(
+func unmarshalCapability(
 	decoder *xml.Decoder,
 ) (instance aastypes.ICapability,
 	err error,
@@ -9344,7 +9344,7 @@ func readConceptDescriptionWithLookahead(
 // serialized as an XML element.
 //
 // The XML element must live in the [Namespace] space.
-func UnmarshalConceptDescription(
+func unmarshalConceptDescription(
 	decoder *xml.Decoder,
 ) (instance aastypes.IConceptDescription,
 	err error,
@@ -9609,7 +9609,7 @@ func readReferenceWithLookahead(
 // serialized as an XML element.
 //
 // The XML element must live in the [Namespace] space.
-func UnmarshalReference(
+func unmarshalReference(
 	decoder *xml.Decoder,
 ) (instance aastypes.IReference,
 	err error,
@@ -9826,7 +9826,7 @@ func readKeyWithLookahead(
 // serialized as an XML element.
 //
 // The XML element must live in the [Namespace] space.
-func UnmarshalKey(
+func unmarshalKey(
 	decoder *xml.Decoder,
 ) (instance aastypes.IKey,
 	err error,
@@ -9994,7 +9994,7 @@ func readAbstractLangStringWithLookahead(
 // serialized as an XML element.
 //
 // The XML element must live in the [Namespace] space.
-func UnmarshalAbstractLangString(
+func unmarshalAbstractLangString(
 	decoder *xml.Decoder,
 ) (instance aastypes.IAbstractLangString,
 	err error,
@@ -10211,7 +10211,7 @@ func readLangStringNameTypeWithLookahead(
 // serialized as an XML element.
 //
 // The XML element must live in the [Namespace] space.
-func UnmarshalLangStringNameType(
+func unmarshalLangStringNameType(
 	decoder *xml.Decoder,
 ) (instance aastypes.ILangStringNameType,
 	err error,
@@ -10428,7 +10428,7 @@ func readLangStringTextTypeWithLookahead(
 // serialized as an XML element.
 //
 // The XML element must live in the [Namespace] space.
-func UnmarshalLangStringTextType(
+func unmarshalLangStringTextType(
 	decoder *xml.Decoder,
 ) (instance aastypes.ILangStringTextType,
 	err error,
@@ -10642,7 +10642,7 @@ func readEnvironmentWithLookahead(
 // serialized as an XML element.
 //
 // The XML element must live in the [Namespace] space.
-func UnmarshalEnvironment(
+func unmarshalEnvironment(
 	decoder *xml.Decoder,
 ) (instance aastypes.IEnvironment,
 	err error,
@@ -10720,7 +10720,7 @@ func readDataSpecificationContentWithLookahead(
 // serialized as an XML element.
 //
 // The XML element must live in the [Namespace] space.
-func UnmarshalDataSpecificationContent(
+func unmarshalDataSpecificationContent(
 	decoder *xml.Decoder,
 ) (instance aastypes.IDataSpecificationContent,
 	err error,
@@ -10809,10 +10809,10 @@ func readEmbeddedDataSpecificationAsSequence(
 			foundDataSpecification = true
 
 		case "dataSpecificationContent":
-			theDataSpecificationContent, valueErr = UnmarshalDataSpecificationContent(
+			theDataSpecificationContent, valueErr = unmarshalDataSpecificationContent(
 				decoder,
 			)
-			// UnmarshalDataSpecificationContent stops at the end element,
+			// unmarshalDataSpecificationContent stops at the end element,
 			// so we look ahead to the next element.
 			if valueErr == nil {
 				current, valueErr = readNext(decoder, current)
@@ -10941,7 +10941,7 @@ func readEmbeddedDataSpecificationWithLookahead(
 // serialized as an XML element.
 //
 // The XML element must live in the [Namespace] space.
-func UnmarshalEmbeddedDataSpecification(
+func unmarshalEmbeddedDataSpecification(
 	decoder *xml.Decoder,
 ) (instance aastypes.IEmbeddedDataSpecification,
 	err error,
@@ -11229,7 +11229,7 @@ func readLevelTypeWithLookahead(
 // serialized as an XML element.
 //
 // The XML element must live in the [Namespace] space.
-func UnmarshalLevelType(
+func unmarshalLevelType(
 	decoder *xml.Decoder,
 ) (instance aastypes.ILevelType,
 	err error,
@@ -11446,7 +11446,7 @@ func readValueReferencePairWithLookahead(
 // serialized as an XML element.
 //
 // The XML element must live in the [Namespace] space.
-func UnmarshalValueReferencePair(
+func unmarshalValueReferencePair(
 	decoder *xml.Decoder,
 ) (instance aastypes.IValueReferencePair,
 	err error,
@@ -11647,7 +11647,7 @@ func readValueListWithLookahead(
 // serialized as an XML element.
 //
 // The XML element must live in the [Namespace] space.
-func UnmarshalValueList(
+func unmarshalValueList(
 	decoder *xml.Decoder,
 ) (instance aastypes.IValueList,
 	err error,
@@ -11864,7 +11864,7 @@ func readLangStringPreferredNameTypeIEC61360WithLookahead(
 // serialized as an XML element.
 //
 // The XML element must live in the [Namespace] space.
-func UnmarshalLangStringPreferredNameTypeIEC61360(
+func unmarshalLangStringPreferredNameTypeIEC61360(
 	decoder *xml.Decoder,
 ) (instance aastypes.ILangStringPreferredNameTypeIEC61360,
 	err error,
@@ -12081,7 +12081,7 @@ func readLangStringShortNameTypeIEC61360WithLookahead(
 // serialized as an XML element.
 //
 // The XML element must live in the [Namespace] space.
-func UnmarshalLangStringShortNameTypeIEC61360(
+func unmarshalLangStringShortNameTypeIEC61360(
 	decoder *xml.Decoder,
 ) (instance aastypes.ILangStringShortNameTypeIEC61360,
 	err error,
@@ -12298,7 +12298,7 @@ func readLangStringDefinitionTypeIEC61360WithLookahead(
 // serialized as an XML element.
 //
 // The XML element must live in the [Namespace] space.
-func UnmarshalLangStringDefinitionTypeIEC61360(
+func unmarshalLangStringDefinitionTypeIEC61360(
 	decoder *xml.Decoder,
 ) (instance aastypes.ILangStringDefinitionTypeIEC61360,
 	err error,
@@ -12623,7 +12623,7 @@ func readDataSpecificationIEC61360WithLookahead(
 // serialized as an XML element.
 //
 // The XML element must live in the [Namespace] space.
-func UnmarshalDataSpecificationIEC61360(
+func unmarshalDataSpecificationIEC61360(
 	decoder *xml.Decoder,
 ) (instance aastypes.IDataSpecificationIEC61360,
 	err error,
@@ -12642,6 +12642,206 @@ func UnmarshalDataSpecificationIEC61360(
 		decoder,
 		current,
 	)
+	return
+}
+
+// Unmarshal an instance of [aastypes.IClass] serialized as an XML element.
+//
+// The XML element must live in the [Namespace] space.
+func Unmarshal(
+	decoder *xml.Decoder,
+) (instance aastypes.IClass, err error) {
+	var current xml.Token
+	current, err = readNext(decoder, nil)
+	if err != nil {
+		return
+	}
+
+	current, err = skipEmptyTextWhitespaceAndComments(decoder, current)
+	if err != nil {
+		return
+	}
+
+	var local string
+	local, err = parseAsStartElementAndExtractLocalName(
+		current,
+	)
+	if err != nil {
+		return
+	}
+
+	// Move the current to the properties of the instance
+	current, err = readNext(decoder, current)
+	if err != nil {
+		return
+	}
+
+	switch local {
+	case "extension":
+		instance, current, err = readExtensionAsSequence(
+			decoder, current,
+		)
+	case "administrativeInformation":
+		instance, current, err = readAdministrativeInformationAsSequence(
+			decoder, current,
+		)
+	case "qualifier":
+		instance, current, err = readQualifierAsSequence(
+			decoder, current,
+		)
+	case "assetAdministrationShell":
+		instance, current, err = readAssetAdministrationShellAsSequence(
+			decoder, current,
+		)
+	case "assetInformation":
+		instance, current, err = readAssetInformationAsSequence(
+			decoder, current,
+		)
+	case "resource":
+		instance, current, err = readResourceAsSequence(
+			decoder, current,
+		)
+	case "specificAssetId":
+		instance, current, err = readSpecificAssetIDAsSequence(
+			decoder, current,
+		)
+	case "submodel":
+		instance, current, err = readSubmodelAsSequence(
+			decoder, current,
+		)
+	case "relationshipElement":
+		instance, current, err = readRelationshipElementAsSequence(
+			decoder, current,
+		)
+	case "submodelElementList":
+		instance, current, err = readSubmodelElementListAsSequence(
+			decoder, current,
+		)
+	case "submodelElementCollection":
+		instance, current, err = readSubmodelElementCollectionAsSequence(
+			decoder, current,
+		)
+	case "property":
+		instance, current, err = readPropertyAsSequence(
+			decoder, current,
+		)
+	case "multiLanguageProperty":
+		instance, current, err = readMultiLanguagePropertyAsSequence(
+			decoder, current,
+		)
+	case "range":
+		instance, current, err = readRangeAsSequence(
+			decoder, current,
+		)
+	case "referenceElement":
+		instance, current, err = readReferenceElementAsSequence(
+			decoder, current,
+		)
+	case "blob":
+		instance, current, err = readBlobAsSequence(
+			decoder, current,
+		)
+	case "file":
+		instance, current, err = readFileAsSequence(
+			decoder, current,
+		)
+	case "annotatedRelationshipElement":
+		instance, current, err = readAnnotatedRelationshipElementAsSequence(
+			decoder, current,
+		)
+	case "entity":
+		instance, current, err = readEntityAsSequence(
+			decoder, current,
+		)
+	case "eventPayload":
+		instance, current, err = readEventPayloadAsSequence(
+			decoder, current,
+		)
+	case "basicEventElement":
+		instance, current, err = readBasicEventElementAsSequence(
+			decoder, current,
+		)
+	case "operation":
+		instance, current, err = readOperationAsSequence(
+			decoder, current,
+		)
+	case "operationVariable":
+		instance, current, err = readOperationVariableAsSequence(
+			decoder, current,
+		)
+	case "capability":
+		instance, current, err = readCapabilityAsSequence(
+			decoder, current,
+		)
+	case "conceptDescription":
+		instance, current, err = readConceptDescriptionAsSequence(
+			decoder, current,
+		)
+	case "reference":
+		instance, current, err = readReferenceAsSequence(
+			decoder, current,
+		)
+	case "key":
+		instance, current, err = readKeyAsSequence(
+			decoder, current,
+		)
+	case "langStringNameType":
+		instance, current, err = readLangStringNameTypeAsSequence(
+			decoder, current,
+		)
+	case "langStringTextType":
+		instance, current, err = readLangStringTextTypeAsSequence(
+			decoder, current,
+		)
+	case "environment":
+		instance, current, err = readEnvironmentAsSequence(
+			decoder, current,
+		)
+	case "embeddedDataSpecification":
+		instance, current, err = readEmbeddedDataSpecificationAsSequence(
+			decoder, current,
+		)
+	case "levelType":
+		instance, current, err = readLevelTypeAsSequence(
+			decoder, current,
+		)
+	case "valueReferencePair":
+		instance, current, err = readValueReferencePairAsSequence(
+			decoder, current,
+		)
+	case "valueList":
+		instance, current, err = readValueListAsSequence(
+			decoder, current,
+		)
+	case "langStringPreferredNameTypeIec61360":
+		instance, current, err = readLangStringPreferredNameTypeIEC61360AsSequence(
+			decoder, current,
+		)
+	case "langStringShortNameTypeIec61360":
+		instance, current, err = readLangStringShortNameTypeIEC61360AsSequence(
+			decoder, current,
+		)
+	case "langStringDefinitionTypeIec61360":
+		instance, current, err = readLangStringDefinitionTypeIEC61360AsSequence(
+			decoder, current,
+		)
+	case "dataSpecificationIec61360":
+		instance, current, err = readDataSpecificationIEC61360AsSequence(
+			decoder, current,
+		)
+	default:
+		err = newDeserializationError(
+			fmt.Sprintf(
+				"Unexpected XML element name %s as class discriminator",
+				local,
+			),
+		)
+	}
+	if err != nil {
+		return
+	}
+
+	err = checkEndElement(current, local)
 	return
 }
 

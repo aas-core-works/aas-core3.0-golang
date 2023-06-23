@@ -9,6 +9,7 @@ import (
 	"encoding/xml"
 	"fmt"
 	aastesting "github.com/aas-core-works/aas-core3.0-golang/aastesting"
+	aastypes "github.com/aas-core-works/aas-core3.0-golang/types"
 	aasxmlization "github.com/aas-core-works/aas-core3.0-golang/xmlization"
 	"os"
 	"path/filepath"
@@ -40,9 +41,18 @@ func TestExtensionRoundTripOK(t *testing.T) {
 
 		decoder := xml.NewDecoder(strings.NewReader(text))
 
-		deserialized, deseriaErr := aasxmlization.UnmarshalEnvironment(decoder)
+		deserialized, deseriaErr := aasxmlization.Unmarshal(decoder)
 		ok := assertNoDeserializationError(t, deseriaErr, pth)
 		if !ok {
+			return
+		}
+
+		if _, ok := deserialized.(aastypes.IEnvironment); !ok {
+			t.Fatalf(
+				"Expected an instance of IEnvironment, "+
+					"but got %T: %v",
+				deserialized, deserialized,
+			)
 			return
 		}
 
@@ -112,7 +122,7 @@ func TestExtensionDeserializationFail(t *testing.T) {
 
 			decoder := xml.NewDecoder(strings.NewReader(text))
 
-			_, deseriaErr := aasxmlization.UnmarshalEnvironment(decoder)
+			_, deseriaErr := aasxmlization.Unmarshal(decoder)
 			ok := assertIsDeserializationErrorAndEqualsExpectedOrRecord(
 				t, deseriaErr, pth, expectedPth,
 			)
@@ -146,9 +156,18 @@ func TestAdministrativeInformationRoundTripOK(t *testing.T) {
 
 		decoder := xml.NewDecoder(strings.NewReader(text))
 
-		deserialized, deseriaErr := aasxmlization.UnmarshalEnvironment(decoder)
+		deserialized, deseriaErr := aasxmlization.Unmarshal(decoder)
 		ok := assertNoDeserializationError(t, deseriaErr, pth)
 		if !ok {
+			return
+		}
+
+		if _, ok := deserialized.(aastypes.IEnvironment); !ok {
+			t.Fatalf(
+				"Expected an instance of IEnvironment, "+
+					"but got %T: %v",
+				deserialized, deserialized,
+			)
 			return
 		}
 
@@ -218,7 +237,7 @@ func TestAdministrativeInformationDeserializationFail(t *testing.T) {
 
 			decoder := xml.NewDecoder(strings.NewReader(text))
 
-			_, deseriaErr := aasxmlization.UnmarshalEnvironment(decoder)
+			_, deseriaErr := aasxmlization.Unmarshal(decoder)
 			ok := assertIsDeserializationErrorAndEqualsExpectedOrRecord(
 				t, deseriaErr, pth, expectedPth,
 			)
@@ -252,9 +271,18 @@ func TestQualifierRoundTripOK(t *testing.T) {
 
 		decoder := xml.NewDecoder(strings.NewReader(text))
 
-		deserialized, deseriaErr := aasxmlization.UnmarshalEnvironment(decoder)
+		deserialized, deseriaErr := aasxmlization.Unmarshal(decoder)
 		ok := assertNoDeserializationError(t, deseriaErr, pth)
 		if !ok {
+			return
+		}
+
+		if _, ok := deserialized.(aastypes.IEnvironment); !ok {
+			t.Fatalf(
+				"Expected an instance of IEnvironment, "+
+					"but got %T: %v",
+				deserialized, deserialized,
+			)
 			return
 		}
 
@@ -324,7 +352,7 @@ func TestQualifierDeserializationFail(t *testing.T) {
 
 			decoder := xml.NewDecoder(strings.NewReader(text))
 
-			_, deseriaErr := aasxmlization.UnmarshalEnvironment(decoder)
+			_, deseriaErr := aasxmlization.Unmarshal(decoder)
 			ok := assertIsDeserializationErrorAndEqualsExpectedOrRecord(
 				t, deseriaErr, pth, expectedPth,
 			)
@@ -358,9 +386,18 @@ func TestAssetAdministrationShellRoundTripOK(t *testing.T) {
 
 		decoder := xml.NewDecoder(strings.NewReader(text))
 
-		deserialized, deseriaErr := aasxmlization.UnmarshalEnvironment(decoder)
+		deserialized, deseriaErr := aasxmlization.Unmarshal(decoder)
 		ok := assertNoDeserializationError(t, deseriaErr, pth)
 		if !ok {
+			return
+		}
+
+		if _, ok := deserialized.(aastypes.IEnvironment); !ok {
+			t.Fatalf(
+				"Expected an instance of IEnvironment, "+
+					"but got %T: %v",
+				deserialized, deserialized,
+			)
 			return
 		}
 
@@ -430,7 +467,7 @@ func TestAssetAdministrationShellDeserializationFail(t *testing.T) {
 
 			decoder := xml.NewDecoder(strings.NewReader(text))
 
-			_, deseriaErr := aasxmlization.UnmarshalEnvironment(decoder)
+			_, deseriaErr := aasxmlization.Unmarshal(decoder)
 			ok := assertIsDeserializationErrorAndEqualsExpectedOrRecord(
 				t, deseriaErr, pth, expectedPth,
 			)
@@ -464,9 +501,18 @@ func TestAssetInformationRoundTripOK(t *testing.T) {
 
 		decoder := xml.NewDecoder(strings.NewReader(text))
 
-		deserialized, deseriaErr := aasxmlization.UnmarshalEnvironment(decoder)
+		deserialized, deseriaErr := aasxmlization.Unmarshal(decoder)
 		ok := assertNoDeserializationError(t, deseriaErr, pth)
 		if !ok {
+			return
+		}
+
+		if _, ok := deserialized.(aastypes.IEnvironment); !ok {
+			t.Fatalf(
+				"Expected an instance of IEnvironment, "+
+					"but got %T: %v",
+				deserialized, deserialized,
+			)
 			return
 		}
 
@@ -536,7 +582,7 @@ func TestAssetInformationDeserializationFail(t *testing.T) {
 
 			decoder := xml.NewDecoder(strings.NewReader(text))
 
-			_, deseriaErr := aasxmlization.UnmarshalEnvironment(decoder)
+			_, deseriaErr := aasxmlization.Unmarshal(decoder)
 			ok := assertIsDeserializationErrorAndEqualsExpectedOrRecord(
 				t, deseriaErr, pth, expectedPth,
 			)
@@ -570,9 +616,18 @@ func TestResourceRoundTripOK(t *testing.T) {
 
 		decoder := xml.NewDecoder(strings.NewReader(text))
 
-		deserialized, deseriaErr := aasxmlization.UnmarshalEnvironment(decoder)
+		deserialized, deseriaErr := aasxmlization.Unmarshal(decoder)
 		ok := assertNoDeserializationError(t, deseriaErr, pth)
 		if !ok {
+			return
+		}
+
+		if _, ok := deserialized.(aastypes.IEnvironment); !ok {
+			t.Fatalf(
+				"Expected an instance of IEnvironment, "+
+					"but got %T: %v",
+				deserialized, deserialized,
+			)
 			return
 		}
 
@@ -642,7 +697,7 @@ func TestResourceDeserializationFail(t *testing.T) {
 
 			decoder := xml.NewDecoder(strings.NewReader(text))
 
-			_, deseriaErr := aasxmlization.UnmarshalEnvironment(decoder)
+			_, deseriaErr := aasxmlization.Unmarshal(decoder)
 			ok := assertIsDeserializationErrorAndEqualsExpectedOrRecord(
 				t, deseriaErr, pth, expectedPth,
 			)
@@ -676,9 +731,18 @@ func TestSpecificAssetIDRoundTripOK(t *testing.T) {
 
 		decoder := xml.NewDecoder(strings.NewReader(text))
 
-		deserialized, deseriaErr := aasxmlization.UnmarshalEnvironment(decoder)
+		deserialized, deseriaErr := aasxmlization.Unmarshal(decoder)
 		ok := assertNoDeserializationError(t, deseriaErr, pth)
 		if !ok {
+			return
+		}
+
+		if _, ok := deserialized.(aastypes.IEnvironment); !ok {
+			t.Fatalf(
+				"Expected an instance of IEnvironment, "+
+					"but got %T: %v",
+				deserialized, deserialized,
+			)
 			return
 		}
 
@@ -748,7 +812,7 @@ func TestSpecificAssetIDDeserializationFail(t *testing.T) {
 
 			decoder := xml.NewDecoder(strings.NewReader(text))
 
-			_, deseriaErr := aasxmlization.UnmarshalEnvironment(decoder)
+			_, deseriaErr := aasxmlization.Unmarshal(decoder)
 			ok := assertIsDeserializationErrorAndEqualsExpectedOrRecord(
 				t, deseriaErr, pth, expectedPth,
 			)
@@ -782,9 +846,18 @@ func TestSubmodelRoundTripOK(t *testing.T) {
 
 		decoder := xml.NewDecoder(strings.NewReader(text))
 
-		deserialized, deseriaErr := aasxmlization.UnmarshalEnvironment(decoder)
+		deserialized, deseriaErr := aasxmlization.Unmarshal(decoder)
 		ok := assertNoDeserializationError(t, deseriaErr, pth)
 		if !ok {
+			return
+		}
+
+		if _, ok := deserialized.(aastypes.IEnvironment); !ok {
+			t.Fatalf(
+				"Expected an instance of IEnvironment, "+
+					"but got %T: %v",
+				deserialized, deserialized,
+			)
 			return
 		}
 
@@ -854,7 +927,7 @@ func TestSubmodelDeserializationFail(t *testing.T) {
 
 			decoder := xml.NewDecoder(strings.NewReader(text))
 
-			_, deseriaErr := aasxmlization.UnmarshalEnvironment(decoder)
+			_, deseriaErr := aasxmlization.Unmarshal(decoder)
 			ok := assertIsDeserializationErrorAndEqualsExpectedOrRecord(
 				t, deseriaErr, pth, expectedPth,
 			)
@@ -888,9 +961,18 @@ func TestRelationshipElementRoundTripOK(t *testing.T) {
 
 		decoder := xml.NewDecoder(strings.NewReader(text))
 
-		deserialized, deseriaErr := aasxmlization.UnmarshalEnvironment(decoder)
+		deserialized, deseriaErr := aasxmlization.Unmarshal(decoder)
 		ok := assertNoDeserializationError(t, deseriaErr, pth)
 		if !ok {
+			return
+		}
+
+		if _, ok := deserialized.(aastypes.IEnvironment); !ok {
+			t.Fatalf(
+				"Expected an instance of IEnvironment, "+
+					"but got %T: %v",
+				deserialized, deserialized,
+			)
 			return
 		}
 
@@ -960,7 +1042,7 @@ func TestRelationshipElementDeserializationFail(t *testing.T) {
 
 			decoder := xml.NewDecoder(strings.NewReader(text))
 
-			_, deseriaErr := aasxmlization.UnmarshalEnvironment(decoder)
+			_, deseriaErr := aasxmlization.Unmarshal(decoder)
 			ok := assertIsDeserializationErrorAndEqualsExpectedOrRecord(
 				t, deseriaErr, pth, expectedPth,
 			)
@@ -994,9 +1076,18 @@ func TestSubmodelElementListRoundTripOK(t *testing.T) {
 
 		decoder := xml.NewDecoder(strings.NewReader(text))
 
-		deserialized, deseriaErr := aasxmlization.UnmarshalEnvironment(decoder)
+		deserialized, deseriaErr := aasxmlization.Unmarshal(decoder)
 		ok := assertNoDeserializationError(t, deseriaErr, pth)
 		if !ok {
+			return
+		}
+
+		if _, ok := deserialized.(aastypes.IEnvironment); !ok {
+			t.Fatalf(
+				"Expected an instance of IEnvironment, "+
+					"but got %T: %v",
+				deserialized, deserialized,
+			)
 			return
 		}
 
@@ -1066,7 +1157,7 @@ func TestSubmodelElementListDeserializationFail(t *testing.T) {
 
 			decoder := xml.NewDecoder(strings.NewReader(text))
 
-			_, deseriaErr := aasxmlization.UnmarshalEnvironment(decoder)
+			_, deseriaErr := aasxmlization.Unmarshal(decoder)
 			ok := assertIsDeserializationErrorAndEqualsExpectedOrRecord(
 				t, deseriaErr, pth, expectedPth,
 			)
@@ -1100,9 +1191,18 @@ func TestSubmodelElementCollectionRoundTripOK(t *testing.T) {
 
 		decoder := xml.NewDecoder(strings.NewReader(text))
 
-		deserialized, deseriaErr := aasxmlization.UnmarshalEnvironment(decoder)
+		deserialized, deseriaErr := aasxmlization.Unmarshal(decoder)
 		ok := assertNoDeserializationError(t, deseriaErr, pth)
 		if !ok {
+			return
+		}
+
+		if _, ok := deserialized.(aastypes.IEnvironment); !ok {
+			t.Fatalf(
+				"Expected an instance of IEnvironment, "+
+					"but got %T: %v",
+				deserialized, deserialized,
+			)
 			return
 		}
 
@@ -1172,7 +1272,7 @@ func TestSubmodelElementCollectionDeserializationFail(t *testing.T) {
 
 			decoder := xml.NewDecoder(strings.NewReader(text))
 
-			_, deseriaErr := aasxmlization.UnmarshalEnvironment(decoder)
+			_, deseriaErr := aasxmlization.Unmarshal(decoder)
 			ok := assertIsDeserializationErrorAndEqualsExpectedOrRecord(
 				t, deseriaErr, pth, expectedPth,
 			)
@@ -1206,9 +1306,18 @@ func TestPropertyRoundTripOK(t *testing.T) {
 
 		decoder := xml.NewDecoder(strings.NewReader(text))
 
-		deserialized, deseriaErr := aasxmlization.UnmarshalEnvironment(decoder)
+		deserialized, deseriaErr := aasxmlization.Unmarshal(decoder)
 		ok := assertNoDeserializationError(t, deseriaErr, pth)
 		if !ok {
+			return
+		}
+
+		if _, ok := deserialized.(aastypes.IEnvironment); !ok {
+			t.Fatalf(
+				"Expected an instance of IEnvironment, "+
+					"but got %T: %v",
+				deserialized, deserialized,
+			)
 			return
 		}
 
@@ -1278,7 +1387,7 @@ func TestPropertyDeserializationFail(t *testing.T) {
 
 			decoder := xml.NewDecoder(strings.NewReader(text))
 
-			_, deseriaErr := aasxmlization.UnmarshalEnvironment(decoder)
+			_, deseriaErr := aasxmlization.Unmarshal(decoder)
 			ok := assertIsDeserializationErrorAndEqualsExpectedOrRecord(
 				t, deseriaErr, pth, expectedPth,
 			)
@@ -1312,9 +1421,18 @@ func TestMultiLanguagePropertyRoundTripOK(t *testing.T) {
 
 		decoder := xml.NewDecoder(strings.NewReader(text))
 
-		deserialized, deseriaErr := aasxmlization.UnmarshalEnvironment(decoder)
+		deserialized, deseriaErr := aasxmlization.Unmarshal(decoder)
 		ok := assertNoDeserializationError(t, deseriaErr, pth)
 		if !ok {
+			return
+		}
+
+		if _, ok := deserialized.(aastypes.IEnvironment); !ok {
+			t.Fatalf(
+				"Expected an instance of IEnvironment, "+
+					"but got %T: %v",
+				deserialized, deserialized,
+			)
 			return
 		}
 
@@ -1384,7 +1502,7 @@ func TestMultiLanguagePropertyDeserializationFail(t *testing.T) {
 
 			decoder := xml.NewDecoder(strings.NewReader(text))
 
-			_, deseriaErr := aasxmlization.UnmarshalEnvironment(decoder)
+			_, deseriaErr := aasxmlization.Unmarshal(decoder)
 			ok := assertIsDeserializationErrorAndEqualsExpectedOrRecord(
 				t, deseriaErr, pth, expectedPth,
 			)
@@ -1418,9 +1536,18 @@ func TestRangeRoundTripOK(t *testing.T) {
 
 		decoder := xml.NewDecoder(strings.NewReader(text))
 
-		deserialized, deseriaErr := aasxmlization.UnmarshalEnvironment(decoder)
+		deserialized, deseriaErr := aasxmlization.Unmarshal(decoder)
 		ok := assertNoDeserializationError(t, deseriaErr, pth)
 		if !ok {
+			return
+		}
+
+		if _, ok := deserialized.(aastypes.IEnvironment); !ok {
+			t.Fatalf(
+				"Expected an instance of IEnvironment, "+
+					"but got %T: %v",
+				deserialized, deserialized,
+			)
 			return
 		}
 
@@ -1490,7 +1617,7 @@ func TestRangeDeserializationFail(t *testing.T) {
 
 			decoder := xml.NewDecoder(strings.NewReader(text))
 
-			_, deseriaErr := aasxmlization.UnmarshalEnvironment(decoder)
+			_, deseriaErr := aasxmlization.Unmarshal(decoder)
 			ok := assertIsDeserializationErrorAndEqualsExpectedOrRecord(
 				t, deseriaErr, pth, expectedPth,
 			)
@@ -1524,9 +1651,18 @@ func TestReferenceElementRoundTripOK(t *testing.T) {
 
 		decoder := xml.NewDecoder(strings.NewReader(text))
 
-		deserialized, deseriaErr := aasxmlization.UnmarshalEnvironment(decoder)
+		deserialized, deseriaErr := aasxmlization.Unmarshal(decoder)
 		ok := assertNoDeserializationError(t, deseriaErr, pth)
 		if !ok {
+			return
+		}
+
+		if _, ok := deserialized.(aastypes.IEnvironment); !ok {
+			t.Fatalf(
+				"Expected an instance of IEnvironment, "+
+					"but got %T: %v",
+				deserialized, deserialized,
+			)
 			return
 		}
 
@@ -1596,7 +1732,7 @@ func TestReferenceElementDeserializationFail(t *testing.T) {
 
 			decoder := xml.NewDecoder(strings.NewReader(text))
 
-			_, deseriaErr := aasxmlization.UnmarshalEnvironment(decoder)
+			_, deseriaErr := aasxmlization.Unmarshal(decoder)
 			ok := assertIsDeserializationErrorAndEqualsExpectedOrRecord(
 				t, deseriaErr, pth, expectedPth,
 			)
@@ -1630,9 +1766,18 @@ func TestBlobRoundTripOK(t *testing.T) {
 
 		decoder := xml.NewDecoder(strings.NewReader(text))
 
-		deserialized, deseriaErr := aasxmlization.UnmarshalEnvironment(decoder)
+		deserialized, deseriaErr := aasxmlization.Unmarshal(decoder)
 		ok := assertNoDeserializationError(t, deseriaErr, pth)
 		if !ok {
+			return
+		}
+
+		if _, ok := deserialized.(aastypes.IEnvironment); !ok {
+			t.Fatalf(
+				"Expected an instance of IEnvironment, "+
+					"but got %T: %v",
+				deserialized, deserialized,
+			)
 			return
 		}
 
@@ -1702,7 +1847,7 @@ func TestBlobDeserializationFail(t *testing.T) {
 
 			decoder := xml.NewDecoder(strings.NewReader(text))
 
-			_, deseriaErr := aasxmlization.UnmarshalEnvironment(decoder)
+			_, deseriaErr := aasxmlization.Unmarshal(decoder)
 			ok := assertIsDeserializationErrorAndEqualsExpectedOrRecord(
 				t, deseriaErr, pth, expectedPth,
 			)
@@ -1736,9 +1881,18 @@ func TestFileRoundTripOK(t *testing.T) {
 
 		decoder := xml.NewDecoder(strings.NewReader(text))
 
-		deserialized, deseriaErr := aasxmlization.UnmarshalEnvironment(decoder)
+		deserialized, deseriaErr := aasxmlization.Unmarshal(decoder)
 		ok := assertNoDeserializationError(t, deseriaErr, pth)
 		if !ok {
+			return
+		}
+
+		if _, ok := deserialized.(aastypes.IEnvironment); !ok {
+			t.Fatalf(
+				"Expected an instance of IEnvironment, "+
+					"but got %T: %v",
+				deserialized, deserialized,
+			)
 			return
 		}
 
@@ -1808,7 +1962,7 @@ func TestFileDeserializationFail(t *testing.T) {
 
 			decoder := xml.NewDecoder(strings.NewReader(text))
 
-			_, deseriaErr := aasxmlization.UnmarshalEnvironment(decoder)
+			_, deseriaErr := aasxmlization.Unmarshal(decoder)
 			ok := assertIsDeserializationErrorAndEqualsExpectedOrRecord(
 				t, deseriaErr, pth, expectedPth,
 			)
@@ -1842,9 +1996,18 @@ func TestAnnotatedRelationshipElementRoundTripOK(t *testing.T) {
 
 		decoder := xml.NewDecoder(strings.NewReader(text))
 
-		deserialized, deseriaErr := aasxmlization.UnmarshalEnvironment(decoder)
+		deserialized, deseriaErr := aasxmlization.Unmarshal(decoder)
 		ok := assertNoDeserializationError(t, deseriaErr, pth)
 		if !ok {
+			return
+		}
+
+		if _, ok := deserialized.(aastypes.IEnvironment); !ok {
+			t.Fatalf(
+				"Expected an instance of IEnvironment, "+
+					"but got %T: %v",
+				deserialized, deserialized,
+			)
 			return
 		}
 
@@ -1914,7 +2077,7 @@ func TestAnnotatedRelationshipElementDeserializationFail(t *testing.T) {
 
 			decoder := xml.NewDecoder(strings.NewReader(text))
 
-			_, deseriaErr := aasxmlization.UnmarshalEnvironment(decoder)
+			_, deseriaErr := aasxmlization.Unmarshal(decoder)
 			ok := assertIsDeserializationErrorAndEqualsExpectedOrRecord(
 				t, deseriaErr, pth, expectedPth,
 			)
@@ -1948,9 +2111,18 @@ func TestEntityRoundTripOK(t *testing.T) {
 
 		decoder := xml.NewDecoder(strings.NewReader(text))
 
-		deserialized, deseriaErr := aasxmlization.UnmarshalEnvironment(decoder)
+		deserialized, deseriaErr := aasxmlization.Unmarshal(decoder)
 		ok := assertNoDeserializationError(t, deseriaErr, pth)
 		if !ok {
+			return
+		}
+
+		if _, ok := deserialized.(aastypes.IEnvironment); !ok {
+			t.Fatalf(
+				"Expected an instance of IEnvironment, "+
+					"but got %T: %v",
+				deserialized, deserialized,
+			)
 			return
 		}
 
@@ -2020,7 +2192,7 @@ func TestEntityDeserializationFail(t *testing.T) {
 
 			decoder := xml.NewDecoder(strings.NewReader(text))
 
-			_, deseriaErr := aasxmlization.UnmarshalEnvironment(decoder)
+			_, deseriaErr := aasxmlization.Unmarshal(decoder)
 			ok := assertIsDeserializationErrorAndEqualsExpectedOrRecord(
 				t, deseriaErr, pth, expectedPth,
 			)
@@ -2054,9 +2226,18 @@ func TestEventPayloadRoundTripOK(t *testing.T) {
 
 		decoder := xml.NewDecoder(strings.NewReader(text))
 
-		deserialized, deseriaErr := aasxmlization.UnmarshalEventPayload(decoder)
+		deserialized, deseriaErr := aasxmlization.Unmarshal(decoder)
 		ok := assertNoDeserializationError(t, deseriaErr, pth)
 		if !ok {
+			return
+		}
+
+		if _, ok := deserialized.(aastypes.IEventPayload); !ok {
+			t.Fatalf(
+				"Expected an instance of IEventPayload, "+
+					"but got %T: %v",
+				deserialized, deserialized,
+			)
 			return
 		}
 
@@ -2126,7 +2307,7 @@ func TestEventPayloadDeserializationFail(t *testing.T) {
 
 			decoder := xml.NewDecoder(strings.NewReader(text))
 
-			_, deseriaErr := aasxmlization.UnmarshalEnvironment(decoder)
+			_, deseriaErr := aasxmlization.Unmarshal(decoder)
 			ok := assertIsDeserializationErrorAndEqualsExpectedOrRecord(
 				t, deseriaErr, pth, expectedPth,
 			)
@@ -2160,9 +2341,18 @@ func TestBasicEventElementRoundTripOK(t *testing.T) {
 
 		decoder := xml.NewDecoder(strings.NewReader(text))
 
-		deserialized, deseriaErr := aasxmlization.UnmarshalEnvironment(decoder)
+		deserialized, deseriaErr := aasxmlization.Unmarshal(decoder)
 		ok := assertNoDeserializationError(t, deseriaErr, pth)
 		if !ok {
+			return
+		}
+
+		if _, ok := deserialized.(aastypes.IEnvironment); !ok {
+			t.Fatalf(
+				"Expected an instance of IEnvironment, "+
+					"but got %T: %v",
+				deserialized, deserialized,
+			)
 			return
 		}
 
@@ -2232,7 +2422,7 @@ func TestBasicEventElementDeserializationFail(t *testing.T) {
 
 			decoder := xml.NewDecoder(strings.NewReader(text))
 
-			_, deseriaErr := aasxmlization.UnmarshalEnvironment(decoder)
+			_, deseriaErr := aasxmlization.Unmarshal(decoder)
 			ok := assertIsDeserializationErrorAndEqualsExpectedOrRecord(
 				t, deseriaErr, pth, expectedPth,
 			)
@@ -2266,9 +2456,18 @@ func TestOperationRoundTripOK(t *testing.T) {
 
 		decoder := xml.NewDecoder(strings.NewReader(text))
 
-		deserialized, deseriaErr := aasxmlization.UnmarshalEnvironment(decoder)
+		deserialized, deseriaErr := aasxmlization.Unmarshal(decoder)
 		ok := assertNoDeserializationError(t, deseriaErr, pth)
 		if !ok {
+			return
+		}
+
+		if _, ok := deserialized.(aastypes.IEnvironment); !ok {
+			t.Fatalf(
+				"Expected an instance of IEnvironment, "+
+					"but got %T: %v",
+				deserialized, deserialized,
+			)
 			return
 		}
 
@@ -2338,7 +2537,7 @@ func TestOperationDeserializationFail(t *testing.T) {
 
 			decoder := xml.NewDecoder(strings.NewReader(text))
 
-			_, deseriaErr := aasxmlization.UnmarshalEnvironment(decoder)
+			_, deseriaErr := aasxmlization.Unmarshal(decoder)
 			ok := assertIsDeserializationErrorAndEqualsExpectedOrRecord(
 				t, deseriaErr, pth, expectedPth,
 			)
@@ -2372,9 +2571,18 @@ func TestOperationVariableRoundTripOK(t *testing.T) {
 
 		decoder := xml.NewDecoder(strings.NewReader(text))
 
-		deserialized, deseriaErr := aasxmlization.UnmarshalEnvironment(decoder)
+		deserialized, deseriaErr := aasxmlization.Unmarshal(decoder)
 		ok := assertNoDeserializationError(t, deseriaErr, pth)
 		if !ok {
+			return
+		}
+
+		if _, ok := deserialized.(aastypes.IEnvironment); !ok {
+			t.Fatalf(
+				"Expected an instance of IEnvironment, "+
+					"but got %T: %v",
+				deserialized, deserialized,
+			)
 			return
 		}
 
@@ -2444,7 +2652,7 @@ func TestOperationVariableDeserializationFail(t *testing.T) {
 
 			decoder := xml.NewDecoder(strings.NewReader(text))
 
-			_, deseriaErr := aasxmlization.UnmarshalEnvironment(decoder)
+			_, deseriaErr := aasxmlization.Unmarshal(decoder)
 			ok := assertIsDeserializationErrorAndEqualsExpectedOrRecord(
 				t, deseriaErr, pth, expectedPth,
 			)
@@ -2478,9 +2686,18 @@ func TestCapabilityRoundTripOK(t *testing.T) {
 
 		decoder := xml.NewDecoder(strings.NewReader(text))
 
-		deserialized, deseriaErr := aasxmlization.UnmarshalEnvironment(decoder)
+		deserialized, deseriaErr := aasxmlization.Unmarshal(decoder)
 		ok := assertNoDeserializationError(t, deseriaErr, pth)
 		if !ok {
+			return
+		}
+
+		if _, ok := deserialized.(aastypes.IEnvironment); !ok {
+			t.Fatalf(
+				"Expected an instance of IEnvironment, "+
+					"but got %T: %v",
+				deserialized, deserialized,
+			)
 			return
 		}
 
@@ -2550,7 +2767,7 @@ func TestCapabilityDeserializationFail(t *testing.T) {
 
 			decoder := xml.NewDecoder(strings.NewReader(text))
 
-			_, deseriaErr := aasxmlization.UnmarshalEnvironment(decoder)
+			_, deseriaErr := aasxmlization.Unmarshal(decoder)
 			ok := assertIsDeserializationErrorAndEqualsExpectedOrRecord(
 				t, deseriaErr, pth, expectedPth,
 			)
@@ -2584,9 +2801,18 @@ func TestConceptDescriptionRoundTripOK(t *testing.T) {
 
 		decoder := xml.NewDecoder(strings.NewReader(text))
 
-		deserialized, deseriaErr := aasxmlization.UnmarshalEnvironment(decoder)
+		deserialized, deseriaErr := aasxmlization.Unmarshal(decoder)
 		ok := assertNoDeserializationError(t, deseriaErr, pth)
 		if !ok {
+			return
+		}
+
+		if _, ok := deserialized.(aastypes.IEnvironment); !ok {
+			t.Fatalf(
+				"Expected an instance of IEnvironment, "+
+					"but got %T: %v",
+				deserialized, deserialized,
+			)
 			return
 		}
 
@@ -2656,7 +2882,7 @@ func TestConceptDescriptionDeserializationFail(t *testing.T) {
 
 			decoder := xml.NewDecoder(strings.NewReader(text))
 
-			_, deseriaErr := aasxmlization.UnmarshalEnvironment(decoder)
+			_, deseriaErr := aasxmlization.Unmarshal(decoder)
 			ok := assertIsDeserializationErrorAndEqualsExpectedOrRecord(
 				t, deseriaErr, pth, expectedPth,
 			)
@@ -2690,9 +2916,18 @@ func TestReferenceRoundTripOK(t *testing.T) {
 
 		decoder := xml.NewDecoder(strings.NewReader(text))
 
-		deserialized, deseriaErr := aasxmlization.UnmarshalEnvironment(decoder)
+		deserialized, deseriaErr := aasxmlization.Unmarshal(decoder)
 		ok := assertNoDeserializationError(t, deseriaErr, pth)
 		if !ok {
+			return
+		}
+
+		if _, ok := deserialized.(aastypes.IEnvironment); !ok {
+			t.Fatalf(
+				"Expected an instance of IEnvironment, "+
+					"but got %T: %v",
+				deserialized, deserialized,
+			)
 			return
 		}
 
@@ -2762,7 +2997,7 @@ func TestReferenceDeserializationFail(t *testing.T) {
 
 			decoder := xml.NewDecoder(strings.NewReader(text))
 
-			_, deseriaErr := aasxmlization.UnmarshalEnvironment(decoder)
+			_, deseriaErr := aasxmlization.Unmarshal(decoder)
 			ok := assertIsDeserializationErrorAndEqualsExpectedOrRecord(
 				t, deseriaErr, pth, expectedPth,
 			)
@@ -2796,9 +3031,18 @@ func TestKeyRoundTripOK(t *testing.T) {
 
 		decoder := xml.NewDecoder(strings.NewReader(text))
 
-		deserialized, deseriaErr := aasxmlization.UnmarshalEnvironment(decoder)
+		deserialized, deseriaErr := aasxmlization.Unmarshal(decoder)
 		ok := assertNoDeserializationError(t, deseriaErr, pth)
 		if !ok {
+			return
+		}
+
+		if _, ok := deserialized.(aastypes.IEnvironment); !ok {
+			t.Fatalf(
+				"Expected an instance of IEnvironment, "+
+					"but got %T: %v",
+				deserialized, deserialized,
+			)
 			return
 		}
 
@@ -2868,7 +3112,7 @@ func TestKeyDeserializationFail(t *testing.T) {
 
 			decoder := xml.NewDecoder(strings.NewReader(text))
 
-			_, deseriaErr := aasxmlization.UnmarshalEnvironment(decoder)
+			_, deseriaErr := aasxmlization.Unmarshal(decoder)
 			ok := assertIsDeserializationErrorAndEqualsExpectedOrRecord(
 				t, deseriaErr, pth, expectedPth,
 			)
@@ -2902,9 +3146,18 @@ func TestLangStringNameTypeRoundTripOK(t *testing.T) {
 
 		decoder := xml.NewDecoder(strings.NewReader(text))
 
-		deserialized, deseriaErr := aasxmlization.UnmarshalEnvironment(decoder)
+		deserialized, deseriaErr := aasxmlization.Unmarshal(decoder)
 		ok := assertNoDeserializationError(t, deseriaErr, pth)
 		if !ok {
+			return
+		}
+
+		if _, ok := deserialized.(aastypes.IEnvironment); !ok {
+			t.Fatalf(
+				"Expected an instance of IEnvironment, "+
+					"but got %T: %v",
+				deserialized, deserialized,
+			)
 			return
 		}
 
@@ -2974,7 +3227,7 @@ func TestLangStringNameTypeDeserializationFail(t *testing.T) {
 
 			decoder := xml.NewDecoder(strings.NewReader(text))
 
-			_, deseriaErr := aasxmlization.UnmarshalEnvironment(decoder)
+			_, deseriaErr := aasxmlization.Unmarshal(decoder)
 			ok := assertIsDeserializationErrorAndEqualsExpectedOrRecord(
 				t, deseriaErr, pth, expectedPth,
 			)
@@ -3008,9 +3261,18 @@ func TestLangStringTextTypeRoundTripOK(t *testing.T) {
 
 		decoder := xml.NewDecoder(strings.NewReader(text))
 
-		deserialized, deseriaErr := aasxmlization.UnmarshalEnvironment(decoder)
+		deserialized, deseriaErr := aasxmlization.Unmarshal(decoder)
 		ok := assertNoDeserializationError(t, deseriaErr, pth)
 		if !ok {
+			return
+		}
+
+		if _, ok := deserialized.(aastypes.IEnvironment); !ok {
+			t.Fatalf(
+				"Expected an instance of IEnvironment, "+
+					"but got %T: %v",
+				deserialized, deserialized,
+			)
 			return
 		}
 
@@ -3080,7 +3342,7 @@ func TestLangStringTextTypeDeserializationFail(t *testing.T) {
 
 			decoder := xml.NewDecoder(strings.NewReader(text))
 
-			_, deseriaErr := aasxmlization.UnmarshalEnvironment(decoder)
+			_, deseriaErr := aasxmlization.Unmarshal(decoder)
 			ok := assertIsDeserializationErrorAndEqualsExpectedOrRecord(
 				t, deseriaErr, pth, expectedPth,
 			)
@@ -3114,9 +3376,18 @@ func TestEnvironmentRoundTripOK(t *testing.T) {
 
 		decoder := xml.NewDecoder(strings.NewReader(text))
 
-		deserialized, deseriaErr := aasxmlization.UnmarshalEnvironment(decoder)
+		deserialized, deseriaErr := aasxmlization.Unmarshal(decoder)
 		ok := assertNoDeserializationError(t, deseriaErr, pth)
 		if !ok {
+			return
+		}
+
+		if _, ok := deserialized.(aastypes.IEnvironment); !ok {
+			t.Fatalf(
+				"Expected an instance of IEnvironment, "+
+					"but got %T: %v",
+				deserialized, deserialized,
+			)
 			return
 		}
 
@@ -3186,7 +3457,7 @@ func TestEnvironmentDeserializationFail(t *testing.T) {
 
 			decoder := xml.NewDecoder(strings.NewReader(text))
 
-			_, deseriaErr := aasxmlization.UnmarshalEnvironment(decoder)
+			_, deseriaErr := aasxmlization.Unmarshal(decoder)
 			ok := assertIsDeserializationErrorAndEqualsExpectedOrRecord(
 				t, deseriaErr, pth, expectedPth,
 			)
@@ -3220,9 +3491,18 @@ func TestEmbeddedDataSpecificationRoundTripOK(t *testing.T) {
 
 		decoder := xml.NewDecoder(strings.NewReader(text))
 
-		deserialized, deseriaErr := aasxmlization.UnmarshalEnvironment(decoder)
+		deserialized, deseriaErr := aasxmlization.Unmarshal(decoder)
 		ok := assertNoDeserializationError(t, deseriaErr, pth)
 		if !ok {
+			return
+		}
+
+		if _, ok := deserialized.(aastypes.IEnvironment); !ok {
+			t.Fatalf(
+				"Expected an instance of IEnvironment, "+
+					"but got %T: %v",
+				deserialized, deserialized,
+			)
 			return
 		}
 
@@ -3292,7 +3572,7 @@ func TestEmbeddedDataSpecificationDeserializationFail(t *testing.T) {
 
 			decoder := xml.NewDecoder(strings.NewReader(text))
 
-			_, deseriaErr := aasxmlization.UnmarshalEnvironment(decoder)
+			_, deseriaErr := aasxmlization.Unmarshal(decoder)
 			ok := assertIsDeserializationErrorAndEqualsExpectedOrRecord(
 				t, deseriaErr, pth, expectedPth,
 			)
@@ -3326,9 +3606,18 @@ func TestLevelTypeRoundTripOK(t *testing.T) {
 
 		decoder := xml.NewDecoder(strings.NewReader(text))
 
-		deserialized, deseriaErr := aasxmlization.UnmarshalEnvironment(decoder)
+		deserialized, deseriaErr := aasxmlization.Unmarshal(decoder)
 		ok := assertNoDeserializationError(t, deseriaErr, pth)
 		if !ok {
+			return
+		}
+
+		if _, ok := deserialized.(aastypes.IEnvironment); !ok {
+			t.Fatalf(
+				"Expected an instance of IEnvironment, "+
+					"but got %T: %v",
+				deserialized, deserialized,
+			)
 			return
 		}
 
@@ -3398,7 +3687,7 @@ func TestLevelTypeDeserializationFail(t *testing.T) {
 
 			decoder := xml.NewDecoder(strings.NewReader(text))
 
-			_, deseriaErr := aasxmlization.UnmarshalEnvironment(decoder)
+			_, deseriaErr := aasxmlization.Unmarshal(decoder)
 			ok := assertIsDeserializationErrorAndEqualsExpectedOrRecord(
 				t, deseriaErr, pth, expectedPth,
 			)
@@ -3432,9 +3721,18 @@ func TestValueReferencePairRoundTripOK(t *testing.T) {
 
 		decoder := xml.NewDecoder(strings.NewReader(text))
 
-		deserialized, deseriaErr := aasxmlization.UnmarshalEnvironment(decoder)
+		deserialized, deseriaErr := aasxmlization.Unmarshal(decoder)
 		ok := assertNoDeserializationError(t, deseriaErr, pth)
 		if !ok {
+			return
+		}
+
+		if _, ok := deserialized.(aastypes.IEnvironment); !ok {
+			t.Fatalf(
+				"Expected an instance of IEnvironment, "+
+					"but got %T: %v",
+				deserialized, deserialized,
+			)
 			return
 		}
 
@@ -3504,7 +3802,7 @@ func TestValueReferencePairDeserializationFail(t *testing.T) {
 
 			decoder := xml.NewDecoder(strings.NewReader(text))
 
-			_, deseriaErr := aasxmlization.UnmarshalEnvironment(decoder)
+			_, deseriaErr := aasxmlization.Unmarshal(decoder)
 			ok := assertIsDeserializationErrorAndEqualsExpectedOrRecord(
 				t, deseriaErr, pth, expectedPth,
 			)
@@ -3538,9 +3836,18 @@ func TestValueListRoundTripOK(t *testing.T) {
 
 		decoder := xml.NewDecoder(strings.NewReader(text))
 
-		deserialized, deseriaErr := aasxmlization.UnmarshalEnvironment(decoder)
+		deserialized, deseriaErr := aasxmlization.Unmarshal(decoder)
 		ok := assertNoDeserializationError(t, deseriaErr, pth)
 		if !ok {
+			return
+		}
+
+		if _, ok := deserialized.(aastypes.IEnvironment); !ok {
+			t.Fatalf(
+				"Expected an instance of IEnvironment, "+
+					"but got %T: %v",
+				deserialized, deserialized,
+			)
 			return
 		}
 
@@ -3610,7 +3917,7 @@ func TestValueListDeserializationFail(t *testing.T) {
 
 			decoder := xml.NewDecoder(strings.NewReader(text))
 
-			_, deseriaErr := aasxmlization.UnmarshalEnvironment(decoder)
+			_, deseriaErr := aasxmlization.Unmarshal(decoder)
 			ok := assertIsDeserializationErrorAndEqualsExpectedOrRecord(
 				t, deseriaErr, pth, expectedPth,
 			)
@@ -3644,9 +3951,18 @@ func TestLangStringPreferredNameTypeIEC61360RoundTripOK(t *testing.T) {
 
 		decoder := xml.NewDecoder(strings.NewReader(text))
 
-		deserialized, deseriaErr := aasxmlization.UnmarshalEnvironment(decoder)
+		deserialized, deseriaErr := aasxmlization.Unmarshal(decoder)
 		ok := assertNoDeserializationError(t, deseriaErr, pth)
 		if !ok {
+			return
+		}
+
+		if _, ok := deserialized.(aastypes.IEnvironment); !ok {
+			t.Fatalf(
+				"Expected an instance of IEnvironment, "+
+					"but got %T: %v",
+				deserialized, deserialized,
+			)
 			return
 		}
 
@@ -3716,7 +4032,7 @@ func TestLangStringPreferredNameTypeIEC61360DeserializationFail(t *testing.T) {
 
 			decoder := xml.NewDecoder(strings.NewReader(text))
 
-			_, deseriaErr := aasxmlization.UnmarshalEnvironment(decoder)
+			_, deseriaErr := aasxmlization.Unmarshal(decoder)
 			ok := assertIsDeserializationErrorAndEqualsExpectedOrRecord(
 				t, deseriaErr, pth, expectedPth,
 			)
@@ -3750,9 +4066,18 @@ func TestLangStringShortNameTypeIEC61360RoundTripOK(t *testing.T) {
 
 		decoder := xml.NewDecoder(strings.NewReader(text))
 
-		deserialized, deseriaErr := aasxmlization.UnmarshalEnvironment(decoder)
+		deserialized, deseriaErr := aasxmlization.Unmarshal(decoder)
 		ok := assertNoDeserializationError(t, deseriaErr, pth)
 		if !ok {
+			return
+		}
+
+		if _, ok := deserialized.(aastypes.IEnvironment); !ok {
+			t.Fatalf(
+				"Expected an instance of IEnvironment, "+
+					"but got %T: %v",
+				deserialized, deserialized,
+			)
 			return
 		}
 
@@ -3822,7 +4147,7 @@ func TestLangStringShortNameTypeIEC61360DeserializationFail(t *testing.T) {
 
 			decoder := xml.NewDecoder(strings.NewReader(text))
 
-			_, deseriaErr := aasxmlization.UnmarshalEnvironment(decoder)
+			_, deseriaErr := aasxmlization.Unmarshal(decoder)
 			ok := assertIsDeserializationErrorAndEqualsExpectedOrRecord(
 				t, deseriaErr, pth, expectedPth,
 			)
@@ -3856,9 +4181,18 @@ func TestLangStringDefinitionTypeIEC61360RoundTripOK(t *testing.T) {
 
 		decoder := xml.NewDecoder(strings.NewReader(text))
 
-		deserialized, deseriaErr := aasxmlization.UnmarshalEnvironment(decoder)
+		deserialized, deseriaErr := aasxmlization.Unmarshal(decoder)
 		ok := assertNoDeserializationError(t, deseriaErr, pth)
 		if !ok {
+			return
+		}
+
+		if _, ok := deserialized.(aastypes.IEnvironment); !ok {
+			t.Fatalf(
+				"Expected an instance of IEnvironment, "+
+					"but got %T: %v",
+				deserialized, deserialized,
+			)
 			return
 		}
 
@@ -3928,7 +4262,7 @@ func TestLangStringDefinitionTypeIEC61360DeserializationFail(t *testing.T) {
 
 			decoder := xml.NewDecoder(strings.NewReader(text))
 
-			_, deseriaErr := aasxmlization.UnmarshalEnvironment(decoder)
+			_, deseriaErr := aasxmlization.Unmarshal(decoder)
 			ok := assertIsDeserializationErrorAndEqualsExpectedOrRecord(
 				t, deseriaErr, pth, expectedPth,
 			)
@@ -3962,9 +4296,18 @@ func TestDataSpecificationIEC61360RoundTripOK(t *testing.T) {
 
 		decoder := xml.NewDecoder(strings.NewReader(text))
 
-		deserialized, deseriaErr := aasxmlization.UnmarshalEnvironment(decoder)
+		deserialized, deseriaErr := aasxmlization.Unmarshal(decoder)
 		ok := assertNoDeserializationError(t, deseriaErr, pth)
 		if !ok {
+			return
+		}
+
+		if _, ok := deserialized.(aastypes.IEnvironment); !ok {
+			t.Fatalf(
+				"Expected an instance of IEnvironment, "+
+					"but got %T: %v",
+				deserialized, deserialized,
+			)
 			return
 		}
 
@@ -4034,7 +4377,7 @@ func TestDataSpecificationIEC61360DeserializationFail(t *testing.T) {
 
 			decoder := xml.NewDecoder(strings.NewReader(text))
 
-			_, deseriaErr := aasxmlization.UnmarshalEnvironment(decoder)
+			_, deseriaErr := aasxmlization.Unmarshal(decoder)
 			ok := assertIsDeserializationErrorAndEqualsExpectedOrRecord(
 				t, deseriaErr, pth, expectedPth,
 			)

@@ -34,19 +34,17 @@ def _generate_for(
     )
 
     if cls is container_cls:
-        deserialization_function = golang_naming.function_name(
-            Identifier(f"Unmarshal_{cls.name}")
-        )
         contained_in_literal = golang_common.string_literal("SelfContained")
     else:
-        deserialization_function = golang_naming.function_name(
-            Identifier(f"Unmarshal_{container_cls.name}")
-        )
         contained_in_literal = golang_common.string_literal(
             f"ContainedIn{container_cls.name}"
         )
 
+    unmarshal_function = golang_naming.function_name(Identifier("unmarshal"))
+
     blocks = []  # type: List[Stripped]
+
+    container_interface_name = golang_naming.interface_name(container_cls.name)
 
     test_name = golang_naming.function_name(
         Identifier(f"Test_{cls.name}_round_trip_OK")
@@ -78,11 +76,20 @@ func {test_name}(t *testing.T) {{
 
 {II}decoder := xml.NewDecoder(strings.NewReader(text))
 
-{II}deserialized, deseriaErr := aasxmlization.{deserialization_function}(decoder)
+{II}deserialized, deseriaErr := aasxmlization.{unmarshal_function}(decoder)
 {II}ok := assertNoDeserializationError(t, deseriaErr, pth)
 {II}if !ok {{
 {III}return
 {II}}}
+
+{II}if _, ok := deserialized.(aastypes.{container_interface_name}); !ok {{
+{III}t.Fatalf(
+{IIII}"Expected an instance of {container_interface_name}, "+
+{IIIII}"but got %T: %v",
+{IIII}deserialized, deserialized,
+{III})
+{III}return
+{II}}} 
 
 {II}buf := &bytes.Buffer{{}}
 {II}encoder := xml.NewEncoder(buf)
@@ -159,7 +166,7 @@ func {test_name}(t *testing.T) {{
 
 {III}decoder := xml.NewDecoder(strings.NewReader(text))
 
-{III}_, deseriaErr := aasxmlization.UnmarshalEnvironment(decoder)
+{III}_, deseriaErr := aasxmlization.Unmarshal(decoder)
 {III}ok := assertIsDeserializationErrorAndEqualsExpectedOrRecord(
 {IIII}t, deseriaErr, pth, expectedPth,
 {III})
@@ -202,6 +209,7 @@ import (
 {I}"testing"
 {I}"encoding/xml"
 {I}aastesting "github.com/aas-core-works/aas-core3.0-golang/aastesting"
+{I}aastypes "github.com/aas-core-works/aas-core3.0-golang/types"
 {I}aasxmlization "github.com/aas-core-works/aas-core3.0-golang/xmlization"
 )"""
         ),
