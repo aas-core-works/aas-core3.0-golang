@@ -107,6 +107,7 @@ def main() -> int:
             "test_codegen",
             "continuous_integration_of_dev_scripts",
             "setup.py",
+            "update_to_aas_core_meta_codegen_and_testgen.py",
         ]
         if overwrite:
             exit_code = call_and_report(
@@ -133,6 +134,7 @@ def main() -> int:
             "codegen",
             "test_codegen",
             "continuous_integration_of_dev_scripts",
+            "update_to_aas_core_meta_codegen_and_testgen.py",
         ]
         config_file = pathlib.Path("continuous_integration_of_dev_scripts") / "mypy.ini"
 
@@ -152,6 +154,7 @@ def main() -> int:
             "codegen",
             "test_codegen",
             "continuous_integration_of_dev_scripts",
+            "update_to_aas_core_meta_codegen_and_testgen.py",
         ]
         rcfile = pathlib.Path("continuous_integration_of_dev_scripts") / "pylint.rc"
 

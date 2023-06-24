@@ -9,7 +9,6 @@ from __future__ import annotations
 import argparse
 import os
 import pathlib
-import platform
 import re
 import shutil
 import subprocess
@@ -130,16 +129,12 @@ def _copy_code_from_aas_core_codegen(
         / "test_data/golang/test_main/aas_core_meta.v3/expected_output"
     )
 
-    target_dir = our_repo / "src"
+    target_dir = our_repo
 
-    print(
-        f"Copying the code: "
-        f"from {source_dir} "
-        f"to {target_dir.relative_to(our_repo)} ..."
-    )
+    for pth in source_dir.glob("**/*.go"):
+        tgt_pth = target_dir / pth.relative_to(source_dir)
 
-    for pth in source_dir.glob("*.go"):
-        tgt_pth = target_dir / pth.name
+        print(f"Copying the code: from {pth} to {tgt_pth} ...")
         shutil.copy(pth, tgt_pth)
 
 
@@ -172,6 +167,16 @@ The revision of aas-core-codegen was: {aas_core_codegen_revision}
 """
 '''
     init_py.write_text(text, encoding="utf-8")
+
+    print("Running _dev_scripts/continuous_integration_of_dev_scripts/precommit.py...")
+    subprocess.check_call(
+        [
+            sys.executable,
+            "_dev_scripts/continuous_integration_of_dev_scripts/precommit.py",
+            "--overwrite",
+        ],
+        cwd=str(our_repo),
+    )
 
 
 def _run_in_parallel(
@@ -289,13 +294,13 @@ def _replace_test_data(
     for pth in [
         test_data_dir / name
         for name in (
-                "Descend",
-                "DescendOnce",
-                "DeserializationError",
-                "Json",
-                "VerificationError",
-                "Xml",
-                "XxxOrDefault"
+            "Descend",
+            "DescendOnce",
+            "DeserializationError",
+            "Json",
+            "VerificationError",
+            "Xml",
+            "XxxOrDefault",
         )
     ]:
         if pth.exists():
@@ -320,6 +325,11 @@ def _replace_test_data(
 def _reformat_code(our_repo: pathlib.Path) -> None:
     """Reformat the generated code."""
     print("Re-formatting the code...")
+
+    # NOTE (mristin, 2023-06-24):
+    # We have to call gofmt twice to replace the bullet points to its latest
+    # standard.
+    subprocess.check_call(["gofmt", "-w", "."], cwd=our_repo)
     subprocess.check_call(["gofmt", "-w", "."], cwd=our_repo)
 
 
@@ -328,8 +338,8 @@ def _run_tests_and_rerecord(our_repo: pathlib.Path) -> None:
     print("Running tests & re-recording the test traces...")
 
     env = os.environ.copy()
-    env["AAS_CORE3_0_GOLANG_TEST_DATA_DIR"] = str(our_repo / "testdata")
-    env["AAS_CORE3_0_GOLANG_RECORD_MODE"] = "true"
+    env["AAS_CORE_3_0_GOLANG_TEST_DATA_DIR"] = str(our_repo / "testdata")
+    env["AAS_CORE_3_0_GOLANG_RECORD_MODE"] = "true"
 
     subprocess.check_call(["go", "test", "./..."], env=env, cwd=our_repo)
 
@@ -341,8 +351,8 @@ def _run_check(our_repo: pathlib.Path) -> None:
     env = os.environ.copy()
     env["AAS_CORE3_0_GOLANG_TEST_DATA_DIR"] = str(our_repo / "testdata")
 
-    # TODO (mristin, 2023-05-26): adapt for golang
     subprocess.check_call(["go", "vet", "./..."], cwd=our_repo)
+
 
 def _create_branch_commit_and_push(
     our_repo: pathlib.Path,
