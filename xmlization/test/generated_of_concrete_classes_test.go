@@ -6,16 +6,16 @@ package xmlization_test
 
 import (
 	"bytes"
-	"path/filepath"
-	"fmt"
-	"os"
-	"sort"
-	"strings"
-	"testing"
 	"encoding/xml"
+	"fmt"
 	aastesting "github.com/aas-core-works/aas-core3.0-golang/aastesting"
 	aastypes "github.com/aas-core-works/aas-core3.0-golang/types"
 	aasxmlization "github.com/aas-core-works/aas-core3.0-golang/xmlization"
+	"os"
+	"path/filepath"
+	"sort"
+	"strings"
+	"testing"
 )
 
 func TestExtensionRoundTripOK(t *testing.T) {
@@ -54,7 +54,7 @@ func TestExtensionRoundTripOK(t *testing.T) {
 				deserialized, deserialized,
 			)
 			return
-		} 
+		}
 
 		buf := &bytes.Buffer{}
 		encoder := xml.NewEncoder(buf)
@@ -169,7 +169,7 @@ func TestAdministrativeInformationRoundTripOK(t *testing.T) {
 				deserialized, deserialized,
 			)
 			return
-		} 
+		}
 
 		buf := &bytes.Buffer{}
 		encoder := xml.NewEncoder(buf)
@@ -284,7 +284,7 @@ func TestQualifierRoundTripOK(t *testing.T) {
 				deserialized, deserialized,
 			)
 			return
-		} 
+		}
 
 		buf := &bytes.Buffer{}
 		encoder := xml.NewEncoder(buf)
@@ -399,7 +399,7 @@ func TestAssetAdministrationShellRoundTripOK(t *testing.T) {
 				deserialized, deserialized,
 			)
 			return
-		} 
+		}
 
 		buf := &bytes.Buffer{}
 		encoder := xml.NewEncoder(buf)
@@ -514,7 +514,7 @@ func TestAssetInformationRoundTripOK(t *testing.T) {
 				deserialized, deserialized,
 			)
 			return
-		} 
+		}
 
 		buf := &bytes.Buffer{}
 		encoder := xml.NewEncoder(buf)
@@ -629,7 +629,7 @@ func TestResourceRoundTripOK(t *testing.T) {
 				deserialized, deserialized,
 			)
 			return
-		} 
+		}
 
 		buf := &bytes.Buffer{}
 		encoder := xml.NewEncoder(buf)
@@ -744,7 +744,7 @@ func TestSpecificAssetIDRoundTripOK(t *testing.T) {
 				deserialized, deserialized,
 			)
 			return
-		} 
+		}
 
 		buf := &bytes.Buffer{}
 		encoder := xml.NewEncoder(buf)
@@ -859,7 +859,7 @@ func TestSubmodelRoundTripOK(t *testing.T) {
 				deserialized, deserialized,
 			)
 			return
-		} 
+		}
 
 		buf := &bytes.Buffer{}
 		encoder := xml.NewEncoder(buf)
@@ -974,7 +974,7 @@ func TestRelationshipElementRoundTripOK(t *testing.T) {
 				deserialized, deserialized,
 			)
 			return
-		} 
+		}
 
 		buf := &bytes.Buffer{}
 		encoder := xml.NewEncoder(buf)
@@ -1089,7 +1089,7 @@ func TestSubmodelElementListRoundTripOK(t *testing.T) {
 				deserialized, deserialized,
 			)
 			return
-		} 
+		}
 
 		buf := &bytes.Buffer{}
 		encoder := xml.NewEncoder(buf)
@@ -1204,7 +1204,7 @@ func TestSubmodelElementCollectionRoundTripOK(t *testing.T) {
 				deserialized, deserialized,
 			)
 			return
-		} 
+		}
 
 		buf := &bytes.Buffer{}
 		encoder := xml.NewEncoder(buf)
@@ -1319,7 +1319,7 @@ func TestPropertyRoundTripOK(t *testing.T) {
 				deserialized, deserialized,
 			)
 			return
-		} 
+		}
 
 		buf := &bytes.Buffer{}
 		encoder := xml.NewEncoder(buf)
@@ -1434,7 +1434,7 @@ func TestMultiLanguagePropertyRoundTripOK(t *testing.T) {
 				deserialized, deserialized,
 			)
 			return
-		} 
+		}
 
 		buf := &bytes.Buffer{}
 		encoder := xml.NewEncoder(buf)
@@ -1549,7 +1549,7 @@ func TestRangeRoundTripOK(t *testing.T) {
 				deserialized, deserialized,
 			)
 			return
-		} 
+		}
 
 		buf := &bytes.Buffer{}
 		encoder := xml.NewEncoder(buf)
@@ -1664,7 +1664,7 @@ func TestReferenceElementRoundTripOK(t *testing.T) {
 				deserialized, deserialized,
 			)
 			return
-		} 
+		}
 
 		buf := &bytes.Buffer{}
 		encoder := xml.NewEncoder(buf)
@@ -1779,7 +1779,7 @@ func TestBlobRoundTripOK(t *testing.T) {
 				deserialized, deserialized,
 			)
 			return
-		} 
+		}
 
 		buf := &bytes.Buffer{}
 		encoder := xml.NewEncoder(buf)
@@ -1894,7 +1894,7 @@ func TestFileRoundTripOK(t *testing.T) {
 				deserialized, deserialized,
 			)
 			return
-		} 
+		}
 
 		buf := &bytes.Buffer{}
 		encoder := xml.NewEncoder(buf)
@@ -2009,7 +2009,7 @@ func TestAnnotatedRelationshipElementRoundTripOK(t *testing.T) {
 				deserialized, deserialized,
 			)
 			return
-		} 
+		}
 
 		buf := &bytes.Buffer{}
 		encoder := xml.NewEncoder(buf)
@@ -2124,7 +2124,7 @@ func TestEntityRoundTripOK(t *testing.T) {
 				deserialized, deserialized,
 			)
 			return
-		} 
+		}
 
 		buf := &bytes.Buffer{}
 		encoder := xml.NewEncoder(buf)
@@ -2239,7 +2239,7 @@ func TestEventPayloadRoundTripOK(t *testing.T) {
 				deserialized, deserialized,
 			)
 			return
-		} 
+		}
 
 		buf := &bytes.Buffer{}
 		encoder := xml.NewEncoder(buf)
@@ -2354,7 +2354,7 @@ func TestBasicEventElementRoundTripOK(t *testing.T) {
 				deserialized, deserialized,
 			)
 			return
-		} 
+		}
 
 		buf := &bytes.Buffer{}
 		encoder := xml.NewEncoder(buf)
@@ -2469,7 +2469,7 @@ func TestOperationRoundTripOK(t *testing.T) {
 				deserialized, deserialized,
 			)
 			return
-		} 
+		}
 
 		buf := &bytes.Buffer{}
 		encoder := xml.NewEncoder(buf)
@@ -2584,7 +2584,7 @@ func TestOperationVariableRoundTripOK(t *testing.T) {
 				deserialized, deserialized,
 			)
 			return
-		} 
+		}
 
 		buf := &bytes.Buffer{}
 		encoder := xml.NewEncoder(buf)
@@ -2699,7 +2699,7 @@ func TestCapabilityRoundTripOK(t *testing.T) {
 				deserialized, deserialized,
 			)
 			return
-		} 
+		}
 
 		buf := &bytes.Buffer{}
 		encoder := xml.NewEncoder(buf)
@@ -2814,7 +2814,7 @@ func TestConceptDescriptionRoundTripOK(t *testing.T) {
 				deserialized, deserialized,
 			)
 			return
-		} 
+		}
 
 		buf := &bytes.Buffer{}
 		encoder := xml.NewEncoder(buf)
@@ -2929,7 +2929,7 @@ func TestReferenceRoundTripOK(t *testing.T) {
 				deserialized, deserialized,
 			)
 			return
-		} 
+		}
 
 		buf := &bytes.Buffer{}
 		encoder := xml.NewEncoder(buf)
@@ -3044,7 +3044,7 @@ func TestKeyRoundTripOK(t *testing.T) {
 				deserialized, deserialized,
 			)
 			return
-		} 
+		}
 
 		buf := &bytes.Buffer{}
 		encoder := xml.NewEncoder(buf)
@@ -3159,7 +3159,7 @@ func TestLangStringNameTypeRoundTripOK(t *testing.T) {
 				deserialized, deserialized,
 			)
 			return
-		} 
+		}
 
 		buf := &bytes.Buffer{}
 		encoder := xml.NewEncoder(buf)
@@ -3274,7 +3274,7 @@ func TestLangStringTextTypeRoundTripOK(t *testing.T) {
 				deserialized, deserialized,
 			)
 			return
-		} 
+		}
 
 		buf := &bytes.Buffer{}
 		encoder := xml.NewEncoder(buf)
@@ -3389,7 +3389,7 @@ func TestEnvironmentRoundTripOK(t *testing.T) {
 				deserialized, deserialized,
 			)
 			return
-		} 
+		}
 
 		buf := &bytes.Buffer{}
 		encoder := xml.NewEncoder(buf)
@@ -3504,7 +3504,7 @@ func TestEmbeddedDataSpecificationRoundTripOK(t *testing.T) {
 				deserialized, deserialized,
 			)
 			return
-		} 
+		}
 
 		buf := &bytes.Buffer{}
 		encoder := xml.NewEncoder(buf)
@@ -3619,7 +3619,7 @@ func TestLevelTypeRoundTripOK(t *testing.T) {
 				deserialized, deserialized,
 			)
 			return
-		} 
+		}
 
 		buf := &bytes.Buffer{}
 		encoder := xml.NewEncoder(buf)
@@ -3734,7 +3734,7 @@ func TestValueReferencePairRoundTripOK(t *testing.T) {
 				deserialized, deserialized,
 			)
 			return
-		} 
+		}
 
 		buf := &bytes.Buffer{}
 		encoder := xml.NewEncoder(buf)
@@ -3849,7 +3849,7 @@ func TestValueListRoundTripOK(t *testing.T) {
 				deserialized, deserialized,
 			)
 			return
-		} 
+		}
 
 		buf := &bytes.Buffer{}
 		encoder := xml.NewEncoder(buf)
@@ -3964,7 +3964,7 @@ func TestLangStringPreferredNameTypeIEC61360RoundTripOK(t *testing.T) {
 				deserialized, deserialized,
 			)
 			return
-		} 
+		}
 
 		buf := &bytes.Buffer{}
 		encoder := xml.NewEncoder(buf)
@@ -4079,7 +4079,7 @@ func TestLangStringShortNameTypeIEC61360RoundTripOK(t *testing.T) {
 				deserialized, deserialized,
 			)
 			return
-		} 
+		}
 
 		buf := &bytes.Buffer{}
 		encoder := xml.NewEncoder(buf)
@@ -4194,7 +4194,7 @@ func TestLangStringDefinitionTypeIEC61360RoundTripOK(t *testing.T) {
 				deserialized, deserialized,
 			)
 			return
-		} 
+		}
 
 		buf := &bytes.Buffer{}
 		encoder := xml.NewEncoder(buf)
@@ -4309,7 +4309,7 @@ func TestDataSpecificationIEC61360RoundTripOK(t *testing.T) {
 				deserialized, deserialized,
 			)
 			return
-		} 
+		}
 
 		buf := &bytes.Buffer{}
 		encoder := xml.NewEncoder(buf)
