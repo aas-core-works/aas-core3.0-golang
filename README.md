@@ -24,10 +24,13 @@ We documented most of the rationale behind the implementation and interface choi
 
 If you want to contribute, see our [Contributing Guide].
 
+The history of the module is listed in the [Change Log].
+
 [Getting Started]: #getting-started
 [API documentation]: https://pkg.go.dev/github.com/aas-core-works/aas-core3.0-golang
 [Design Decisions]: #design-decisions
-[contributing guide]: #contributing-guide
+[Contributing Guide]: #contributing-guide
+[Change Log]: #change-log
 
 ## Getting Started
 
@@ -1254,3 +1257,17 @@ The commit messages follow the guidelines from https://chris.beams.io/posts/git-
 * Use the imperative mood in the subject line,
 * Wrap the body at 72 characters, and
 * Use the body to explain *what* and *why* (instead of *how*).
+
+## Change Log
+
+### v1.0.0-rc2 (2023-06-28)
+
+* Update to aas-core-meta, codegen, testgen 44756fb, 607f65c,
+  bf3720d7 (#9)
+
+  This is an important patch propagating pull request 275 in
+  aas-core-meta which affected the constraints and their documentation.
+
+### v1.0.0-rc1 (2023-06-23)
+
+* This is the initial version.
