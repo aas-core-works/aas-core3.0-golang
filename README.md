@@ -1260,6 +1260,14 @@ The commit messages follow the guidelines from https://chris.beams.io/posts/git-
 
 ## Change Log
 
+### v1.0.0-rc3 (2023-09-08)
+
+* Update to aas-core-meta, codegen, testgen  4d7e59e, 7e264a0 and
+  9b43de2e (#11)
+
+  Notably, this fixes constraints AASd-131 and AASc-3a-010,
+  propagating the changes from aas-core-meta.
+
 ### v1.0.0-rc2 (2023-06-28)
 
 * Update to aas-core-meta, codegen, testgen 44756fb, 607f65c,
