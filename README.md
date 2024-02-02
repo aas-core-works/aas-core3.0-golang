@@ -1260,6 +1260,12 @@ The commit messages follow the guidelines from https://chris.beams.io/posts/git-
 
 ## Change Log
 
+### v1.0.0 (2024-02-02)
+
+This is the first stable release. The release candidates stood
+the test of time, so we are now confident to publish a stable
+version.
+
 ### v1.0.0-rc3 (2023-09-08)
 
 * Update to aas-core-meta, codegen, testgen  4d7e59e, 7e264a0 and
