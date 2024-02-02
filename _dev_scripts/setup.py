@@ -29,8 +29,8 @@ setup(
     keywords="asset administration shell code generation industry 4.0 industrie i4.0",
     install_requires=[
         "icontract>=2.6.1,<3",
-        "aas-core-meta@git+https://github.com/aas-core-works/aas-core-meta@4d7e59e#egg=aas-core-meta",
-        "aas-core-codegen@git+https://github.com/aas-core-works/aas-core-codegen@7e264a0#egg=aas-core-codegen",
+        "aas-core-meta@git+https://github.com/aas-core-works/aas-core-meta@c9692bc#egg=aas-core-meta",
+        "aas-core-codegen@git+https://github.com/aas-core-works/aas-core-codegen@256cc8a#egg=aas-core-codegen",
     ],
     # fmt: off
     extras_require={
