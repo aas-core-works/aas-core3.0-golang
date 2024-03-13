@@ -1020,11 +1020,11 @@ func constructMatchesXsDate() *regexp.Regexp {
 		digit,
 	)
 	timezoneFrag := aascommon.Concat(
-		"(Z|(\\+|-)(0",
+		"(Z|(\\+|-)((0",
 		digit,
 		"|1[0-3]):",
 		minuteFrag,
-		"|14:00)",
+		"|14:00))",
 	)
 	dateLexicalRep := aascommon.Concat(
 		yearFrag,
@@ -1097,11 +1097,11 @@ func constructMatchesXsDateTime() *regexp.Regexp {
 	)
 	endOfDayFrag := "24:00:00(\\.0+)?"
 	timezoneFrag := aascommon.Concat(
-		"(Z|(\\+|-)(0",
+		"(Z|(\\+|-)((0",
 		digit,
 		"|1[0-3]):",
 		minuteFrag,
-		"|14:00)",
+		"|14:00))",
 	)
 	dateTimeLexicalRep := aascommon.Concat(
 		yearFrag,
