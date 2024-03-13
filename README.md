@@ -1260,6 +1260,14 @@ The commit messages follow the guidelines from https://chris.beams.io/posts/git-
 
 ## Change Log
 
+### v1.0.1 (2024-03-13)
+
+* Update to aas-core-meta, codegen, testgen 79314c6, 94399e1, e1087880 (#15)
+
+  This patch release brings about the fix for patterns concerning dates and
+  date-times with zone offset `14:00` which previously allowed for
+  a concatenation without a plus sign.
+
 ### v1.0.0 (2024-02-02)
 
 This is the first stable release. The release candidates stood
