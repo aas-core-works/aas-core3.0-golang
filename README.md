@@ -1260,6 +1260,13 @@ The commit messages follow the guidelines from https://chris.beams.io/posts/git-
 
 ## Change Log
 
+### v1.0.2 (2024-03-23)
+
+* Update to aas-core-meta, codegen, testgen cb28d18, c414f32, 6ff39c260 (#17)
+
+  We propagate the fix from abnf-to-regex related to maximum qualifiers 
+  which had been mistakenly represented as exact repetition before.
+
 ### v1.0.1 (2024-03-13)
 
 * Update to aas-core-meta, codegen, testgen 79314c6, 94399e1, e1087880 (#15)
