@@ -837,6 +837,225 @@ func main() {
 
 (See: [Example XmlizationFrom](https://pkg.go.dev/github.com/aas-core-works/aas-core3.0-golang/getting_started#example-package-XmlizationFrom))
 
+##### Versatility to Different Sources
+
+We do not assume to know the source of the XML, and choose to be versatile with handling different sources (wire, file, element embedded in a larger XML document *etc.*).
+To that end, we expect that [`xml.Decoder`] already points to the root XML element that you want to de-serialize from.
+
+For example, if you are decoding from a file that starts with a [Byte Order Mark (BOM)] and an XML declaration, you first need to read those yourself.
+Here is an example:
+
+[Byte Order Mark (BOM)]: https://en.wikipedia.org/wiki/Byte_order_mark
+
+```go
+package main
+
+import (
+	"encoding/xml"
+	"fmt"
+	aasstringification "github.com/aas-core-works/aas-core3.0-golang/stringification"
+	aastypes "github.com/aas-core-works/aas-core3.0-golang/types"
+	aasxmlization "github.com/aas-core-works/aas-core3.0-golang/xmlization"
+	"log"
+	"strings"
+)
+
+// TokenReaderSkipDeclaration reads tokens from a reader and
+// skips the XML declarations.
+type TokenReaderSkipDeclaration struct {
+	r xml.TokenReader
+}
+
+func NewTokenReaderSkipDeclaration(r xml.TokenReader) *TokenReaderSkipDeclaration {
+	return &TokenReaderSkipDeclaration{r: r}
+}
+
+func (trsd *TokenReaderSkipDeclaration) Token() (xml.Token, error) {
+	var token xml.Token
+	var err error
+
+	for {
+		token, err = trsd.r.Token()
+		if err != nil {
+			return token, err
+		}
+
+		if _, isProcInst := token.(xml.ProcInst); !isProcInst {
+			return token, err
+		}
+	}
+}
+
+func main() {
+	// "\uFEFF" is a Byte Order Mark.
+	text := "\uFEFF" + `<?xml version="1.0" encoding="UTF-8" ?>
+<environment xmlns="https://admin-shell.io/aas/3/0">
+  <submodels>
+    <submodel>
+      <id>some-unique-global-identifier</id>
+      <submodelElements>
+        <property>
+          <idShort>someProperty</idShort>
+          <valueType>xs:string</valueType>
+          <value>some-value</value>
+        </property>
+      </submodelElements>
+    </submodel>
+  </submodels>
+</environment>`
+
+	reader := strings.NewReader(text)
+
+	// Try to read the Byte Order Mark
+	var err error
+	rune, _, err := reader.ReadRune()
+	if err != nil {
+		log.Fatal(err)
+	}
+	if rune != '\uFEFF' {
+		reader.UnreadRune()
+	}
+
+	decoder := xml.NewTokenDecoder(
+		NewTokenReaderSkipDeclaration(
+			xml.NewDecoder(reader),
+		),
+	)
+
+	var instance aastypes.IClass
+	instance, err = aasxmlization.Unmarshal(
+		decoder,
+	)
+	if err != nil {
+		panic(err.Error())
+	}
+
+	instance.Descend(
+		func(that aastypes.IClass) (abort bool) {
+			fmt.Printf(
+				"%s\n",
+				aasstringification.MustModelTypeToString(that.ModelType()),
+			)
+			return
+		},
+	)
+
+	// Output:
+	// Submodel
+	// Property
+}
+```
+
+(See: [Example XmlizationFromTextWithBOMAndXMLDeclaration](https://pkg.go.dev/github.com/aas-core-works/aas-core3.0-golang/getting_started#example-package-XmlizationFromTextWithBOMAndXMLDeclaration))
+
+##### No Attributes Expected
+
+The XML specification of the AAS meta-model expects no attributes in the XML elements.
+Consequently, we follow the specification and throw an error if there are any XML attributes present in a start element.
+
+If there are attributes in your XML documents, make sure you wrap the [`xml.TokenReader`] to undo them on the fly.
+Here is an example snippet:
+
+```go
+package main
+
+import (
+	"encoding/xml"
+	"fmt"
+	aasstringification "github.com/aas-core-works/aas-core3.0-golang/stringification"
+	aastypes "github.com/aas-core-works/aas-core3.0-golang/types"
+	aasxmlization "github.com/aas-core-works/aas-core3.0-golang/xmlization"
+	"strings"
+)
+
+// TokenReaderNoAttributes reads tokens from a reader and
+// removes any attributes in the start elements.
+type TokenReaderNoAttributes struct {
+	r xml.TokenReader
+}
+
+func NewTokenReaderNoAttributes(r xml.TokenReader) *TokenReaderNoAttributes {
+	return &TokenReaderNoAttributes{r: r}
+}
+
+func (trna *TokenReaderNoAttributes) Token() (xml.Token, error) {
+	var token xml.Token
+	var err error
+
+	for {
+		token, err = trna.r.Token()
+		if err != nil {
+			return token, err
+		}
+
+		var startElement xml.StartElement
+		startElement, isStartElement := token.(xml.StartElement)
+
+		if !isStartElement {
+			return token, err
+		}
+
+		startElement.Attr = []xml.Attr{}
+		return startElement, err
+	}
+}
+
+func main() {
+	text := `<environment
+	xmlns="https://admin-shell.io/aas/3/0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="https://admin-shell.io/aas/3/0 AAS.xsd"
+>
+  <submodels>
+    <submodel>
+      <id>some-unique-global-identifier</id>
+      <submodelElements>
+        <property>
+          <idShort>someProperty</idShort>
+          <valueType>xs:string</valueType>
+          <value>some-value</value>
+        </property>
+      </submodelElements>
+    </submodel>
+  </submodels>
+</environment>`
+
+	reader := strings.NewReader(text)
+
+	// Use a decoder which skips the XML declarations
+	decoder := xml.NewTokenDecoder(
+		NewTokenReaderNoAttributes(
+			xml.NewDecoder(reader),
+		),
+	)
+
+	var instance aastypes.IClass
+	var err error
+	instance, err = aasxmlization.Unmarshal(
+		decoder,
+	)
+	if err != nil {
+		panic(err.Error())
+	}
+
+	instance.Descend(
+		func(that aastypes.IClass) (abort bool) {
+			fmt.Printf(
+				"%s\n",
+				aasstringification.MustModelTypeToString(that.ModelType()),
+			)
+			return
+		},
+	)
+
+	// Output:
+	// Submodel
+	// Property
+}
+```
+
+(See: [Example XmlizationSkipAttributes](https://pkg.go.dev/github.com/aas-core-works/aas-core3.0-golang/getting_started#example-package-XmlizationSkipAttributes))
+
 ### Enhancing
 
 In any complex application, creating, modifying and de/serializing AAS instances is not enough.
