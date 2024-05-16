@@ -1,1 +1,1 @@
-assetAdministrationShells/*[0]/embeddedDataSpecifications/*[0]/dataSpecificationContent: Expected a start element, but got an end element dataSpecificationContent in namespace https://admin-shell.io/aas/3/0
+assetAdministrationShells/*[0]/embeddedDataSpecifications/*[0]/dataSpecificationContent: Expected a start element, but got text Unexpected string value
