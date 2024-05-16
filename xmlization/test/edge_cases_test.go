@@ -16,12 +16,11 @@ func TestRobustToNewline(t *testing.T) {
 	// We relied erroneously on whitespace between the elements which eclipsed the bug
 	// where we read into the content of a class property instead of letting the called
 	// function move the cursor.
-	text := (
-		"<environment xmlns=\"https://admin-shell.io/aas/3/0\">" +
-			"<submodels>" +
-			"<submodel><id>some-unique-global-identifier</id></submodel>" +
-			"</submodels>" +
-			"</environment>")
+	text := ("<environment xmlns=\"https://admin-shell.io/aas/3/0\">" +
+		"<submodels>" +
+		"<submodel><id>some-unique-global-identifier</id></submodel>" +
+		"</submodels>" +
+		"</environment>")
 
 	reader := strings.NewReader(text)
 	decoder := xml.NewDecoder(reader)

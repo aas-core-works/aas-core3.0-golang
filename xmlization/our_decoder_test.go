@@ -18,9 +18,9 @@ func TestIteratorEmpty(t *testing.T) {
 
 	if !iterator.IsEOF() {
 		t.Fatalf(
-			"Expected that the iterator reaches an EOF, " +
+			"Expected that the iterator reaches an EOF, "+
 				"but its current token is: %T %v",
-				iterator.Current(), iterator.Current(),
+			iterator.Current(), iterator.Current(),
 		)
 	}
 }
@@ -105,9 +105,9 @@ func TestIteratorSkipWhitespaceEmpty(t *testing.T) {
 
 	if !iterator.IsEOF() {
 		t.Fatalf(
-			"Expected that the iterator reaches an EOF, " +
+			"Expected that the iterator reaches an EOF, "+
 				"but its current token is: %T %v",
-				iterator.Current(), iterator.Current(),
+			iterator.Current(), iterator.Current(),
 		)
 	}
 }
