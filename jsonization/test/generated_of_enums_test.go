@@ -50,12 +50,18 @@ func TestModellingKindRoundTripOK(t *testing.T) {
 func TestModellingKindDeserializationFail(t *testing.T) {
 	jsonable := any("THIS-CANNOT-POSSIBLY-BE-VALID")
 
-	_, deseriaErr := aasjsonization.ModellingKindFromJsonable(
+	_, err := aasjsonization.ModellingKindFromJsonable(
 		jsonable,
 	)
 
-	if deseriaErr == nil {
+	if err == nil {
 		t.Fatal("Expected a deserialization error, but got none.")
+		return
+	}
+
+	deseriaErr, ok := err.(*aasjsonization.DeserializationError)
+	if !ok {
+		t.Fatalf("Expected a de-serialization error, but got: %v", err)
 		return
 	}
 
@@ -122,12 +128,18 @@ func TestQualifierKindRoundTripOK(t *testing.T) {
 func TestQualifierKindDeserializationFail(t *testing.T) {
 	jsonable := any("THIS-CANNOT-POSSIBLY-BE-VALID")
 
-	_, deseriaErr := aasjsonization.QualifierKindFromJsonable(
+	_, err := aasjsonization.QualifierKindFromJsonable(
 		jsonable,
 	)
 
-	if deseriaErr == nil {
+	if err == nil {
 		t.Fatal("Expected a deserialization error, but got none.")
+		return
+	}
+
+	deseriaErr, ok := err.(*aasjsonization.DeserializationError)
+	if !ok {
+		t.Fatalf("Expected a de-serialization error, but got: %v", err)
 		return
 	}
 
@@ -194,12 +206,18 @@ func TestAssetKindRoundTripOK(t *testing.T) {
 func TestAssetKindDeserializationFail(t *testing.T) {
 	jsonable := any("THIS-CANNOT-POSSIBLY-BE-VALID")
 
-	_, deseriaErr := aasjsonization.AssetKindFromJsonable(
+	_, err := aasjsonization.AssetKindFromJsonable(
 		jsonable,
 	)
 
-	if deseriaErr == nil {
+	if err == nil {
 		t.Fatal("Expected a deserialization error, but got none.")
+		return
+	}
+
+	deseriaErr, ok := err.(*aasjsonization.DeserializationError)
+	if !ok {
+		t.Fatalf("Expected a de-serialization error, but got: %v", err)
 		return
 	}
 
@@ -280,12 +298,18 @@ func TestAASSubmodelElementsRoundTripOK(t *testing.T) {
 func TestAASSubmodelElementsDeserializationFail(t *testing.T) {
 	jsonable := any("THIS-CANNOT-POSSIBLY-BE-VALID")
 
-	_, deseriaErr := aasjsonization.AASSubmodelElementsFromJsonable(
+	_, err := aasjsonization.AASSubmodelElementsFromJsonable(
 		jsonable,
 	)
 
-	if deseriaErr == nil {
+	if err == nil {
 		t.Fatal("Expected a deserialization error, but got none.")
+		return
+	}
+
+	deseriaErr, ok := err.(*aasjsonization.DeserializationError)
+	if !ok {
+		t.Fatalf("Expected a de-serialization error, but got: %v", err)
 		return
 	}
 
@@ -351,12 +375,18 @@ func TestEntityTypeRoundTripOK(t *testing.T) {
 func TestEntityTypeDeserializationFail(t *testing.T) {
 	jsonable := any("THIS-CANNOT-POSSIBLY-BE-VALID")
 
-	_, deseriaErr := aasjsonization.EntityTypeFromJsonable(
+	_, err := aasjsonization.EntityTypeFromJsonable(
 		jsonable,
 	)
 
-	if deseriaErr == nil {
+	if err == nil {
 		t.Fatal("Expected a deserialization error, but got none.")
+		return
+	}
+
+	deseriaErr, ok := err.(*aasjsonization.DeserializationError)
+	if !ok {
+		t.Fatalf("Expected a de-serialization error, but got: %v", err)
 		return
 	}
 
@@ -422,12 +452,18 @@ func TestDirectionRoundTripOK(t *testing.T) {
 func TestDirectionDeserializationFail(t *testing.T) {
 	jsonable := any("THIS-CANNOT-POSSIBLY-BE-VALID")
 
-	_, deseriaErr := aasjsonization.DirectionFromJsonable(
+	_, err := aasjsonization.DirectionFromJsonable(
 		jsonable,
 	)
 
-	if deseriaErr == nil {
+	if err == nil {
 		t.Fatal("Expected a deserialization error, but got none.")
+		return
+	}
+
+	deseriaErr, ok := err.(*aasjsonization.DeserializationError)
+	if !ok {
+		t.Fatalf("Expected a de-serialization error, but got: %v", err)
 		return
 	}
 
@@ -493,12 +529,18 @@ func TestStateOfEventRoundTripOK(t *testing.T) {
 func TestStateOfEventDeserializationFail(t *testing.T) {
 	jsonable := any("THIS-CANNOT-POSSIBLY-BE-VALID")
 
-	_, deseriaErr := aasjsonization.StateOfEventFromJsonable(
+	_, err := aasjsonization.StateOfEventFromJsonable(
 		jsonable,
 	)
 
-	if deseriaErr == nil {
+	if err == nil {
 		t.Fatal("Expected a deserialization error, but got none.")
+		return
+	}
+
+	deseriaErr, ok := err.(*aasjsonization.DeserializationError)
+	if !ok {
+		t.Fatalf("Expected a de-serialization error, but got: %v", err)
 		return
 	}
 
@@ -564,12 +606,18 @@ func TestReferenceTypesRoundTripOK(t *testing.T) {
 func TestReferenceTypesDeserializationFail(t *testing.T) {
 	jsonable := any("THIS-CANNOT-POSSIBLY-BE-VALID")
 
-	_, deseriaErr := aasjsonization.ReferenceTypesFromJsonable(
+	_, err := aasjsonization.ReferenceTypesFromJsonable(
 		jsonable,
 	)
 
-	if deseriaErr == nil {
+	if err == nil {
 		t.Fatal("Expected a deserialization error, but got none.")
+		return
+	}
+
+	deseriaErr, ok := err.(*aasjsonization.DeserializationError)
+	if !ok {
+		t.Fatalf("Expected a de-serialization error, but got: %v", err)
 		return
 	}
 
@@ -657,12 +705,18 @@ func TestKeyTypesRoundTripOK(t *testing.T) {
 func TestKeyTypesDeserializationFail(t *testing.T) {
 	jsonable := any("THIS-CANNOT-POSSIBLY-BE-VALID")
 
-	_, deseriaErr := aasjsonization.KeyTypesFromJsonable(
+	_, err := aasjsonization.KeyTypesFromJsonable(
 		jsonable,
 	)
 
-	if deseriaErr == nil {
+	if err == nil {
 		t.Fatal("Expected a deserialization error, but got none.")
+		return
+	}
+
+	deseriaErr, ok := err.(*aasjsonization.DeserializationError)
+	if !ok {
+		t.Fatalf("Expected a de-serialization error, but got: %v", err)
 		return
 	}
 
@@ -756,12 +810,18 @@ func TestDataTypeDefXSDRoundTripOK(t *testing.T) {
 func TestDataTypeDefXSDDeserializationFail(t *testing.T) {
 	jsonable := any("THIS-CANNOT-POSSIBLY-BE-VALID")
 
-	_, deseriaErr := aasjsonization.DataTypeDefXSDFromJsonable(
+	_, err := aasjsonization.DataTypeDefXSDFromJsonable(
 		jsonable,
 	)
 
-	if deseriaErr == nil {
+	if err == nil {
 		t.Fatal("Expected a deserialization error, but got none.")
+		return
+	}
+
+	deseriaErr, ok := err.(*aasjsonization.DeserializationError)
+	if !ok {
+		t.Fatalf("Expected a de-serialization error, but got: %v", err)
 		return
 	}
 
@@ -844,12 +904,18 @@ func TestDataTypeIEC61360RoundTripOK(t *testing.T) {
 func TestDataTypeIEC61360DeserializationFail(t *testing.T) {
 	jsonable := any("THIS-CANNOT-POSSIBLY-BE-VALID")
 
-	_, deseriaErr := aasjsonization.DataTypeIEC61360FromJsonable(
+	_, err := aasjsonization.DataTypeIEC61360FromJsonable(
 		jsonable,
 	)
 
-	if deseriaErr == nil {
+	if err == nil {
 		t.Fatal("Expected a deserialization error, but got none.")
+		return
+	}
+
+	deseriaErr, ok := err.(*aasjsonization.DeserializationError)
+	if !ok {
+		t.Fatalf("Expected a de-serialization error, but got: %v", err)
 		return
 	}
 

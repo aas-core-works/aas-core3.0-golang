@@ -106,12 +106,18 @@ def _generate_deserialization_fail_for_enum(enum: intermediate.Enumeration) -> S
 func {test_name}(t *testing.T) {{
 {I}jsonable := any("THIS-CANNOT-POSSIBLY-BE-VALID")
 
-{I}_, deseriaErr := aasjsonization.{deserialization_function}(
+{I}_, err := aasjsonization.{deserialization_function}(
 {II}jsonable,
 {I})
 
-{I}if deseriaErr == nil {{
+{I}if err == nil {{
 {II}t.Fatal("Expected a deserialization error, but got none.")
+{II}return
+{I}}}
+
+{I}deseriaErr, ok := err.(*aasjsonization.DeserializationError)
+{I}if !ok {{
+{II}t.Fatalf("Expected a de-serialization error, but got: %v", err)
 {II}return
 {I}}}
 

@@ -15,7 +15,7 @@ import (
 // from `source`.
 func assertNoDeserializationError(
 	t *testing.T,
-	err *aasjsonization.DeserializationError,
+	err error,
 	source string,
 ) (ok bool) {
 	ok = true
@@ -23,8 +23,8 @@ func assertNoDeserializationError(
 		ok = false
 		t.Fatalf(
 			"Expected no de-serialization error from %s, "+
-				"but got: %s at %s",
-			source, err.Message, err.PathString(),
+				"but got: %v",
+			source, err,
 		)
 	}
 	return
@@ -34,7 +34,7 @@ func assertNoDeserializationError(
 // originally coming from `source`.
 func assertNoSerializationError(
 	t *testing.T,
-	err *aasjsonization.SerializationError,
+	err error,
 	source string,
 ) (ok bool) {
 	ok = true
@@ -43,8 +43,8 @@ func assertNoSerializationError(
 		t.Fatalf(
 			"Expected no serialization error when serializing "+
 				"the instance obtained from %s, "+
-				"but got: %s at %s",
-			source, err.Message, err.PathString(),
+				"but got: %v",
+			source, err,
 		)
 	}
 	return
@@ -103,15 +103,22 @@ var causesForDeserializationFailure = [...]string{
 // `expectedPth`.
 func assertDeserializationErrorEqualsExpectedOrRecord(
 	t *testing.T,
-	deseriaErr *aasjsonization.DeserializationError,
+	err error,
 	source string,
 	expectedPth string,
 ) (ok bool) {
 	ok = true
 
-	if deseriaErr == nil {
+	if err == nil {
 		ok = false
 		t.Fatalf("De-serialization error expected from %s, but got none", source)
+		return
+	}
+
+	var deseriaErr *aasjsonization.DeserializationError
+	deseriaErr, ok = err.(*aasjsonization.DeserializationError)
+	if !ok {
+		t.Fatalf("Expected a de-serialization error, but got: %v from %s", err, source)
 		return
 	}
 

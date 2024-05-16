@@ -37,12 +37,11 @@ func Example_jsonizationFrom() {
 	}
 
 	var environment aastypes.IEnvironment
-	var deseriaErr *aasjsonization.DeserializationError
-	environment, deseriaErr = aasjsonization.EnvironmentFromJsonable(
+	environment, err = aasjsonization.EnvironmentFromJsonable(
 		jsonable,
 	)
-	if deseriaErr != nil {
-		panic(deseriaErr.Error())
+	if err != nil {
+		panic(err.Error())
 	}
 
 	environment.Descend(
