@@ -86,13 +86,38 @@ func newIterator(d *xml.Decoder) *iterator {
 	return &iterator{decoder: d}
 }
 
+// Read the next token from the `decoder` given the `current` token.
+//
+// If `current` token is [eof], return the current token.
+func readNext(decoder *xml.Decoder, current xml.Token) (next xml.Token, err error) {
+	if _, isEOF := current.(eof); isEOF {
+		next = current
+		return
+	}
+
+	var tokenErr error
+	next, tokenErr = decoder.Token()
+	if tokenErr != nil {
+		if tokenErr == io.EOF {
+			next = &eof{}
+			return
+		}
+
+		err = tokenErr
+		return
+	}
+
+	return
+}
+
+
 // Read the tokens until we encounter a non-ignored one.
 //
 // If we reach an EOF, set `current` token to [eof].
 //
 // If we already reached an EOF, do nothing.
 func (i *iterator) next() (err error) {
-	if _, isEOF := i.current.(eof); isEOF {
+	if _, isEOF := i.current.(*eof); isEOF {
 		return
 	}
 
@@ -106,34 +131,20 @@ func (i *iterator) next() (err error) {
 				),
 			)
 		}
+	}
 
-		var tokenErr error
-		i.current, tokenErr = i.decoder.Token()
-		if tokenErr != nil {
-			if tokenErr == io.EOF {
-				i.current = &eof{}
-				return
-			}
-
-			err = tokenErr
-			return
-		}
+	i.current, err = readNext(i.decoder, i.current)
+	if err != nil {
+		return
 	}
 
 	for {
-		if _, isXmlComment := i.current.(xml.Comment); isXmlComment {
-			var tokenErr error
-			i.current, tokenErr = i.decoder.Token()
-			if tokenErr != nil {
-				if tokenErr == io.EOF {
-					i.current = &eof{}
-					return
-				}
+		if _, isComment := i.current.(xml.Comment); !isComment {
+			return
+		}
 
-				err = tokenErr
-				return
-			}
-		} else {
+		i.current, err = readNext(i.decoder, i.current)
+		if err != nil {
 			return
 		}
 	}
@@ -191,34 +202,64 @@ func (i *iterator) IsEOF() bool {
 		)
 	}
 
-	var isEOF bool
-	_, isEOF = i.current.(eof)
+	_, isEOF := i.current.(*eof)
 	return isEOF
 }
 
-// TODO: implement SkipWhitespace
-
-// Read the next token from the `decoder` given the `current` token.
-//
-// If `current` token is [eof], return [eof].
-func readNext(decoder *xml.Decoder, current xml.Token) (next xml.Token, err error) {
-	if _, isEOF := current.(eof); isEOF {
-		next = current
-		return
+// Move to the next token as long as the current token is whitespace text.
+func (i *iterator) SkipWhitespaceIfAny() (err error) {
+	if !i.started {
+		panic(
+			"You are trying to skip the whitespace (if any)," +
+				"but the iterator has not been started yet.",
+		)
 	}
 
-	var tokenErr error
-	next, tokenErr = decoder.Token()
-	if tokenErr != nil {
-		if tokenErr == io.EOF {
-			next = &eof{}
+	for {
+		charData, isCharData := i.current.(xml.CharData)
+		if !isCharData || !isWhitespace(string(charData)) {
 			return
 		}
 
-		err = tokenErr
+		err = i.Next()
+	}
+}
+
+// Read the consecutive text tokens from the iterator.
+//
+// While the [xml.Decoder] reads text in full, it is possible that we obtain
+// consecutive text tokens since we ignore comments in the in-between.
+//
+// If the iterator already reached the EOF, return an error.
+//
+// If no text tokens can be read, return an empty string.
+func readAndMergeText(i *iterator) (text string, err error) {
+	if i.IsEOF() {
+		err = newDeserializationError(
+			"Expected to read text, but reached EOF",
+		)
 		return
 	}
 
+	_, isCharData := i.Current().(xml.CharData)
+	if !isCharData {
+		return
+	}
+
+	b := &strings.Builder{}
+	for {
+		var charData xml.CharData
+		charData, isCharData := i.Current().(xml.CharData)
+		if !isCharData {
+			break
+		}
+
+		b.WriteString(string(charData))
+
+		i.Next()
+	}
+
+	text = b.String()
 	return
 }
 
