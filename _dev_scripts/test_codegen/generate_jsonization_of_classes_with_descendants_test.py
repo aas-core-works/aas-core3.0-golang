@@ -89,8 +89,8 @@ func {test_name}(t *testing.T) {{
 {I}jsonable, err := aasjsonization.ToJsonable(instance)
 {I}if err != nil {{
 {II}t.Fatalf(
-{III}"Failed to serialize the minimal {model_type}: %s",
-{III}err.Error(),
+{III}"Failed to serialize the minimal {model_type}: %v",
+{III}err,
 {II})
 {II}return
 {I}}}
@@ -138,12 +138,18 @@ func {test_name}(t *testing.T) {{
 func {test_name}(t *testing.T) {{
 {I}jsonable := any("this is not an object")
 
-{I}_, deseriaErr := aasjsonization.{deserialization_function}(
+{I}_, err := aasjsonization.{deserialization_function}(
 {II}jsonable,
 {I})
 
-{I}if deseriaErr == nil {{
-{II}t.Fatal("Expected a deserialization error, but got none.")
+{I}if err == nil {{
+{II}t.Fatal("Expected an error, but got none.")
+{II}return
+{I}}}
+
+{I}deseriaErr, ok := err.(*aasjsonization.DeserializationError)
+{I}if !ok {{
+{II}t.Fatalf("Expected a de-serialization error, but got: %v", err)
 {II}return
 {I}}}
 

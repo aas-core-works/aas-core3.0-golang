@@ -5,19 +5,23 @@ package jsonization_test
 // Do NOT edit or append.
 
 import (
+	"fmt"
 	aastesting "github.com/aas-core-works/aas-core3.0-golang/aastesting"
 	aasjsonization "github.com/aas-core-works/aas-core3.0-golang/jsonization"
 	"testing"
 )
 
 func TestHasSemanticsRoundTripOKOverDescendant(t *testing.T) {
+	fmt.Print("Hi!\n")
 	instance := aastesting.MustLoadMinimalRelationshipElement()
+
+	fmt.Printf("Instance: %v\n", instance)
 
 	jsonable, err := aasjsonization.ToJsonable(instance)
 	if err != nil {
 		t.Fatalf(
-			"Failed to serialize the minimal RelationshipElement: %s",
-			err.Error(),
+			"Failed to serialize the minimal RelationshipElement: %v",
+			err,
 		)
 		return
 	}
@@ -52,12 +56,18 @@ func TestHasSemanticsRoundTripOKOverDescendant(t *testing.T) {
 func TestHasSemanticsDeserializationFail(t *testing.T) {
 	jsonable := any("this is not an object")
 
-	_, deseriaErr := aasjsonization.HasSemanticsFromJsonable(
+	_, err := aasjsonization.HasSemanticsFromJsonable(
 		jsonable,
 	)
 
-	if deseriaErr == nil {
-		t.Fatal("Expected a deserialization error, but got none.")
+	if err == nil {
+		t.Fatal("Expected an error, but got none.")
+		return
+	}
+
+	deseriaErr, ok := err.(*aasjsonization.DeserializationError)
+	if !ok {
+		t.Fatalf("Expected a de-serialization error, but got: %v", err)
 		return
 	}
 
@@ -88,8 +98,8 @@ func TestHasExtensionsRoundTripOKOverDescendant(t *testing.T) {
 	jsonable, err := aasjsonization.ToJsonable(instance)
 	if err != nil {
 		t.Fatalf(
-			"Failed to serialize the minimal RelationshipElement: %s",
-			err.Error(),
+			"Failed to serialize the minimal RelationshipElement: %v",
+			err,
 		)
 		return
 	}
@@ -124,12 +134,18 @@ func TestHasExtensionsRoundTripOKOverDescendant(t *testing.T) {
 func TestHasExtensionsDeserializationFail(t *testing.T) {
 	jsonable := any("this is not an object")
 
-	_, deseriaErr := aasjsonization.HasExtensionsFromJsonable(
+	_, err := aasjsonization.HasExtensionsFromJsonable(
 		jsonable,
 	)
 
-	if deseriaErr == nil {
-		t.Fatal("Expected a deserialization error, but got none.")
+	if err == nil {
+		t.Fatal("Expected an error, but got none.")
+		return
+	}
+
+	deseriaErr, ok := err.(*aasjsonization.DeserializationError)
+	if !ok {
+		t.Fatalf("Expected a de-serialization error, but got: %v", err)
 		return
 	}
 
@@ -160,8 +176,8 @@ func TestReferableRoundTripOKOverDescendant(t *testing.T) {
 	jsonable, err := aasjsonization.ToJsonable(instance)
 	if err != nil {
 		t.Fatalf(
-			"Failed to serialize the minimal RelationshipElement: %s",
-			err.Error(),
+			"Failed to serialize the minimal RelationshipElement: %v",
+			err,
 		)
 		return
 	}
@@ -196,12 +212,18 @@ func TestReferableRoundTripOKOverDescendant(t *testing.T) {
 func TestReferableDeserializationFail(t *testing.T) {
 	jsonable := any("this is not an object")
 
-	_, deseriaErr := aasjsonization.ReferableFromJsonable(
+	_, err := aasjsonization.ReferableFromJsonable(
 		jsonable,
 	)
 
-	if deseriaErr == nil {
-		t.Fatal("Expected a deserialization error, but got none.")
+	if err == nil {
+		t.Fatal("Expected an error, but got none.")
+		return
+	}
+
+	deseriaErr, ok := err.(*aasjsonization.DeserializationError)
+	if !ok {
+		t.Fatalf("Expected a de-serialization error, but got: %v", err)
 		return
 	}
 
@@ -232,8 +254,8 @@ func TestIdentifiableRoundTripOKOverDescendant(t *testing.T) {
 	jsonable, err := aasjsonization.ToJsonable(instance)
 	if err != nil {
 		t.Fatalf(
-			"Failed to serialize the minimal AssetAdministrationShell: %s",
-			err.Error(),
+			"Failed to serialize the minimal AssetAdministrationShell: %v",
+			err,
 		)
 		return
 	}
@@ -268,12 +290,18 @@ func TestIdentifiableRoundTripOKOverDescendant(t *testing.T) {
 func TestIdentifiableDeserializationFail(t *testing.T) {
 	jsonable := any("this is not an object")
 
-	_, deseriaErr := aasjsonization.IdentifiableFromJsonable(
+	_, err := aasjsonization.IdentifiableFromJsonable(
 		jsonable,
 	)
 
-	if deseriaErr == nil {
-		t.Fatal("Expected a deserialization error, but got none.")
+	if err == nil {
+		t.Fatal("Expected an error, but got none.")
+		return
+	}
+
+	deseriaErr, ok := err.(*aasjsonization.DeserializationError)
+	if !ok {
+		t.Fatalf("Expected a de-serialization error, but got: %v", err)
 		return
 	}
 
@@ -304,8 +332,8 @@ func TestHasKindRoundTripOKOverDescendant(t *testing.T) {
 	jsonable, err := aasjsonization.ToJsonable(instance)
 	if err != nil {
 		t.Fatalf(
-			"Failed to serialize the minimal Submodel: %s",
-			err.Error(),
+			"Failed to serialize the minimal Submodel: %v",
+			err,
 		)
 		return
 	}
@@ -340,12 +368,18 @@ func TestHasKindRoundTripOKOverDescendant(t *testing.T) {
 func TestHasKindDeserializationFail(t *testing.T) {
 	jsonable := any("this is not an object")
 
-	_, deseriaErr := aasjsonization.HasKindFromJsonable(
+	_, err := aasjsonization.HasKindFromJsonable(
 		jsonable,
 	)
 
-	if deseriaErr == nil {
-		t.Fatal("Expected a deserialization error, but got none.")
+	if err == nil {
+		t.Fatal("Expected an error, but got none.")
+		return
+	}
+
+	deseriaErr, ok := err.(*aasjsonization.DeserializationError)
+	if !ok {
+		t.Fatalf("Expected a de-serialization error, but got: %v", err)
 		return
 	}
 
@@ -376,8 +410,8 @@ func TestHasDataSpecificationRoundTripOKOverDescendant(t *testing.T) {
 	jsonable, err := aasjsonization.ToJsonable(instance)
 	if err != nil {
 		t.Fatalf(
-			"Failed to serialize the minimal RelationshipElement: %s",
-			err.Error(),
+			"Failed to serialize the minimal RelationshipElement: %v",
+			err,
 		)
 		return
 	}
@@ -412,12 +446,18 @@ func TestHasDataSpecificationRoundTripOKOverDescendant(t *testing.T) {
 func TestHasDataSpecificationDeserializationFail(t *testing.T) {
 	jsonable := any("this is not an object")
 
-	_, deseriaErr := aasjsonization.HasDataSpecificationFromJsonable(
+	_, err := aasjsonization.HasDataSpecificationFromJsonable(
 		jsonable,
 	)
 
-	if deseriaErr == nil {
-		t.Fatal("Expected a deserialization error, but got none.")
+	if err == nil {
+		t.Fatal("Expected an error, but got none.")
+		return
+	}
+
+	deseriaErr, ok := err.(*aasjsonization.DeserializationError)
+	if !ok {
+		t.Fatalf("Expected a de-serialization error, but got: %v", err)
 		return
 	}
 
@@ -448,8 +488,8 @@ func TestQualifiableRoundTripOKOverDescendant(t *testing.T) {
 	jsonable, err := aasjsonization.ToJsonable(instance)
 	if err != nil {
 		t.Fatalf(
-			"Failed to serialize the minimal RelationshipElement: %s",
-			err.Error(),
+			"Failed to serialize the minimal RelationshipElement: %v",
+			err,
 		)
 		return
 	}
@@ -484,12 +524,18 @@ func TestQualifiableRoundTripOKOverDescendant(t *testing.T) {
 func TestQualifiableDeserializationFail(t *testing.T) {
 	jsonable := any("this is not an object")
 
-	_, deseriaErr := aasjsonization.QualifiableFromJsonable(
+	_, err := aasjsonization.QualifiableFromJsonable(
 		jsonable,
 	)
 
-	if deseriaErr == nil {
-		t.Fatal("Expected a deserialization error, but got none.")
+	if err == nil {
+		t.Fatal("Expected an error, but got none.")
+		return
+	}
+
+	deseriaErr, ok := err.(*aasjsonization.DeserializationError)
+	if !ok {
+		t.Fatalf("Expected a de-serialization error, but got: %v", err)
 		return
 	}
 
@@ -520,8 +566,8 @@ func TestSubmodelElementRoundTripOKOverDescendant(t *testing.T) {
 	jsonable, err := aasjsonization.ToJsonable(instance)
 	if err != nil {
 		t.Fatalf(
-			"Failed to serialize the minimal RelationshipElement: %s",
-			err.Error(),
+			"Failed to serialize the minimal RelationshipElement: %v",
+			err,
 		)
 		return
 	}
@@ -556,12 +602,18 @@ func TestSubmodelElementRoundTripOKOverDescendant(t *testing.T) {
 func TestSubmodelElementDeserializationFail(t *testing.T) {
 	jsonable := any("this is not an object")
 
-	_, deseriaErr := aasjsonization.SubmodelElementFromJsonable(
+	_, err := aasjsonization.SubmodelElementFromJsonable(
 		jsonable,
 	)
 
-	if deseriaErr == nil {
-		t.Fatal("Expected a deserialization error, but got none.")
+	if err == nil {
+		t.Fatal("Expected an error, but got none.")
+		return
+	}
+
+	deseriaErr, ok := err.(*aasjsonization.DeserializationError)
+	if !ok {
+		t.Fatalf("Expected a de-serialization error, but got: %v", err)
 		return
 	}
 
@@ -592,8 +644,8 @@ func TestRelationshipElementRoundTripOKOverDescendant(t *testing.T) {
 	jsonable, err := aasjsonization.ToJsonable(instance)
 	if err != nil {
 		t.Fatalf(
-			"Failed to serialize the minimal AnnotatedRelationshipElement: %s",
-			err.Error(),
+			"Failed to serialize the minimal AnnotatedRelationshipElement: %v",
+			err,
 		)
 		return
 	}
@@ -631,8 +683,8 @@ func TestDataElementRoundTripOKOverDescendant(t *testing.T) {
 	jsonable, err := aasjsonization.ToJsonable(instance)
 	if err != nil {
 		t.Fatalf(
-			"Failed to serialize the minimal Blob: %s",
-			err.Error(),
+			"Failed to serialize the minimal Blob: %v",
+			err,
 		)
 		return
 	}
@@ -667,12 +719,18 @@ func TestDataElementRoundTripOKOverDescendant(t *testing.T) {
 func TestDataElementDeserializationFail(t *testing.T) {
 	jsonable := any("this is not an object")
 
-	_, deseriaErr := aasjsonization.DataElementFromJsonable(
+	_, err := aasjsonization.DataElementFromJsonable(
 		jsonable,
 	)
 
-	if deseriaErr == nil {
-		t.Fatal("Expected a deserialization error, but got none.")
+	if err == nil {
+		t.Fatal("Expected an error, but got none.")
+		return
+	}
+
+	deseriaErr, ok := err.(*aasjsonization.DeserializationError)
+	if !ok {
+		t.Fatalf("Expected a de-serialization error, but got: %v", err)
 		return
 	}
 
@@ -703,8 +761,8 @@ func TestEventElementRoundTripOKOverDescendant(t *testing.T) {
 	jsonable, err := aasjsonization.ToJsonable(instance)
 	if err != nil {
 		t.Fatalf(
-			"Failed to serialize the minimal BasicEventElement: %s",
-			err.Error(),
+			"Failed to serialize the minimal BasicEventElement: %v",
+			err,
 		)
 		return
 	}
@@ -739,12 +797,18 @@ func TestEventElementRoundTripOKOverDescendant(t *testing.T) {
 func TestEventElementDeserializationFail(t *testing.T) {
 	jsonable := any("this is not an object")
 
-	_, deseriaErr := aasjsonization.EventElementFromJsonable(
+	_, err := aasjsonization.EventElementFromJsonable(
 		jsonable,
 	)
 
-	if deseriaErr == nil {
-		t.Fatal("Expected a deserialization error, but got none.")
+	if err == nil {
+		t.Fatal("Expected an error, but got none.")
+		return
+	}
+
+	deseriaErr, ok := err.(*aasjsonization.DeserializationError)
+	if !ok {
+		t.Fatalf("Expected a de-serialization error, but got: %v", err)
 		return
 	}
 
@@ -775,8 +839,8 @@ func TestDataSpecificationContentRoundTripOKOverDescendant(t *testing.T) {
 	jsonable, err := aasjsonization.ToJsonable(instance)
 	if err != nil {
 		t.Fatalf(
-			"Failed to serialize the minimal DataSpecificationIec61360: %s",
-			err.Error(),
+			"Failed to serialize the minimal DataSpecificationIec61360: %v",
+			err,
 		)
 		return
 	}
@@ -811,12 +875,18 @@ func TestDataSpecificationContentRoundTripOKOverDescendant(t *testing.T) {
 func TestDataSpecificationContentDeserializationFail(t *testing.T) {
 	jsonable := any("this is not an object")
 
-	_, deseriaErr := aasjsonization.DataSpecificationContentFromJsonable(
+	_, err := aasjsonization.DataSpecificationContentFromJsonable(
 		jsonable,
 	)
 
-	if deseriaErr == nil {
-		t.Fatal("Expected a deserialization error, but got none.")
+	if err == nil {
+		t.Fatal("Expected an error, but got none.")
+		return
+	}
+
+	deseriaErr, ok := err.(*aasjsonization.DeserializationError)
+	if !ok {
+		t.Fatalf("Expected a de-serialization error, but got: %v", err)
 		return
 	}
 

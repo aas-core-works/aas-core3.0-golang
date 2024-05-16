@@ -543,15 +543,14 @@ func main() {
 
 	// Serialize to jsonable
 	var jsonable map[string]interface{}
-	var seriaErr *aasjsonization.SerializationError
-	jsonable, seriaErr = aasjsonization.ToJsonable(environment)
-	if seriaErr != nil {
-		panic(seriaErr.Error())
+	var err error
+	jsonable, err = aasjsonization.ToJsonable(environment)
+	if err != nil {
+		panic(err.Error())
 	}
 
 	// Serialize jsonable to string
 	var bb []byte
-	var err error
 	bb, err = json.MarshalIndent(jsonable, "", "  ")
 	if err != nil {
 		panic(err.Error())
@@ -638,12 +637,11 @@ func main() {
 	}
 
 	var environment aastypes.IEnvironment
-	var deseriaErr *aasjsonization.DeserializationError
-	environment, deseriaErr = aasjsonization.EnvironmentFromJsonable(
+	environment, err = aasjsonization.EnvironmentFromJsonable(
 		jsonable,
 	)
-	if deseriaErr != nil {
-		panic(deseriaErr.Error())
+	if err != nil {
+		panic(err.Error())
 	}
 
 	environment.Descend(

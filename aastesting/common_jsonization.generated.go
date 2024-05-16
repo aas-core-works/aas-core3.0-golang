@@ -535,11 +535,15 @@ func MustLoadMinimalSubmodel() (result aastypes.ISubmodel) {
 		"minimal.json",
 	)
 
+	fmt.Printf("Must read jsonable\n")
 	jsonable := MustReadJsonable(pth)
 
 	container, err := aasjsonization.EnvironmentFromJsonable(
 		jsonable,
 	)
+	fmt.Printf("container: %v\n", container)
+	fmt.Printf("err: %v\n", err)
+
 	if err != nil {
 		panic(
 			fmt.Sprintf(
