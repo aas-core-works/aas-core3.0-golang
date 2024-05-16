@@ -122,6 +122,8 @@ func readNextSkippingComments(
 
 // Read the first token from the underlying decoder.
 //
+// We skip all the XML comments on the way.
+//
 // An already started iterator can not be re-started.
 func (i *iterator) Start() (err error) {
 	if i.started {
@@ -147,11 +149,11 @@ func (i *iterator) Current() xml.Token {
 	return i.current
 }
 
-// Go to the next token.
+// Move to the next token.
+//
+// If we already reached the EOF, do nothing.
 //
 // We skip all the XML comments on the way.
-//
-// If we reached the EOF, do nothing.
 func (i *iterator) Next() (err error) {
 	if !i.started {
 		panic(
