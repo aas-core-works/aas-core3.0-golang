@@ -73,7 +73,7 @@ func isWhitespace(s string) bool {
 
 // Iterator wraps a decoder such that it looks ahead one token and skips any
 // XML comments.
-type iterator {
+type iterator struct {
 	decoder *xml.Decoder
 	current xml.Token
 	started bool
@@ -147,8 +147,12 @@ func (i *iterator) Start() (err error) {
 		panic("You are trying to re-start an already started iterator over XML tokens.")
 	}
 
-	err = next()
+	err = i.next()
+	if err != nil {
+		return
+	}
 	i.started = true
+	return
 }
 
 // Return the current token at the iterator.
@@ -156,7 +160,7 @@ func (i *iterator) Current() xml.Token {
 	if !i.started {
 		panic(
 			"You are trying to get a look-ahead token from an iterator " +
-				"which has not been started yet."
+				"which has not been started yet.",
 		)
 	}
 	return i.current
@@ -171,12 +175,28 @@ func (i *iterator) Next() error {
 	if !i.started {
 		panic(
 			"You are trying to move the iterator to the next token," +
-				"but the iterator has not been started yet."
+				"but the iterator has not been started yet.",
 		)
 	}
 
-	return next()
+	return i.next()
 }
+
+// Return true if the iterator reached the EOF.
+func (i *iterator) IsEOF() bool {
+	if !i.started {
+		panic(
+			"You are trying to check if the iterator reached the EOF," +
+				"but the iterator has not been started yet.",
+		)
+	}
+
+	var isEOF bool
+	_, isEOF = i.current.(eof)
+	return isEOF
+}
+
+// TODO: implement SkipWhitespace
 
 // Read the next token from the `decoder` given the `current` token.
 //
