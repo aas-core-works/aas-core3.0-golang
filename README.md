@@ -952,6 +952,7 @@ func main() {
 
 The XML specification of the AAS meta-model expects no attributes in the XML elements.
 Consequently, we follow the specification and throw an error if there are any XML attributes present in a start element.
+There is one exception, so we do allow for `xmlns` and `xmlns:*` attributes as they are necessary for the correct namespacing.
 
 If there are attributes in your XML documents, make sure you wrap the [`xml.TokenReader`] to undo them on the fly.
 Here is an example snippet:
@@ -1055,6 +1056,73 @@ func main() {
 ```
 
 (See: [Example XmlizationSkipAttributes](https://pkg.go.dev/github.com/aas-core-works/aas-core3.0-golang/getting_started#example-package-XmlizationSkipAttributes))
+
+##### Namespace Aliases
+
+We rely on [`xml.Decoder`] to handle namespacing of the elements.
+
+Here is an example snippet where we use a namespace alias:
+
+```go
+package main
+
+import (
+	"encoding/xml"
+	"fmt"
+	aasstringification "github.com/aas-core-works/aas-core3.0-golang/stringification"
+	aastypes "github.com/aas-core-works/aas-core3.0-golang/types"
+	aasxmlization "github.com/aas-core-works/aas-core3.0-golang/xmlization"
+	"strings"
+)
+
+func main() {
+	text := `<aas:environment
+	xmlns:aas="https://admin-shell.io/aas/3/0"
+>
+  <aas:submodels>
+    <aas:submodel>
+      <aas:id>some-unique-global-identifier</aas:id>
+      <aas:submodelElements>
+        <aas:property>
+          <aas:idShort>someProperty</aas:idShort>
+          <aas:valueType>xs:string</aas:valueType>
+          <aas:value>some-value</aas:value>
+        </aas:property>
+      </aas:submodelElements>
+    </aas:submodel>
+  </aas:submodels>
+</aas:environment>`
+
+	reader := strings.NewReader(text)
+
+	decoder := xml.NewDecoder(reader)
+
+	var instance aastypes.IClass
+	var err error
+	instance, err = aasxmlization.Unmarshal(
+		decoder,
+	)
+	if err != nil {
+		panic(err.Error())
+	}
+
+	instance.Descend(
+		func(that aastypes.IClass) (abort bool) {
+			fmt.Printf(
+				"%s\n",
+				aasstringification.MustModelTypeToString(that.ModelType()),
+			)
+			return
+		},
+	)
+
+	// Output:
+	// Submodel
+	// Property
+}
+```
+
+(See: [Example XmlizationNamespaceAlias](https://pkg.go.dev/github.com/aas-core-works/aas-core3.0-golang/getting_started#example-package-XmlizationNamespaceAlias))
 
 ### Enhancing
 
