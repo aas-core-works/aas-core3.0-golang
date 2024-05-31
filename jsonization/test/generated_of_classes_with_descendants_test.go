@@ -5,17 +5,13 @@ package jsonization_test
 // Do NOT edit or append.
 
 import (
-	"fmt"
 	aastesting "github.com/aas-core-works/aas-core3.0-golang/aastesting"
 	aasjsonization "github.com/aas-core-works/aas-core3.0-golang/jsonization"
 	"testing"
 )
 
 func TestHasSemanticsRoundTripOKOverDescendant(t *testing.T) {
-	fmt.Print("Hi!\n")
 	instance := aastesting.MustLoadMinimalRelationshipElement()
-
-	fmt.Printf("Instance: %v\n", instance)
 
 	jsonable, err := aasjsonization.ToJsonable(instance)
 	if err != nil {

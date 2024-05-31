@@ -81,17 +81,6 @@ func assertNoVerificationErrors(
 	return
 }
 
-var causesForVerificationFailure = [...]string{
-	"DateTimeStampUtcViolationOnFebruary29th",
-	"MaxLengthViolation",
-	"MinLengthViolation",
-	"PatternViolation",
-	"InvalidValueExample",
-	"InvalidMinMaxExample",
-	"SetViolation",
-	"ConstraintViolation",
-}
-
 // Assert that either the verification errors match the recorded ones at `pth`, if
 // [aastesting.RecordMode] is set, or re-record the verification errors at `pth`.
 func assertEqualsExpectedOrRerecordVerificationErrors(
@@ -135,14 +124,31 @@ func assertEqualsExpectedOrRerecordVerificationErrors(
 
 		err = os.WriteFile(expectedPth, []byte(got), 0644)
 		if err != nil {
+			ok = false
 			t.Fatalf("Failed to write to %s: %s", expectedPth, err.Error())
+			return
 		}
 	} else {
-		b, err := os.ReadFile(expectedPth)
+		_, err := os.Stat(expectedPth)
 		if err != nil {
-			t.Fatalf("Failed to read from %s: %s", expectedPth, err.Error())
+			ok = false
+			t.Fatalf(
+				"Failed to stat the file %s: %s; if the file does not exist, "+
+					"you probably want to record the test data by "+
+					"setting the environment variable %s",
+				expectedPth, err.Error(), aastesting.RecordModeEnvironmentVariableName,
+			)
+			return
 		}
-		expected := strings.ReplaceAll(string(b), "\r\n", "\n")
+
+		var bb []byte
+		bb, err = os.ReadFile(expectedPth)
+		if err != nil {
+			ok = false
+			t.Fatalf("Failed to read from %s: %s", expectedPth, err.Error())
+			return
+		}
+		expected := strings.ReplaceAll(string(bb), "\r\n", "\n")
 
 		if expected != got {
 			ok = false
@@ -152,6 +158,7 @@ func assertEqualsExpectedOrRerecordVerificationErrors(
 					"Expected:\n%s\nGot:\n%s",
 				expectedPth, source, expected, got,
 			)
+			return
 		}
 	}
 	return
