@@ -26,6 +26,7 @@ func assertNoDeserializationError(
 				"but got: %v",
 			source, err,
 		)
+		return
 	}
 	return
 }
@@ -46,6 +47,7 @@ func assertNoSerializationError(
 				"but got: %v",
 			source, err,
 		)
+		return
 	}
 	return
 }
@@ -77,23 +79,16 @@ func assertSerializationEqualsDeserialization(
 	otherText := string(otherBytes)
 
 	if thatText != otherText {
+		ok = false
 		t.Fatalf(
 			"The serialization of the de-serialized instance from %s does not equal "+
 				"the original JSON-able:\nOriginal:\n%s\nSerialized:\n%s",
 			source, thatText, otherText,
 		)
-		ok = false
+		return
 	}
 
 	return
-}
-
-var causesForDeserializationFailure = [...]string{
-	"TypeViolation",
-	"RequiredViolation",
-	"EnumViolation",
-	"NullViolation",
-	"UnexpectedAdditionalProperty",
 }
 
 // Assert that there is a de-serialization error.
@@ -145,6 +140,18 @@ func assertDeserializationErrorEqualsExpectedOrRecord(
 			)
 		}
 	} else {
+		_, err := os.Stat(expectedPth)
+		if err != nil {
+			ok = false
+			t.Fatalf(
+				"Failed to stat the file %s: %s; if the file does not exist, "+
+					"you probably want to record the test data by "+
+					"setting the environment variable %s",
+				expectedPth, err.Error(), aastesting.RecordModeEnvironmentVariableName,
+			)
+			return
+		}
+
 		bb, err := os.ReadFile(expectedPth)
 		if err != nil {
 			panic(
@@ -162,12 +169,13 @@ func assertDeserializationErrorEqualsExpectedOrRecord(
 		expected = strings.Replace(expected, "\r", "", -1)
 
 		if expected != got {
+			ok = false
 			t.Fatalf(
 				"What we got differs from the expected in %s. "+
 					"We got:\n%s\nWe expected:\n%s",
 				expectedPth, got, expected,
 			)
-			ok = false
+			return
 		}
 	}
 

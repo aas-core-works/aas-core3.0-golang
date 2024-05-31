@@ -20859,7 +20859,7 @@ func dataSpecificationIEC61360ToMap(
 	return
 }
 
-// Serialize ``that`` instance to a JSON-able representation.
+// Serialize “that“ instance to a JSON-able representation.
 //
 // Return a structure which can be readily converted to JSON,
 // or an error if some value could not be converted.

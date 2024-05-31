@@ -64,16 +64,29 @@ func TestExtensionOK(t *testing.T) {
 }
 
 func TestExtensionFail(t *testing.T) {
-	for _, cause := range causesForVerificationFailure {
-		pths := aastesting.FindFilesBySuffixRecursively(
-			filepath.Join(
-				aastesting.TestDataDir,
-				"Json",
-				"ContainedInEnvironment",
-				"Unexpected",
-				cause,
-				"Extension",
+	pattern := filepath.Join(
+		aastesting.TestDataDir,
+		"Json",
+		"ContainedInEnvironment",
+		"Unexpected",
+		"Invalid",
+		"*", // This asterisk represents the cause.
+		"Extension",
+	)
+
+	causeDirs, err := filepath.Glob(pattern)
+	if err != nil {
+		panic(
+			fmt.Sprintf(
+				"Failed to find cause directories matching %s: %s",
+				pattern, err.Error(),
 			),
+		)
+	}
+
+	for _, causeDir := range causeDirs {
+		pths := aastesting.FindFilesBySuffixRecursively(
+			causeDir,
 			".json",
 		)
 		sort.Strings(pths)
@@ -183,16 +196,29 @@ func TestAdministrativeInformationOK(t *testing.T) {
 }
 
 func TestAdministrativeInformationFail(t *testing.T) {
-	for _, cause := range causesForVerificationFailure {
-		pths := aastesting.FindFilesBySuffixRecursively(
-			filepath.Join(
-				aastesting.TestDataDir,
-				"Json",
-				"ContainedInEnvironment",
-				"Unexpected",
-				cause,
-				"AdministrativeInformation",
+	pattern := filepath.Join(
+		aastesting.TestDataDir,
+		"Json",
+		"ContainedInEnvironment",
+		"Unexpected",
+		"Invalid",
+		"*", // This asterisk represents the cause.
+		"AdministrativeInformation",
+	)
+
+	causeDirs, err := filepath.Glob(pattern)
+	if err != nil {
+		panic(
+			fmt.Sprintf(
+				"Failed to find cause directories matching %s: %s",
+				pattern, err.Error(),
 			),
+		)
+	}
+
+	for _, causeDir := range causeDirs {
+		pths := aastesting.FindFilesBySuffixRecursively(
+			causeDir,
 			".json",
 		)
 		sort.Strings(pths)
@@ -302,16 +328,29 @@ func TestQualifierOK(t *testing.T) {
 }
 
 func TestQualifierFail(t *testing.T) {
-	for _, cause := range causesForVerificationFailure {
-		pths := aastesting.FindFilesBySuffixRecursively(
-			filepath.Join(
-				aastesting.TestDataDir,
-				"Json",
-				"ContainedInEnvironment",
-				"Unexpected",
-				cause,
-				"Qualifier",
+	pattern := filepath.Join(
+		aastesting.TestDataDir,
+		"Json",
+		"ContainedInEnvironment",
+		"Unexpected",
+		"Invalid",
+		"*", // This asterisk represents the cause.
+		"Qualifier",
+	)
+
+	causeDirs, err := filepath.Glob(pattern)
+	if err != nil {
+		panic(
+			fmt.Sprintf(
+				"Failed to find cause directories matching %s: %s",
+				pattern, err.Error(),
 			),
+		)
+	}
+
+	for _, causeDir := range causeDirs {
+		pths := aastesting.FindFilesBySuffixRecursively(
+			causeDir,
 			".json",
 		)
 		sort.Strings(pths)
@@ -421,16 +460,29 @@ func TestAssetAdministrationShellOK(t *testing.T) {
 }
 
 func TestAssetAdministrationShellFail(t *testing.T) {
-	for _, cause := range causesForVerificationFailure {
-		pths := aastesting.FindFilesBySuffixRecursively(
-			filepath.Join(
-				aastesting.TestDataDir,
-				"Json",
-				"ContainedInEnvironment",
-				"Unexpected",
-				cause,
-				"AssetAdministrationShell",
+	pattern := filepath.Join(
+		aastesting.TestDataDir,
+		"Json",
+		"ContainedInEnvironment",
+		"Unexpected",
+		"Invalid",
+		"*", // This asterisk represents the cause.
+		"AssetAdministrationShell",
+	)
+
+	causeDirs, err := filepath.Glob(pattern)
+	if err != nil {
+		panic(
+			fmt.Sprintf(
+				"Failed to find cause directories matching %s: %s",
+				pattern, err.Error(),
 			),
+		)
+	}
+
+	for _, causeDir := range causeDirs {
+		pths := aastesting.FindFilesBySuffixRecursively(
+			causeDir,
 			".json",
 		)
 		sort.Strings(pths)
@@ -540,16 +592,29 @@ func TestAssetInformationOK(t *testing.T) {
 }
 
 func TestAssetInformationFail(t *testing.T) {
-	for _, cause := range causesForVerificationFailure {
-		pths := aastesting.FindFilesBySuffixRecursively(
-			filepath.Join(
-				aastesting.TestDataDir,
-				"Json",
-				"ContainedInEnvironment",
-				"Unexpected",
-				cause,
-				"AssetInformation",
+	pattern := filepath.Join(
+		aastesting.TestDataDir,
+		"Json",
+		"ContainedInEnvironment",
+		"Unexpected",
+		"Invalid",
+		"*", // This asterisk represents the cause.
+		"AssetInformation",
+	)
+
+	causeDirs, err := filepath.Glob(pattern)
+	if err != nil {
+		panic(
+			fmt.Sprintf(
+				"Failed to find cause directories matching %s: %s",
+				pattern, err.Error(),
 			),
+		)
+	}
+
+	for _, causeDir := range causeDirs {
+		pths := aastesting.FindFilesBySuffixRecursively(
+			causeDir,
 			".json",
 		)
 		sort.Strings(pths)
@@ -659,16 +724,29 @@ func TestResourceOK(t *testing.T) {
 }
 
 func TestResourceFail(t *testing.T) {
-	for _, cause := range causesForVerificationFailure {
-		pths := aastesting.FindFilesBySuffixRecursively(
-			filepath.Join(
-				aastesting.TestDataDir,
-				"Json",
-				"ContainedInEnvironment",
-				"Unexpected",
-				cause,
-				"Resource",
+	pattern := filepath.Join(
+		aastesting.TestDataDir,
+		"Json",
+		"ContainedInEnvironment",
+		"Unexpected",
+		"Invalid",
+		"*", // This asterisk represents the cause.
+		"Resource",
+	)
+
+	causeDirs, err := filepath.Glob(pattern)
+	if err != nil {
+		panic(
+			fmt.Sprintf(
+				"Failed to find cause directories matching %s: %s",
+				pattern, err.Error(),
 			),
+		)
+	}
+
+	for _, causeDir := range causeDirs {
+		pths := aastesting.FindFilesBySuffixRecursively(
+			causeDir,
 			".json",
 		)
 		sort.Strings(pths)
@@ -778,16 +856,29 @@ func TestSpecificAssetIDOK(t *testing.T) {
 }
 
 func TestSpecificAssetIDFail(t *testing.T) {
-	for _, cause := range causesForVerificationFailure {
-		pths := aastesting.FindFilesBySuffixRecursively(
-			filepath.Join(
-				aastesting.TestDataDir,
-				"Json",
-				"ContainedInEnvironment",
-				"Unexpected",
-				cause,
-				"SpecificAssetId",
+	pattern := filepath.Join(
+		aastesting.TestDataDir,
+		"Json",
+		"ContainedInEnvironment",
+		"Unexpected",
+		"Invalid",
+		"*", // This asterisk represents the cause.
+		"SpecificAssetId",
+	)
+
+	causeDirs, err := filepath.Glob(pattern)
+	if err != nil {
+		panic(
+			fmt.Sprintf(
+				"Failed to find cause directories matching %s: %s",
+				pattern, err.Error(),
 			),
+		)
+	}
+
+	for _, causeDir := range causeDirs {
+		pths := aastesting.FindFilesBySuffixRecursively(
+			causeDir,
 			".json",
 		)
 		sort.Strings(pths)
@@ -897,16 +988,29 @@ func TestSubmodelOK(t *testing.T) {
 }
 
 func TestSubmodelFail(t *testing.T) {
-	for _, cause := range causesForVerificationFailure {
-		pths := aastesting.FindFilesBySuffixRecursively(
-			filepath.Join(
-				aastesting.TestDataDir,
-				"Json",
-				"ContainedInEnvironment",
-				"Unexpected",
-				cause,
-				"Submodel",
+	pattern := filepath.Join(
+		aastesting.TestDataDir,
+		"Json",
+		"ContainedInEnvironment",
+		"Unexpected",
+		"Invalid",
+		"*", // This asterisk represents the cause.
+		"Submodel",
+	)
+
+	causeDirs, err := filepath.Glob(pattern)
+	if err != nil {
+		panic(
+			fmt.Sprintf(
+				"Failed to find cause directories matching %s: %s",
+				pattern, err.Error(),
 			),
+		)
+	}
+
+	for _, causeDir := range causeDirs {
+		pths := aastesting.FindFilesBySuffixRecursively(
+			causeDir,
 			".json",
 		)
 		sort.Strings(pths)
@@ -1016,16 +1120,29 @@ func TestRelationshipElementOK(t *testing.T) {
 }
 
 func TestRelationshipElementFail(t *testing.T) {
-	for _, cause := range causesForVerificationFailure {
-		pths := aastesting.FindFilesBySuffixRecursively(
-			filepath.Join(
-				aastesting.TestDataDir,
-				"Json",
-				"ContainedInEnvironment",
-				"Unexpected",
-				cause,
-				"RelationshipElement",
+	pattern := filepath.Join(
+		aastesting.TestDataDir,
+		"Json",
+		"ContainedInEnvironment",
+		"Unexpected",
+		"Invalid",
+		"*", // This asterisk represents the cause.
+		"RelationshipElement",
+	)
+
+	causeDirs, err := filepath.Glob(pattern)
+	if err != nil {
+		panic(
+			fmt.Sprintf(
+				"Failed to find cause directories matching %s: %s",
+				pattern, err.Error(),
 			),
+		)
+	}
+
+	for _, causeDir := range causeDirs {
+		pths := aastesting.FindFilesBySuffixRecursively(
+			causeDir,
 			".json",
 		)
 		sort.Strings(pths)
@@ -1135,16 +1252,29 @@ func TestSubmodelElementListOK(t *testing.T) {
 }
 
 func TestSubmodelElementListFail(t *testing.T) {
-	for _, cause := range causesForVerificationFailure {
-		pths := aastesting.FindFilesBySuffixRecursively(
-			filepath.Join(
-				aastesting.TestDataDir,
-				"Json",
-				"ContainedInEnvironment",
-				"Unexpected",
-				cause,
-				"SubmodelElementList",
+	pattern := filepath.Join(
+		aastesting.TestDataDir,
+		"Json",
+		"ContainedInEnvironment",
+		"Unexpected",
+		"Invalid",
+		"*", // This asterisk represents the cause.
+		"SubmodelElementList",
+	)
+
+	causeDirs, err := filepath.Glob(pattern)
+	if err != nil {
+		panic(
+			fmt.Sprintf(
+				"Failed to find cause directories matching %s: %s",
+				pattern, err.Error(),
 			),
+		)
+	}
+
+	for _, causeDir := range causeDirs {
+		pths := aastesting.FindFilesBySuffixRecursively(
+			causeDir,
 			".json",
 		)
 		sort.Strings(pths)
@@ -1254,16 +1384,29 @@ func TestSubmodelElementCollectionOK(t *testing.T) {
 }
 
 func TestSubmodelElementCollectionFail(t *testing.T) {
-	for _, cause := range causesForVerificationFailure {
-		pths := aastesting.FindFilesBySuffixRecursively(
-			filepath.Join(
-				aastesting.TestDataDir,
-				"Json",
-				"ContainedInEnvironment",
-				"Unexpected",
-				cause,
-				"SubmodelElementCollection",
+	pattern := filepath.Join(
+		aastesting.TestDataDir,
+		"Json",
+		"ContainedInEnvironment",
+		"Unexpected",
+		"Invalid",
+		"*", // This asterisk represents the cause.
+		"SubmodelElementCollection",
+	)
+
+	causeDirs, err := filepath.Glob(pattern)
+	if err != nil {
+		panic(
+			fmt.Sprintf(
+				"Failed to find cause directories matching %s: %s",
+				pattern, err.Error(),
 			),
+		)
+	}
+
+	for _, causeDir := range causeDirs {
+		pths := aastesting.FindFilesBySuffixRecursively(
+			causeDir,
 			".json",
 		)
 		sort.Strings(pths)
@@ -1373,16 +1516,29 @@ func TestPropertyOK(t *testing.T) {
 }
 
 func TestPropertyFail(t *testing.T) {
-	for _, cause := range causesForVerificationFailure {
-		pths := aastesting.FindFilesBySuffixRecursively(
-			filepath.Join(
-				aastesting.TestDataDir,
-				"Json",
-				"ContainedInEnvironment",
-				"Unexpected",
-				cause,
-				"Property",
+	pattern := filepath.Join(
+		aastesting.TestDataDir,
+		"Json",
+		"ContainedInEnvironment",
+		"Unexpected",
+		"Invalid",
+		"*", // This asterisk represents the cause.
+		"Property",
+	)
+
+	causeDirs, err := filepath.Glob(pattern)
+	if err != nil {
+		panic(
+			fmt.Sprintf(
+				"Failed to find cause directories matching %s: %s",
+				pattern, err.Error(),
 			),
+		)
+	}
+
+	for _, causeDir := range causeDirs {
+		pths := aastesting.FindFilesBySuffixRecursively(
+			causeDir,
 			".json",
 		)
 		sort.Strings(pths)
@@ -1492,16 +1648,29 @@ func TestMultiLanguagePropertyOK(t *testing.T) {
 }
 
 func TestMultiLanguagePropertyFail(t *testing.T) {
-	for _, cause := range causesForVerificationFailure {
-		pths := aastesting.FindFilesBySuffixRecursively(
-			filepath.Join(
-				aastesting.TestDataDir,
-				"Json",
-				"ContainedInEnvironment",
-				"Unexpected",
-				cause,
-				"MultiLanguageProperty",
+	pattern := filepath.Join(
+		aastesting.TestDataDir,
+		"Json",
+		"ContainedInEnvironment",
+		"Unexpected",
+		"Invalid",
+		"*", // This asterisk represents the cause.
+		"MultiLanguageProperty",
+	)
+
+	causeDirs, err := filepath.Glob(pattern)
+	if err != nil {
+		panic(
+			fmt.Sprintf(
+				"Failed to find cause directories matching %s: %s",
+				pattern, err.Error(),
 			),
+		)
+	}
+
+	for _, causeDir := range causeDirs {
+		pths := aastesting.FindFilesBySuffixRecursively(
+			causeDir,
 			".json",
 		)
 		sort.Strings(pths)
@@ -1611,16 +1780,29 @@ func TestRangeOK(t *testing.T) {
 }
 
 func TestRangeFail(t *testing.T) {
-	for _, cause := range causesForVerificationFailure {
-		pths := aastesting.FindFilesBySuffixRecursively(
-			filepath.Join(
-				aastesting.TestDataDir,
-				"Json",
-				"ContainedInEnvironment",
-				"Unexpected",
-				cause,
-				"Range",
+	pattern := filepath.Join(
+		aastesting.TestDataDir,
+		"Json",
+		"ContainedInEnvironment",
+		"Unexpected",
+		"Invalid",
+		"*", // This asterisk represents the cause.
+		"Range",
+	)
+
+	causeDirs, err := filepath.Glob(pattern)
+	if err != nil {
+		panic(
+			fmt.Sprintf(
+				"Failed to find cause directories matching %s: %s",
+				pattern, err.Error(),
 			),
+		)
+	}
+
+	for _, causeDir := range causeDirs {
+		pths := aastesting.FindFilesBySuffixRecursively(
+			causeDir,
 			".json",
 		)
 		sort.Strings(pths)
@@ -1730,16 +1912,29 @@ func TestReferenceElementOK(t *testing.T) {
 }
 
 func TestReferenceElementFail(t *testing.T) {
-	for _, cause := range causesForVerificationFailure {
-		pths := aastesting.FindFilesBySuffixRecursively(
-			filepath.Join(
-				aastesting.TestDataDir,
-				"Json",
-				"ContainedInEnvironment",
-				"Unexpected",
-				cause,
-				"ReferenceElement",
+	pattern := filepath.Join(
+		aastesting.TestDataDir,
+		"Json",
+		"ContainedInEnvironment",
+		"Unexpected",
+		"Invalid",
+		"*", // This asterisk represents the cause.
+		"ReferenceElement",
+	)
+
+	causeDirs, err := filepath.Glob(pattern)
+	if err != nil {
+		panic(
+			fmt.Sprintf(
+				"Failed to find cause directories matching %s: %s",
+				pattern, err.Error(),
 			),
+		)
+	}
+
+	for _, causeDir := range causeDirs {
+		pths := aastesting.FindFilesBySuffixRecursively(
+			causeDir,
 			".json",
 		)
 		sort.Strings(pths)
@@ -1849,16 +2044,29 @@ func TestBlobOK(t *testing.T) {
 }
 
 func TestBlobFail(t *testing.T) {
-	for _, cause := range causesForVerificationFailure {
-		pths := aastesting.FindFilesBySuffixRecursively(
-			filepath.Join(
-				aastesting.TestDataDir,
-				"Json",
-				"ContainedInEnvironment",
-				"Unexpected",
-				cause,
-				"Blob",
+	pattern := filepath.Join(
+		aastesting.TestDataDir,
+		"Json",
+		"ContainedInEnvironment",
+		"Unexpected",
+		"Invalid",
+		"*", // This asterisk represents the cause.
+		"Blob",
+	)
+
+	causeDirs, err := filepath.Glob(pattern)
+	if err != nil {
+		panic(
+			fmt.Sprintf(
+				"Failed to find cause directories matching %s: %s",
+				pattern, err.Error(),
 			),
+		)
+	}
+
+	for _, causeDir := range causeDirs {
+		pths := aastesting.FindFilesBySuffixRecursively(
+			causeDir,
 			".json",
 		)
 		sort.Strings(pths)
@@ -1968,16 +2176,29 @@ func TestFileOK(t *testing.T) {
 }
 
 func TestFileFail(t *testing.T) {
-	for _, cause := range causesForVerificationFailure {
-		pths := aastesting.FindFilesBySuffixRecursively(
-			filepath.Join(
-				aastesting.TestDataDir,
-				"Json",
-				"ContainedInEnvironment",
-				"Unexpected",
-				cause,
-				"File",
+	pattern := filepath.Join(
+		aastesting.TestDataDir,
+		"Json",
+		"ContainedInEnvironment",
+		"Unexpected",
+		"Invalid",
+		"*", // This asterisk represents the cause.
+		"File",
+	)
+
+	causeDirs, err := filepath.Glob(pattern)
+	if err != nil {
+		panic(
+			fmt.Sprintf(
+				"Failed to find cause directories matching %s: %s",
+				pattern, err.Error(),
 			),
+		)
+	}
+
+	for _, causeDir := range causeDirs {
+		pths := aastesting.FindFilesBySuffixRecursively(
+			causeDir,
 			".json",
 		)
 		sort.Strings(pths)
@@ -2087,16 +2308,29 @@ func TestAnnotatedRelationshipElementOK(t *testing.T) {
 }
 
 func TestAnnotatedRelationshipElementFail(t *testing.T) {
-	for _, cause := range causesForVerificationFailure {
-		pths := aastesting.FindFilesBySuffixRecursively(
-			filepath.Join(
-				aastesting.TestDataDir,
-				"Json",
-				"ContainedInEnvironment",
-				"Unexpected",
-				cause,
-				"AnnotatedRelationshipElement",
+	pattern := filepath.Join(
+		aastesting.TestDataDir,
+		"Json",
+		"ContainedInEnvironment",
+		"Unexpected",
+		"Invalid",
+		"*", // This asterisk represents the cause.
+		"AnnotatedRelationshipElement",
+	)
+
+	causeDirs, err := filepath.Glob(pattern)
+	if err != nil {
+		panic(
+			fmt.Sprintf(
+				"Failed to find cause directories matching %s: %s",
+				pattern, err.Error(),
 			),
+		)
+	}
+
+	for _, causeDir := range causeDirs {
+		pths := aastesting.FindFilesBySuffixRecursively(
+			causeDir,
 			".json",
 		)
 		sort.Strings(pths)
@@ -2206,16 +2440,29 @@ func TestEntityOK(t *testing.T) {
 }
 
 func TestEntityFail(t *testing.T) {
-	for _, cause := range causesForVerificationFailure {
-		pths := aastesting.FindFilesBySuffixRecursively(
-			filepath.Join(
-				aastesting.TestDataDir,
-				"Json",
-				"ContainedInEnvironment",
-				"Unexpected",
-				cause,
-				"Entity",
+	pattern := filepath.Join(
+		aastesting.TestDataDir,
+		"Json",
+		"ContainedInEnvironment",
+		"Unexpected",
+		"Invalid",
+		"*", // This asterisk represents the cause.
+		"Entity",
+	)
+
+	causeDirs, err := filepath.Glob(pattern)
+	if err != nil {
+		panic(
+			fmt.Sprintf(
+				"Failed to find cause directories matching %s: %s",
+				pattern, err.Error(),
 			),
+		)
+	}
+
+	for _, causeDir := range causeDirs {
+		pths := aastesting.FindFilesBySuffixRecursively(
+			causeDir,
 			".json",
 		)
 		sort.Strings(pths)
@@ -2325,16 +2572,29 @@ func TestEventPayloadOK(t *testing.T) {
 }
 
 func TestEventPayloadFail(t *testing.T) {
-	for _, cause := range causesForVerificationFailure {
-		pths := aastesting.FindFilesBySuffixRecursively(
-			filepath.Join(
-				aastesting.TestDataDir,
-				"Json",
-				"SelfContained",
-				"Unexpected",
-				cause,
-				"EventPayload",
+	pattern := filepath.Join(
+		aastesting.TestDataDir,
+		"Json",
+		"SelfContained",
+		"Unexpected",
+		"Invalid",
+		"*", // This asterisk represents the cause.
+		"EventPayload",
+	)
+
+	causeDirs, err := filepath.Glob(pattern)
+	if err != nil {
+		panic(
+			fmt.Sprintf(
+				"Failed to find cause directories matching %s: %s",
+				pattern, err.Error(),
 			),
+		)
+	}
+
+	for _, causeDir := range causeDirs {
+		pths := aastesting.FindFilesBySuffixRecursively(
+			causeDir,
 			".json",
 		)
 		sort.Strings(pths)
@@ -2444,16 +2704,29 @@ func TestBasicEventElementOK(t *testing.T) {
 }
 
 func TestBasicEventElementFail(t *testing.T) {
-	for _, cause := range causesForVerificationFailure {
-		pths := aastesting.FindFilesBySuffixRecursively(
-			filepath.Join(
-				aastesting.TestDataDir,
-				"Json",
-				"ContainedInEnvironment",
-				"Unexpected",
-				cause,
-				"BasicEventElement",
+	pattern := filepath.Join(
+		aastesting.TestDataDir,
+		"Json",
+		"ContainedInEnvironment",
+		"Unexpected",
+		"Invalid",
+		"*", // This asterisk represents the cause.
+		"BasicEventElement",
+	)
+
+	causeDirs, err := filepath.Glob(pattern)
+	if err != nil {
+		panic(
+			fmt.Sprintf(
+				"Failed to find cause directories matching %s: %s",
+				pattern, err.Error(),
 			),
+		)
+	}
+
+	for _, causeDir := range causeDirs {
+		pths := aastesting.FindFilesBySuffixRecursively(
+			causeDir,
 			".json",
 		)
 		sort.Strings(pths)
@@ -2563,16 +2836,29 @@ func TestOperationOK(t *testing.T) {
 }
 
 func TestOperationFail(t *testing.T) {
-	for _, cause := range causesForVerificationFailure {
-		pths := aastesting.FindFilesBySuffixRecursively(
-			filepath.Join(
-				aastesting.TestDataDir,
-				"Json",
-				"ContainedInEnvironment",
-				"Unexpected",
-				cause,
-				"Operation",
+	pattern := filepath.Join(
+		aastesting.TestDataDir,
+		"Json",
+		"ContainedInEnvironment",
+		"Unexpected",
+		"Invalid",
+		"*", // This asterisk represents the cause.
+		"Operation",
+	)
+
+	causeDirs, err := filepath.Glob(pattern)
+	if err != nil {
+		panic(
+			fmt.Sprintf(
+				"Failed to find cause directories matching %s: %s",
+				pattern, err.Error(),
 			),
+		)
+	}
+
+	for _, causeDir := range causeDirs {
+		pths := aastesting.FindFilesBySuffixRecursively(
+			causeDir,
 			".json",
 		)
 		sort.Strings(pths)
@@ -2682,16 +2968,29 @@ func TestOperationVariableOK(t *testing.T) {
 }
 
 func TestOperationVariableFail(t *testing.T) {
-	for _, cause := range causesForVerificationFailure {
-		pths := aastesting.FindFilesBySuffixRecursively(
-			filepath.Join(
-				aastesting.TestDataDir,
-				"Json",
-				"ContainedInEnvironment",
-				"Unexpected",
-				cause,
-				"OperationVariable",
+	pattern := filepath.Join(
+		aastesting.TestDataDir,
+		"Json",
+		"ContainedInEnvironment",
+		"Unexpected",
+		"Invalid",
+		"*", // This asterisk represents the cause.
+		"OperationVariable",
+	)
+
+	causeDirs, err := filepath.Glob(pattern)
+	if err != nil {
+		panic(
+			fmt.Sprintf(
+				"Failed to find cause directories matching %s: %s",
+				pattern, err.Error(),
 			),
+		)
+	}
+
+	for _, causeDir := range causeDirs {
+		pths := aastesting.FindFilesBySuffixRecursively(
+			causeDir,
 			".json",
 		)
 		sort.Strings(pths)
@@ -2801,16 +3100,29 @@ func TestCapabilityOK(t *testing.T) {
 }
 
 func TestCapabilityFail(t *testing.T) {
-	for _, cause := range causesForVerificationFailure {
-		pths := aastesting.FindFilesBySuffixRecursively(
-			filepath.Join(
-				aastesting.TestDataDir,
-				"Json",
-				"ContainedInEnvironment",
-				"Unexpected",
-				cause,
-				"Capability",
+	pattern := filepath.Join(
+		aastesting.TestDataDir,
+		"Json",
+		"ContainedInEnvironment",
+		"Unexpected",
+		"Invalid",
+		"*", // This asterisk represents the cause.
+		"Capability",
+	)
+
+	causeDirs, err := filepath.Glob(pattern)
+	if err != nil {
+		panic(
+			fmt.Sprintf(
+				"Failed to find cause directories matching %s: %s",
+				pattern, err.Error(),
 			),
+		)
+	}
+
+	for _, causeDir := range causeDirs {
+		pths := aastesting.FindFilesBySuffixRecursively(
+			causeDir,
 			".json",
 		)
 		sort.Strings(pths)
@@ -2920,16 +3232,29 @@ func TestConceptDescriptionOK(t *testing.T) {
 }
 
 func TestConceptDescriptionFail(t *testing.T) {
-	for _, cause := range causesForVerificationFailure {
-		pths := aastesting.FindFilesBySuffixRecursively(
-			filepath.Join(
-				aastesting.TestDataDir,
-				"Json",
-				"ContainedInEnvironment",
-				"Unexpected",
-				cause,
-				"ConceptDescription",
+	pattern := filepath.Join(
+		aastesting.TestDataDir,
+		"Json",
+		"ContainedInEnvironment",
+		"Unexpected",
+		"Invalid",
+		"*", // This asterisk represents the cause.
+		"ConceptDescription",
+	)
+
+	causeDirs, err := filepath.Glob(pattern)
+	if err != nil {
+		panic(
+			fmt.Sprintf(
+				"Failed to find cause directories matching %s: %s",
+				pattern, err.Error(),
 			),
+		)
+	}
+
+	for _, causeDir := range causeDirs {
+		pths := aastesting.FindFilesBySuffixRecursively(
+			causeDir,
 			".json",
 		)
 		sort.Strings(pths)
@@ -3039,16 +3364,29 @@ func TestReferenceOK(t *testing.T) {
 }
 
 func TestReferenceFail(t *testing.T) {
-	for _, cause := range causesForVerificationFailure {
-		pths := aastesting.FindFilesBySuffixRecursively(
-			filepath.Join(
-				aastesting.TestDataDir,
-				"Json",
-				"ContainedInEnvironment",
-				"Unexpected",
-				cause,
-				"Reference",
+	pattern := filepath.Join(
+		aastesting.TestDataDir,
+		"Json",
+		"ContainedInEnvironment",
+		"Unexpected",
+		"Invalid",
+		"*", // This asterisk represents the cause.
+		"Reference",
+	)
+
+	causeDirs, err := filepath.Glob(pattern)
+	if err != nil {
+		panic(
+			fmt.Sprintf(
+				"Failed to find cause directories matching %s: %s",
+				pattern, err.Error(),
 			),
+		)
+	}
+
+	for _, causeDir := range causeDirs {
+		pths := aastesting.FindFilesBySuffixRecursively(
+			causeDir,
 			".json",
 		)
 		sort.Strings(pths)
@@ -3158,16 +3496,29 @@ func TestKeyOK(t *testing.T) {
 }
 
 func TestKeyFail(t *testing.T) {
-	for _, cause := range causesForVerificationFailure {
-		pths := aastesting.FindFilesBySuffixRecursively(
-			filepath.Join(
-				aastesting.TestDataDir,
-				"Json",
-				"ContainedInEnvironment",
-				"Unexpected",
-				cause,
-				"Key",
+	pattern := filepath.Join(
+		aastesting.TestDataDir,
+		"Json",
+		"ContainedInEnvironment",
+		"Unexpected",
+		"Invalid",
+		"*", // This asterisk represents the cause.
+		"Key",
+	)
+
+	causeDirs, err := filepath.Glob(pattern)
+	if err != nil {
+		panic(
+			fmt.Sprintf(
+				"Failed to find cause directories matching %s: %s",
+				pattern, err.Error(),
 			),
+		)
+	}
+
+	for _, causeDir := range causeDirs {
+		pths := aastesting.FindFilesBySuffixRecursively(
+			causeDir,
 			".json",
 		)
 		sort.Strings(pths)
@@ -3277,16 +3628,29 @@ func TestLangStringNameTypeOK(t *testing.T) {
 }
 
 func TestLangStringNameTypeFail(t *testing.T) {
-	for _, cause := range causesForVerificationFailure {
-		pths := aastesting.FindFilesBySuffixRecursively(
-			filepath.Join(
-				aastesting.TestDataDir,
-				"Json",
-				"ContainedInEnvironment",
-				"Unexpected",
-				cause,
-				"LangStringNameType",
+	pattern := filepath.Join(
+		aastesting.TestDataDir,
+		"Json",
+		"ContainedInEnvironment",
+		"Unexpected",
+		"Invalid",
+		"*", // This asterisk represents the cause.
+		"LangStringNameType",
+	)
+
+	causeDirs, err := filepath.Glob(pattern)
+	if err != nil {
+		panic(
+			fmt.Sprintf(
+				"Failed to find cause directories matching %s: %s",
+				pattern, err.Error(),
 			),
+		)
+	}
+
+	for _, causeDir := range causeDirs {
+		pths := aastesting.FindFilesBySuffixRecursively(
+			causeDir,
 			".json",
 		)
 		sort.Strings(pths)
@@ -3396,16 +3760,29 @@ func TestLangStringTextTypeOK(t *testing.T) {
 }
 
 func TestLangStringTextTypeFail(t *testing.T) {
-	for _, cause := range causesForVerificationFailure {
-		pths := aastesting.FindFilesBySuffixRecursively(
-			filepath.Join(
-				aastesting.TestDataDir,
-				"Json",
-				"ContainedInEnvironment",
-				"Unexpected",
-				cause,
-				"LangStringTextType",
+	pattern := filepath.Join(
+		aastesting.TestDataDir,
+		"Json",
+		"ContainedInEnvironment",
+		"Unexpected",
+		"Invalid",
+		"*", // This asterisk represents the cause.
+		"LangStringTextType",
+	)
+
+	causeDirs, err := filepath.Glob(pattern)
+	if err != nil {
+		panic(
+			fmt.Sprintf(
+				"Failed to find cause directories matching %s: %s",
+				pattern, err.Error(),
 			),
+		)
+	}
+
+	for _, causeDir := range causeDirs {
+		pths := aastesting.FindFilesBySuffixRecursively(
+			causeDir,
 			".json",
 		)
 		sort.Strings(pths)
@@ -3515,16 +3892,29 @@ func TestEnvironmentOK(t *testing.T) {
 }
 
 func TestEnvironmentFail(t *testing.T) {
-	for _, cause := range causesForVerificationFailure {
-		pths := aastesting.FindFilesBySuffixRecursively(
-			filepath.Join(
-				aastesting.TestDataDir,
-				"Json",
-				"SelfContained",
-				"Unexpected",
-				cause,
-				"Environment",
+	pattern := filepath.Join(
+		aastesting.TestDataDir,
+		"Json",
+		"SelfContained",
+		"Unexpected",
+		"Invalid",
+		"*", // This asterisk represents the cause.
+		"Environment",
+	)
+
+	causeDirs, err := filepath.Glob(pattern)
+	if err != nil {
+		panic(
+			fmt.Sprintf(
+				"Failed to find cause directories matching %s: %s",
+				pattern, err.Error(),
 			),
+		)
+	}
+
+	for _, causeDir := range causeDirs {
+		pths := aastesting.FindFilesBySuffixRecursively(
+			causeDir,
 			".json",
 		)
 		sort.Strings(pths)
@@ -3634,16 +4024,29 @@ func TestEmbeddedDataSpecificationOK(t *testing.T) {
 }
 
 func TestEmbeddedDataSpecificationFail(t *testing.T) {
-	for _, cause := range causesForVerificationFailure {
-		pths := aastesting.FindFilesBySuffixRecursively(
-			filepath.Join(
-				aastesting.TestDataDir,
-				"Json",
-				"ContainedInEnvironment",
-				"Unexpected",
-				cause,
-				"EmbeddedDataSpecification",
+	pattern := filepath.Join(
+		aastesting.TestDataDir,
+		"Json",
+		"ContainedInEnvironment",
+		"Unexpected",
+		"Invalid",
+		"*", // This asterisk represents the cause.
+		"EmbeddedDataSpecification",
+	)
+
+	causeDirs, err := filepath.Glob(pattern)
+	if err != nil {
+		panic(
+			fmt.Sprintf(
+				"Failed to find cause directories matching %s: %s",
+				pattern, err.Error(),
 			),
+		)
+	}
+
+	for _, causeDir := range causeDirs {
+		pths := aastesting.FindFilesBySuffixRecursively(
+			causeDir,
 			".json",
 		)
 		sort.Strings(pths)
@@ -3753,16 +4156,29 @@ func TestLevelTypeOK(t *testing.T) {
 }
 
 func TestLevelTypeFail(t *testing.T) {
-	for _, cause := range causesForVerificationFailure {
-		pths := aastesting.FindFilesBySuffixRecursively(
-			filepath.Join(
-				aastesting.TestDataDir,
-				"Json",
-				"ContainedInEnvironment",
-				"Unexpected",
-				cause,
-				"LevelType",
+	pattern := filepath.Join(
+		aastesting.TestDataDir,
+		"Json",
+		"ContainedInEnvironment",
+		"Unexpected",
+		"Invalid",
+		"*", // This asterisk represents the cause.
+		"LevelType",
+	)
+
+	causeDirs, err := filepath.Glob(pattern)
+	if err != nil {
+		panic(
+			fmt.Sprintf(
+				"Failed to find cause directories matching %s: %s",
+				pattern, err.Error(),
 			),
+		)
+	}
+
+	for _, causeDir := range causeDirs {
+		pths := aastesting.FindFilesBySuffixRecursively(
+			causeDir,
 			".json",
 		)
 		sort.Strings(pths)
@@ -3872,16 +4288,29 @@ func TestValueReferencePairOK(t *testing.T) {
 }
 
 func TestValueReferencePairFail(t *testing.T) {
-	for _, cause := range causesForVerificationFailure {
-		pths := aastesting.FindFilesBySuffixRecursively(
-			filepath.Join(
-				aastesting.TestDataDir,
-				"Json",
-				"ContainedInEnvironment",
-				"Unexpected",
-				cause,
-				"ValueReferencePair",
+	pattern := filepath.Join(
+		aastesting.TestDataDir,
+		"Json",
+		"ContainedInEnvironment",
+		"Unexpected",
+		"Invalid",
+		"*", // This asterisk represents the cause.
+		"ValueReferencePair",
+	)
+
+	causeDirs, err := filepath.Glob(pattern)
+	if err != nil {
+		panic(
+			fmt.Sprintf(
+				"Failed to find cause directories matching %s: %s",
+				pattern, err.Error(),
 			),
+		)
+	}
+
+	for _, causeDir := range causeDirs {
+		pths := aastesting.FindFilesBySuffixRecursively(
+			causeDir,
 			".json",
 		)
 		sort.Strings(pths)
@@ -3991,16 +4420,29 @@ func TestValueListOK(t *testing.T) {
 }
 
 func TestValueListFail(t *testing.T) {
-	for _, cause := range causesForVerificationFailure {
-		pths := aastesting.FindFilesBySuffixRecursively(
-			filepath.Join(
-				aastesting.TestDataDir,
-				"Json",
-				"ContainedInEnvironment",
-				"Unexpected",
-				cause,
-				"ValueList",
+	pattern := filepath.Join(
+		aastesting.TestDataDir,
+		"Json",
+		"ContainedInEnvironment",
+		"Unexpected",
+		"Invalid",
+		"*", // This asterisk represents the cause.
+		"ValueList",
+	)
+
+	causeDirs, err := filepath.Glob(pattern)
+	if err != nil {
+		panic(
+			fmt.Sprintf(
+				"Failed to find cause directories matching %s: %s",
+				pattern, err.Error(),
 			),
+		)
+	}
+
+	for _, causeDir := range causeDirs {
+		pths := aastesting.FindFilesBySuffixRecursively(
+			causeDir,
 			".json",
 		)
 		sort.Strings(pths)
@@ -4110,16 +4552,29 @@ func TestLangStringPreferredNameTypeIEC61360OK(t *testing.T) {
 }
 
 func TestLangStringPreferredNameTypeIEC61360Fail(t *testing.T) {
-	for _, cause := range causesForVerificationFailure {
-		pths := aastesting.FindFilesBySuffixRecursively(
-			filepath.Join(
-				aastesting.TestDataDir,
-				"Json",
-				"ContainedInEnvironment",
-				"Unexpected",
-				cause,
-				"LangStringPreferredNameTypeIec61360",
+	pattern := filepath.Join(
+		aastesting.TestDataDir,
+		"Json",
+		"ContainedInEnvironment",
+		"Unexpected",
+		"Invalid",
+		"*", // This asterisk represents the cause.
+		"LangStringPreferredNameTypeIec61360",
+	)
+
+	causeDirs, err := filepath.Glob(pattern)
+	if err != nil {
+		panic(
+			fmt.Sprintf(
+				"Failed to find cause directories matching %s: %s",
+				pattern, err.Error(),
 			),
+		)
+	}
+
+	for _, causeDir := range causeDirs {
+		pths := aastesting.FindFilesBySuffixRecursively(
+			causeDir,
 			".json",
 		)
 		sort.Strings(pths)
@@ -4229,16 +4684,29 @@ func TestLangStringShortNameTypeIEC61360OK(t *testing.T) {
 }
 
 func TestLangStringShortNameTypeIEC61360Fail(t *testing.T) {
-	for _, cause := range causesForVerificationFailure {
-		pths := aastesting.FindFilesBySuffixRecursively(
-			filepath.Join(
-				aastesting.TestDataDir,
-				"Json",
-				"ContainedInEnvironment",
-				"Unexpected",
-				cause,
-				"LangStringShortNameTypeIec61360",
+	pattern := filepath.Join(
+		aastesting.TestDataDir,
+		"Json",
+		"ContainedInEnvironment",
+		"Unexpected",
+		"Invalid",
+		"*", // This asterisk represents the cause.
+		"LangStringShortNameTypeIec61360",
+	)
+
+	causeDirs, err := filepath.Glob(pattern)
+	if err != nil {
+		panic(
+			fmt.Sprintf(
+				"Failed to find cause directories matching %s: %s",
+				pattern, err.Error(),
 			),
+		)
+	}
+
+	for _, causeDir := range causeDirs {
+		pths := aastesting.FindFilesBySuffixRecursively(
+			causeDir,
 			".json",
 		)
 		sort.Strings(pths)
@@ -4348,16 +4816,29 @@ func TestLangStringDefinitionTypeIEC61360OK(t *testing.T) {
 }
 
 func TestLangStringDefinitionTypeIEC61360Fail(t *testing.T) {
-	for _, cause := range causesForVerificationFailure {
-		pths := aastesting.FindFilesBySuffixRecursively(
-			filepath.Join(
-				aastesting.TestDataDir,
-				"Json",
-				"ContainedInEnvironment",
-				"Unexpected",
-				cause,
-				"LangStringDefinitionTypeIec61360",
+	pattern := filepath.Join(
+		aastesting.TestDataDir,
+		"Json",
+		"ContainedInEnvironment",
+		"Unexpected",
+		"Invalid",
+		"*", // This asterisk represents the cause.
+		"LangStringDefinitionTypeIec61360",
+	)
+
+	causeDirs, err := filepath.Glob(pattern)
+	if err != nil {
+		panic(
+			fmt.Sprintf(
+				"Failed to find cause directories matching %s: %s",
+				pattern, err.Error(),
 			),
+		)
+	}
+
+	for _, causeDir := range causeDirs {
+		pths := aastesting.FindFilesBySuffixRecursively(
+			causeDir,
 			".json",
 		)
 		sort.Strings(pths)
@@ -4467,16 +4948,29 @@ func TestDataSpecificationIEC61360OK(t *testing.T) {
 }
 
 func TestDataSpecificationIEC61360Fail(t *testing.T) {
-	for _, cause := range causesForVerificationFailure {
-		pths := aastesting.FindFilesBySuffixRecursively(
-			filepath.Join(
-				aastesting.TestDataDir,
-				"Json",
-				"ContainedInEnvironment",
-				"Unexpected",
-				cause,
-				"DataSpecificationIec61360",
+	pattern := filepath.Join(
+		aastesting.TestDataDir,
+		"Json",
+		"ContainedInEnvironment",
+		"Unexpected",
+		"Invalid",
+		"*", // This asterisk represents the cause.
+		"DataSpecificationIec61360",
+	)
+
+	causeDirs, err := filepath.Glob(pattern)
+	if err != nil {
+		panic(
+			fmt.Sprintf(
+				"Failed to find cause directories matching %s: %s",
+				pattern, err.Error(),
 			),
+		)
+	}
+
+	for _, causeDir := range causeDirs {
+		pths := aastesting.FindFilesBySuffixRecursively(
+			causeDir,
 			".json",
 		)
 		sort.Strings(pths)

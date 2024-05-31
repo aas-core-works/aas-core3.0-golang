@@ -108,16 +108,29 @@ func {test_name}(t *testing.T) {{
         Stripped(
             f"""\
 func {test_name}(t *testing.T) {{
-{I}for _, cause := range causesForVerificationFailure {{
-{II}pths := aastesting.FindFilesBySuffixRecursively(
-{III}filepath.Join(
-{IIII}aastesting.TestDataDir,
-{IIII}"Json",
-{IIII}{contained_in_literal},
-{IIII}"Unexpected",
-{IIII}cause,
-{IIII}{model_type_literal},
+{I}pattern := filepath.Join(
+{II}aastesting.TestDataDir,
+{II}"Json",
+{II}{contained_in_literal},
+{II}"Unexpected",
+{II}"Invalid",
+{II}"*",  // This asterisk represents the cause.
+{II}{model_type_literal},
+{I})
+ 
+{I}causeDirs, err := filepath.Glob(pattern)
+{I}if err != nil {{
+{II}panic(
+{III}fmt.Sprintf(
+{IIII}"Failed to find cause directories matching %s: %s",
+{IIII}pattern, err.Error(),
 {III}),
+{II})
+{I}}}
+
+{I}for _, causeDir := range causeDirs {{
+{II}pths := aastesting.FindFilesBySuffixRecursively(
+{III}causeDir,
 {III}".json",
 {II})
 {II}sort.Strings(pths)
