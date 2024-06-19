@@ -1545,6 +1545,15 @@ The commit messages follow the guidelines from https://chris.beams.io/posts/git-
 
 ## Change Log
 
+### v1.0.4 (2024-06-19)
+
+This is a patch release concerning the fixes for the bugs revealed in
+the field by the pioneer users.
+
+* Ignore attributes prefixed with `xmlns` (#27)
+* Fix XML deserialization for over-consumption (#29)
+* Return only abstract errors (#30)
+
 ### v1.0.3 (2024-04-16)
 
 The `dataSpecification` field in `EmbeddedDataSpecification` is made
