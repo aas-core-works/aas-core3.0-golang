@@ -1,1 +1,1 @@
-submodels[0].category: Expected a boolean, but got []interface {}
+submodels[0].category: Expected a string, but got []interface {}

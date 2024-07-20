@@ -178,7 +178,7 @@ func stringFromJsonable(
 		return
 	} else {
 		err = newDeserializationError(
-			fmt.Sprintf("Expected a boolean, but got %T", jsonable),
+			fmt.Sprintf("Expected a string, but got %T", jsonable),
 		)
 		return
 	}

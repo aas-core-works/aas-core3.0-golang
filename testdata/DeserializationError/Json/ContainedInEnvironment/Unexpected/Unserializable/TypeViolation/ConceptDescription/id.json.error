@@ -1,1 +1,1 @@
-conceptDescriptions[0].id: Expected a boolean, but got []interface {}
+conceptDescriptions[0].id: Expected a string, but got []interface {}
