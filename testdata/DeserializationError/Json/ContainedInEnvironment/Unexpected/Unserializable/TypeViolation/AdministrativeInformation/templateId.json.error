@@ -1,1 +1,1 @@
-assetAdministrationShells[0].administration.templateId: Expected a boolean, but got []interface {}
+assetAdministrationShells[0].administration.templateId: Expected a string, but got []interface {}

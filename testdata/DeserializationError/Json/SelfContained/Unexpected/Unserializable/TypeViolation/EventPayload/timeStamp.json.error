@@ -1,1 +1,1 @@
-timeStamp: Expected a boolean, but got []interface {}
+timeStamp: Expected a string, but got []interface {}

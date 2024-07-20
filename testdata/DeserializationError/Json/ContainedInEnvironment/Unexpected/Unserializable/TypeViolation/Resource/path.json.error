@@ -1,1 +1,1 @@
-assetAdministrationShells[0].assetInformation.defaultThumbnail.path: Expected a boolean, but got []interface {}
+assetAdministrationShells[0].assetInformation.defaultThumbnail.path: Expected a string, but got []interface {}
