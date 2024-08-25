@@ -1,2 +1,1 @@
-Submodels[0].SubmodelElements[0].Value: The value must not be empty.;
-Submodels[0].SubmodelElements[0].Value: The value must represent a valid file URI scheme according to RFC 8089.
+Submodels[0].SubmodelElements[0].Value: The value must not be empty.

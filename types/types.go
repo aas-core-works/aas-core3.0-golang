@@ -11246,13 +11246,11 @@ func (eds *EmbeddedDataSpecification) DescendOnce(
 		return
 	}
 
-	if eds.dataSpecification != nil {
-		abort = action(
-			eds.dataSpecification,
-		)
-		if abort {
-			return
-		}
+	abort = action(
+		eds.dataSpecification,
+	)
+	if abort {
+		return
 	}
 
 	return
@@ -11280,19 +11278,17 @@ func (eds *EmbeddedDataSpecification) Descend(
 		return
 	}
 
-	if eds.dataSpecification != nil {
-		abort = action(
-			eds.dataSpecification,
-		)
-		if abort {
-			return
-		}
-		abort = eds.dataSpecification.Descend(
-			action,
-		)
-		if abort {
-			return
-		}
+	abort = action(
+		eds.dataSpecification,
+	)
+	if abort {
+		return
+	}
+	abort = eds.dataSpecification.Descend(
+		action,
+	)
+	if abort {
+		return
 	}
 
 	return
@@ -11302,10 +11298,11 @@ func (eds *EmbeddedDataSpecification) Descend(
 // the given properties.
 func NewEmbeddedDataSpecification(
 	dataSpecificationContent IDataSpecificationContent,
+	dataSpecification IReference,
 ) *EmbeddedDataSpecification {
 	return &EmbeddedDataSpecification{
 		dataSpecificationContent: dataSpecificationContent,
-		dataSpecification:        nil,
+		dataSpecification:        dataSpecification,
 	}
 }
 
