@@ -1,2 +1,1 @@
-AssetAdministrationShells[0].AssetInformation.DefaultThumbnail.Path: The value must not be empty.;
-AssetAdministrationShells[0].AssetInformation.DefaultThumbnail.Path: The value must represent a valid file URI scheme according to RFC 8089.
+AssetAdministrationShells[0].AssetInformation.DefaultThumbnail.Path: The value must not be empty.

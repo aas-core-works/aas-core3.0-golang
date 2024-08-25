@@ -4318,17 +4318,11 @@ func deepEqualEmbeddedDataSpecification(
 
 	thatDataSpecification := that.DataSpecification()
 	otherDataSpecification := other.DataSpecification()
-	if (thatDataSpecification == nil && otherDataSpecification != nil) ||
-		(thatDataSpecification != nil && otherDataSpecification == nil) {
+	if !DeepEqual(
+		thatDataSpecification,
+		otherDataSpecification,
+	) {
 		return false
-	}
-	if thatDataSpecification != nil {
-		if !DeepEqual(
-			thatDataSpecification,
-			otherDataSpecification,
-		) {
-			return false
-		}
 	}
 
 	return true
