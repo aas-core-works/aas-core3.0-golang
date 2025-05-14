@@ -16,11 +16,11 @@ func TestRobustToNewline(t *testing.T) {
 	// We relied erroneously on whitespace between the elements which eclipsed the bug
 	// where we read into the content of a class property instead of letting the called
 	// function move the cursor.
-	text := ("<environment xmlns=\"https://admin-shell.io/aas/3/0\">" +
+	text := "<environment xmlns=\"https://admin-shell.io/aas/3/0\">" +
 		"<submodels>" +
 		"<submodel><id>some-unique-global-identifier</id></submodel>" +
 		"</submodels>" +
-		"</environment>")
+		"</environment>"
 
 	reader := strings.NewReader(text)
 	decoder := xml.NewDecoder(reader)
@@ -74,37 +74,20 @@ func TestRobustToNewlineOnDispatch(t *testing.T) {
 	// See:
 	// https://github.com/aas-core-works/aas-core3.0-golang/issues/24
 	//
-	// Note that both `dataSpecificationContent` and `dataSpecificationIec61360` are
+	// Note that both `idShort` and `valueType` are
 	// on the same line (right in the middle).
 	text := `<environment xmlns="https://admin-shell.io/aas/3/0">
-  <conceptDescriptions>
-    <conceptDescription>
-      <id>0173-1#02-AAR529#004</id>
-      <embeddedDataSpecifications>
-        <embeddedDataSpecification>
-          <dataSpecification>
-            <type>ExternalReference</type>
-            <keys>
-              <key>
-                <type>GlobalReference</type>
-                <value>https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0</value>
-              </key>
-            </keys>
-          </dataSpecification>
-          <dataSpecificationContent><dataSpecificationIec61360>
-              <preferredName>
-                <langStringPreferredNameTypeIec61360>
-                  <language>en</language>
-                  <text>kilogram</text>
-                </langStringPreferredNameTypeIec61360>
-              </preferredName>
-            </dataSpecificationIec61360>
-          </dataSpecificationContent>
-        </embeddedDataSpecification>
-      </embeddedDataSpecifications>
-    </conceptDescription>
-  </conceptDescriptions>
-</environment>`
+	<submodels>
+		<submodel>
+			<id>something_48c66017</id>
+			<submodelElements>
+				<property><idShort>something3fdd3eb4</idShort><valueType>xs:decimal</valueType>
+				</property>
+			</submodelElements>
+		</submodel>
+	</submodels>
+</environment>
+`
 
 	reader := strings.NewReader(text)
 	decoder := xml.NewDecoder(reader)
@@ -140,34 +123,17 @@ func TestRobustToNewlineOnDispatch(t *testing.T) {
 	roundTrip := string(buf.Bytes())
 
 	expected := `<environment xmlns="https://admin-shell.io/aas/3/0">
-	<conceptDescriptions>
-		<conceptDescription>
-			<id>0173-1#02-AAR529#004</id>
-			<embeddedDataSpecifications>
-				<embeddedDataSpecification>
-					<dataSpecificationContent>
-						<dataSpecificationIec61360>
-							<preferredName>
-								<langStringPreferredNameTypeIec61360>
-									<language>en</language>
-									<text>kilogram</text>
-								</langStringPreferredNameTypeIec61360>
-							</preferredName>
-						</dataSpecificationIec61360>
-					</dataSpecificationContent>
-					<dataSpecification>
-						<type>ExternalReference</type>
-						<keys>
-							<key>
-								<type>GlobalReference</type>
-								<value>https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIEC61360/3/0</value>
-							</key>
-						</keys>
-					</dataSpecification>
-				</embeddedDataSpecification>
-			</embeddedDataSpecifications>
-		</conceptDescription>
-	</conceptDescriptions>
+	<submodels>
+		<submodel>
+			<id>something_48c66017</id>
+			<submodelElements>
+				<property>
+					<idShort>something3fdd3eb4</idShort>
+					<valueType>xs:decimal</valueType>
+				</property>
+			</submodelElements>
+		</submodel>
+	</submodels>
 </environment>`
 
 	if expected != roundTrip {
