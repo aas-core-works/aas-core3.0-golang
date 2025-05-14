@@ -12058,32 +12058,6 @@ func VerifyEmbeddedDataSpecification(
 ) (abort bool) {
 	abort = false
 
-	if that.DataSpecificationContent() == nil {
-		abort = onError(
-			newVerificationError(
-				"Required property not set: DataSpecificationContent",
-			),
-		)
-		if abort {
-			return
-		}
-	} else {
-		abort = Verify(
-			that.DataSpecificationContent(),
-			func(err *VerificationError) bool {
-				err.Path.PrependName(
-					&aasreporting.NameSegment{
-						Name: "DataSpecificationContent",
-					},
-				)
-				return onError(err)
-			},
-		)
-		if abort {
-			return
-		}
-	}
-
 	if that.DataSpecification() == nil {
 		abort = onError(
 			newVerificationError(
@@ -12100,6 +12074,32 @@ func VerifyEmbeddedDataSpecification(
 				err.Path.PrependName(
 					&aasreporting.NameSegment{
 						Name: "DataSpecification",
+					},
+				)
+				return onError(err)
+			},
+		)
+		if abort {
+			return
+		}
+	}
+
+	if that.DataSpecificationContent() == nil {
+		abort = onError(
+			newVerificationError(
+				"Required property not set: DataSpecificationContent",
+			),
+		)
+		if abort {
+			return
+		}
+	} else {
+		abort = Verify(
+			that.DataSpecificationContent(),
+			func(err *VerificationError) bool {
+				err.Path.PrependName(
+					&aasreporting.NameSegment{
+						Name: "DataSpecificationContent",
 					},
 				)
 				return onError(err)
@@ -12789,6 +12789,34 @@ func VerifyDataSpecificationIEC61360(
 // If `onError` returns abort `true`, this function will abort
 // further verification as well, and return abort `true`. Otherwise,
 // abort `false` is returned.
+func VerifyXMLSerializableString(
+	that string,
+	onError func(*VerificationError) bool,
+) (abort bool) {
+	abort = false
+
+	if !MatchesXMLSerializableString(that) {
+		abort = onError(
+			newVerificationError(
+				"Constraint AASd-130: An attribute with data type 'string' " +
+					"shall consist of these characters only: " +
+					"^[\\x09\\x0A\\x0D\\x20-\\uD7FF\\uE000-\\uFFFD\\U00010000-\\U0010FFFF]*$.",
+			),
+		)
+		if abort {
+			return
+		}
+	}
+
+	return
+}
+
+// Verify the constraints of `that` value.
+//
+// You have to supply the callback `onError` to iterate over the errors.
+// If `onError` returns abort `true`, this function will abort
+// further verification as well, and return abort `true`. Otherwise,
+// abort `false` is returned.
 func VerifyNonEmptyXMLSerializableString(
 	that string,
 	onError func(*VerificationError) bool,
@@ -13457,7 +13485,18 @@ func VerifyValueDataType(
 ) (abort bool) {
 	abort = false
 
-	// There is no verification specified.
+	if !MatchesXMLSerializableString(that) {
+		abort = onError(
+			newVerificationError(
+				"Constraint AASd-130: An attribute with data type 'string' " +
+					"shall consist of these characters only: " +
+					"^[\\x09\\x0A\\x0D\\x20-\\uD7FF\\uE000-\\uFFFD\\U00010000-\\U0010FFFF]*$.",
+			),
+		)
+		if abort {
+			return
+		}
+	}
 
 	return
 }

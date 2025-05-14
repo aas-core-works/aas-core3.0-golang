@@ -4307,20 +4307,20 @@ func deepEqualEmbeddedDataSpecification(
 	that aastypes.IEmbeddedDataSpecification,
 	other aastypes.IEmbeddedDataSpecification,
 ) bool {
-	thatDataSpecificationContent := that.DataSpecificationContent()
-	otherDataSpecificationContent := other.DataSpecificationContent()
-	if !DeepEqual(
-		thatDataSpecificationContent,
-		otherDataSpecificationContent,
-	) {
-		return false
-	}
-
 	thatDataSpecification := that.DataSpecification()
 	otherDataSpecification := other.DataSpecification()
 	if !DeepEqual(
 		thatDataSpecification,
 		otherDataSpecification,
+	) {
+		return false
+	}
+
+	thatDataSpecificationContent := that.DataSpecificationContent()
+	otherDataSpecificationContent := other.DataSpecificationContent()
+	if !DeepEqual(
+		thatDataSpecificationContent,
+		otherDataSpecificationContent,
 	) {
 		return false
 	}
