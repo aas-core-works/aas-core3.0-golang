@@ -21,8 +21,6 @@ setup(
     classifiers=[
         "Development Status :: 5 - Production/Stable",
         "License :: OSI Approved :: MIT License",
-        "Programming Language :: Python :: 3.8",
-        "Programming Language :: Python :: 3.9",
         "Programming Language :: Python :: 3.10",
     ],
     license="License :: OSI Approved :: MIT License",
@@ -35,9 +33,9 @@ setup(
     # fmt: off
     extras_require={
         "dev": [
-            "black==23.1.0",
-            "mypy==1.3.0",
-            "pylint==2.17.1",
+            "black==25.9.0",
+            "mypy==1.18.2",
+            "pylint==3.3.8",
         ]
     },
     # fmt: on
