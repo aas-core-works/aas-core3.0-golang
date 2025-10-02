@@ -153,7 +153,7 @@ func {test_name}(t *testing.T) {{
 {II}return
 {I}}}
 
-{I}pathString := deseriaErr.PathString() 
+{I}pathString := deseriaErr.PathString()
 {I}if len(pathString) != 0 {{
 {II}t.Fatalf(
 {III}"Expected an empty path in error, but got: %s",

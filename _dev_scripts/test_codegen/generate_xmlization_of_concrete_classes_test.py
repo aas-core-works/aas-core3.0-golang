@@ -89,7 +89,7 @@ func {test_name}(t *testing.T) {{
 {IIII}deserialized, deserialized,
 {III})
 {III}return
-{II}}} 
+{II}}}
 
 {II}buf := &bytes.Buffer{{}}
 {II}encoder := xml.NewEncoder(buf)

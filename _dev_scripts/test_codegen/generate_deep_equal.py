@@ -132,7 +132,7 @@ if !DeepEqual(
             cmp_subblock = Stripped(
                 f"""\
 if 
-{I}len({that_var}) != 
+{I}len({that_var}) !=
 {I}len({other_var}) {{
 {I}return false
 }}
