@@ -1545,6 +1545,11 @@ The commit messages follow the guidelines from https://chris.beams.io/posts/git-
 
 ## Change Log
 
+### v1.0.6 (2025-10-20)
+
+This is a patch release that propagates a fix for references index constraint
+where indices in references were erroneously assumed to be positive integers.
+
 ### v1.0.5 (2025-05-14)
 
 We propagate the changes and fixes for V3.0.2; please refer to:
