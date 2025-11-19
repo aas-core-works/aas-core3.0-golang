@@ -126,7 +126,7 @@ def _copy_code_from_aas_core_codegen(
     """Copy the generated code from aas-core-codegen's test data."""
     source_dir = (
         aas_core_codegen_repo
-        / "test_data/golang/test_main/aas_core_meta.v3/expected_output"
+        / "dev/test_data/golang/test_main/aas_core_meta.v3/expected_output"
     )
 
     target_dir = our_repo
@@ -146,7 +146,7 @@ def _copy_python_sdk_from_aas_core_codegen(
     """Copy the generated Python SDK from aas-core-codegen's test data."""
     source_dir = (
         aas_core_codegen_repo
-        / "test_data/python/test_main/aas_core_meta.v3/expected_output"
+        / "dev/test_data/python/test_main/aas_core_meta.v3/expected_output"
     )
 
     target_dir = our_repo / "_dev_scripts/aas_core3"
