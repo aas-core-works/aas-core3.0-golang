@@ -1496,7 +1496,7 @@ source venv/bin/activate
 Then install the dependencies:
 
 ```
-pip3 install -e . _dev_scripts
+pip3 install -e . _dev_scripts --group _dev_scripts/pyproject.toml:dev
 ```
 
 Now you can run the generation scripts:
