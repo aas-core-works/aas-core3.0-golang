@@ -104,9 +104,8 @@ def main() -> int:
         print("Re-formatting...")
         reformat_targets = [
             "codegen",
-            "test_codegen",
             "continuous_integration_of_dev_scripts",
-            "update_to_aas_core_meta_codegen_and_testgen.py",
+            "update_to_aas_core_meta_codegen.py",
         ]
         if overwrite:
             exit_code = call_and_report(
@@ -131,9 +130,8 @@ def main() -> int:
         print("Mypy'ing...")
         mypy_targets = [
             "codegen",
-            "test_codegen",
             "continuous_integration_of_dev_scripts",
-            "update_to_aas_core_meta_codegen_and_testgen.py",
+            "update_to_aas_core_meta_codegen.py",
         ]
         config_file = pathlib.Path("continuous_integration_of_dev_scripts") / "mypy.ini"
 
@@ -151,9 +149,8 @@ def main() -> int:
         print("Pylint'ing...")
         pylint_targets = [
             "codegen",
-            "test_codegen",
             "continuous_integration_of_dev_scripts",
-            "update_to_aas_core_meta_codegen_and_testgen.py",
+            "update_to_aas_core_meta_codegen.py",
         ]
         rcfile = pathlib.Path("continuous_integration_of_dev_scripts") / "pylint.rc"
 
@@ -171,7 +168,6 @@ def main() -> int:
         print("Doctest'ing...")
 
         for module_name in [
-            "test_codegen",
             "codegen",
             "continuous_integration_of_dev_scripts",
         ]:
