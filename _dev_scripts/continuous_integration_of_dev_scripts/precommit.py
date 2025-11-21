@@ -103,7 +103,8 @@ def main() -> int:
     if Step.REFORMAT in selects and Step.REFORMAT not in skips:
         print("Re-formatting...")
         reformat_targets = [
-            "codegen",
+            "codegen/codegen.py",
+            "codegen/download_aas_core_meta_model.py",
             "continuous_integration_of_dev_scripts",
             "update_to_aas_core_meta_codegen.py",
         ]
@@ -129,7 +130,8 @@ def main() -> int:
     if Step.MYPY in selects and Step.MYPY not in skips:
         print("Mypy'ing...")
         mypy_targets = [
-            "codegen",
+            "codegen/codegen.py",
+            "codegen/download_aas_core_meta_model.py",
             "continuous_integration_of_dev_scripts",
             "update_to_aas_core_meta_codegen.py",
         ]
@@ -148,7 +150,8 @@ def main() -> int:
     if Step.PYLINT in selects and Step.PYLINT not in skips:
         print("Pylint'ing...")
         pylint_targets = [
-            "codegen",
+            "codegen/codegen.py",
+            "codegen/download_aas_core_meta_model.py",
             "continuous_integration_of_dev_scripts",
             "update_to_aas_core_meta_codegen.py",
         ]
@@ -168,7 +171,8 @@ def main() -> int:
         print("Doctest'ing...")
 
         for module_name in [
-            "codegen",
+            "codegen/codegen.py",
+            "codegen/download_aas_core_meta_model.py",
             "continuous_integration_of_dev_scripts",
         ]:
             for pth in (src_root / module_name).glob("**/*.py"):
