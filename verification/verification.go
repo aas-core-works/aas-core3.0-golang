@@ -275,192 +275,231 @@ func MatchesMIMEType(text string) bool {
 	)
 }
 
-func constructMatchesRFC8089Path() *regexp.Regexp {
-	h16 := "[0-9A-Fa-f]{1,4}"
-	decOctet := "([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])"
-	ipv4address := aascommon.Concat(
-		decOctet,
-		"\\.",
-		decOctet,
-		"\\.",
-		decOctet,
-		"\\.",
-		decOctet,
-	)
-	ls32 := aascommon.Concat(
+func constructMatchesRFC2396() *regexp.Regexp {
+	alphanum := "[a-zA-Z0-9]"
+	mark := "[-_.!~*'()]"
+	unreserved := aascommon.Concat(
 		"(",
-		h16,
-		":",
-		h16,
+		alphanum,
 		"|",
-		ipv4address,
+		mark,
 		")",
 	)
-	ipv6address := aascommon.Concat(
-		"((",
-		h16,
-		":){6}",
-		ls32,
-		"|::(",
-		h16,
-		":){5}",
-		ls32,
-		"|(",
-		h16,
-		")?::(",
-		h16,
-		":){4}",
-		ls32,
-		"|((",
-		h16,
-		":)?",
-		h16,
-		")?::(",
-		h16,
-		":){3}",
-		ls32,
-		"|((",
-		h16,
-		":){0,2}",
-		h16,
-		")?::(",
-		h16,
-		":){2}",
-		ls32,
-		"|((",
-		h16,
-		":){0,3}",
-		h16,
-		")?::",
-		h16,
-		":",
-		ls32,
-		"|((",
-		h16,
-		":){0,4}",
-		h16,
-		")?::",
-		ls32,
-		"|((",
-		h16,
-		":){0,5}",
-		h16,
-		")?::",
-		h16,
-		"|((",
-		h16,
-		":){0,6}",
-		h16,
-		")?::)",
-	)
-	unreserved := "[a-zA-Z0-9\\-._~]"
-	subDelims := "[!$&'()*+,;=]"
-	ipvfuture := aascommon.Concat(
-		"[vV][0-9A-Fa-f]+\\.(",
-		unreserved,
-		"|",
-		subDelims,
-		"|:)+",
-	)
-	ipLiteral := aascommon.Concat(
-		"\\[(",
-		ipv6address,
-		"|",
-		ipvfuture,
-		")\\]",
-	)
-	pctEncoded := "%[0-9A-Fa-f][0-9A-Fa-f]"
-	regName := aascommon.Concat(
-		"(",
-		unreserved,
-		"|",
-		pctEncoded,
-		"|",
-		subDelims,
-		")*",
-	)
-	host := aascommon.Concat(
-		"(",
-		ipLiteral,
-		"|",
-		ipv4address,
-		"|",
-		regName,
-		")",
-	)
-	fileAuth := aascommon.Concat(
-		"(localhost|",
-		host,
-		")",
+	hex := "([0-9]|[aA]|[bB]|[cC]|[dD]|[eE]|[fF]|[aA]|[bB]|[cC]|[dD]|[eE]|[fF])"
+	escaped := aascommon.Concat(
+		"%",
+		hex,
+		hex,
 	)
 	pchar := aascommon.Concat(
 		"(",
 		unreserved,
 		"|",
-		pctEncoded,
-		"|",
-		subDelims,
-		"|[:@])",
+		escaped,
+		"|[:@&=+$,])",
 	)
-	segmentNz := aascommon.Concat(
-		"(",
-		pchar,
-		")+",
-	)
-	segment := aascommon.Concat(
+	param := aascommon.Concat(
 		"(",
 		pchar,
 		")*",
 	)
-	pathAbsolute := aascommon.Concat(
-		"/(",
-		segmentNz,
+	segment := aascommon.Concat(
+		"(",
+		pchar,
+		")*(;",
+		param,
+		")*",
+	)
+	pathSegments := aascommon.Concat(
+		segment,
 		"(/",
 		segment,
-		")*)?",
+		")*",
 	)
-	authPath := aascommon.Concat(
+	absPath := aascommon.Concat(
+		"/",
+		pathSegments,
+	)
+	scheme := "[a-zA-Z][a-zA-Z0-9+\\-.]*"
+	userinfo := aascommon.Concat(
 		"(",
-		fileAuth,
-		")?",
-		pathAbsolute,
-	)
-	localPath := pathAbsolute
-	fileHierPart := aascommon.Concat(
-		"(//",
-		authPath,
+		unreserved,
 		"|",
-		localPath,
+		escaped,
+		"|[;:&=+$,])*",
+	)
+	domainlabel := aascommon.Concat(
+		"(",
+		alphanum,
+		"|",
+		alphanum,
+		"(",
+		alphanum,
+		"|-)*",
+		alphanum,
 		")",
 	)
-	fileScheme := "file"
-	fileUri := aascommon.Concat(
-		fileScheme,
-		":",
-		fileHierPart,
+	toplabel := aascommon.Concat(
+		"([a-zA-Z]|[a-zA-Z](",
+		alphanum,
+		"|-)*",
+		alphanum,
+		")",
 	)
-	pattern := aascommon.Concat(
-		"^",
-		fileUri,
-		"$",
+	hostname := aascommon.Concat(
+		"(",
+		domainlabel,
+		"\\.)*",
+		toplabel,
+		"(\\.)?",
+	)
+	ipv4address := "[0-9]+\\.[0-9]+\\.[0-9]+\\.[0-9]+"
+	host := aascommon.Concat(
+		"(",
+		hostname,
+		"|",
+		ipv4address,
+		")",
+	)
+	port := "[0-9]*"
+	hostport := aascommon.Concat(
+		host,
+		"(:",
+		port,
+		")?",
+	)
+	server := aascommon.Concat(
+		"((",
+		userinfo,
+		"@)?",
+		hostport,
+		")?",
+	)
+	regName := aascommon.Concat(
+		"(",
+		unreserved,
+		"|",
+		escaped,
+		"|[$,;:@&=+])+",
+	)
+	authority := aascommon.Concat(
+		"(",
+		server,
+		"|",
+		regName,
+		")",
+	)
+	netPath := aascommon.Concat(
+		"//",
+		authority,
+		"(",
+		absPath,
+		")?",
+	)
+	reserved := "[;/?:@&=+$,]"
+	uric := aascommon.Concat(
+		"(",
+		reserved,
+		"|",
+		unreserved,
+		"|",
+		escaped,
+		")",
+	)
+	query := aascommon.Concat(
+		"(",
+		uric,
+		")*",
+	)
+	hierPart := aascommon.Concat(
+		"(",
+		netPath,
+		"|",
+		absPath,
+		")(\\?",
+		query,
+		")?",
+	)
+	uricNoSlash := aascommon.Concat(
+		"(",
+		unreserved,
+		"|",
+		escaped,
+		"|[;?:@&=+$,])",
+	)
+	opaquePart := aascommon.Concat(
+		uricNoSlash,
+		"(",
+		uric,
+		")*",
+	)
+	absoluteuri := aascommon.Concat(
+		scheme,
+		":(",
+		hierPart,
+		"|",
+		opaquePart,
+		")",
+	)
+	fragment := aascommon.Concat(
+		"(",
+		uric,
+		")*",
+	)
+	relSegment := aascommon.Concat(
+		"(",
+		unreserved,
+		"|",
+		escaped,
+		"|[;@&=+$,])+",
+	)
+	relPath := aascommon.Concat(
+		relSegment,
+		"(",
+		absPath,
+		")?",
+	)
+	relativeuri := aascommon.Concat(
+		"(",
+		netPath,
+		"|",
+		absPath,
+		"|",
+		relPath,
+		")(\\?",
+		query,
+		")?",
+	)
+	uriReference := aascommon.Concat(
+		"^(",
+		absoluteuri,
+		"|",
+		relativeuri,
+		")?(#",
+		fragment,
+		")?$",
 	)
 
 	return regexp.MustCompile(
-		pattern,
+		uriReference,
 	)
 }
 
-var matchesRFC8089PathRe = constructMatchesRFC8089Path()
+var matchesRFC2396Re = constructMatchesRFC2396()
 
-// Check that text is a path conforming to the pattern of RFC 8089.
+// Check that text matches to the URI pattern defined in RFC 2396
 //
 // The definition has been taken from:
-// https://datatracker.ietf.org/doc/html/rfc8089
+// https://datatracker.ietf.org/doc/html/rfc2396
+//
+// Note that RFX 2396 alone is not enough for specifying `xs:anyURI` for
+// XSD version 1.0, as that specifies URI together with the amendment of
+// RFC 2732.
 //
 //   - `text`: Text to be checked
 //   - Return True if the text conforms to the pattern
-func MatchesRFC8089Path(text string) bool {
-	return matchesRFC8089PathRe.MatchString(
+func MatchesRFC2396(text string) bool {
+	return matchesRFC2396Re.MatchString(
 		text,
 	)
 }
@@ -10342,7 +10381,8 @@ func VerifyOperation(
 		abort = onError(
 			newVerificationError(
 				"Constraint AASd-134: For an Operation the ID-short of all " +
-					"values of input, output and in/output variables.",
+					"values of input, output and in/output variables shall be " +
+					"unique.",
 			),
 		)
 		if abort {
@@ -13418,6 +13458,18 @@ func VerifyPathType(
 		abort = onError(
 			newVerificationError(
 				"Identifier shall have a maximum length of 2000 characters."),
+		)
+		if abort {
+			return
+		}
+	}
+
+	if !MatchesRFC2396(that) {
+		abort = onError(
+			newVerificationError(
+				"String with max 2048 and min 1 characters conformant to " +
+					"a URI as per RFC 2396.",
+			),
 		)
 		if abort {
 			return
