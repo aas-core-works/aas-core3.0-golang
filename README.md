@@ -1541,6 +1541,13 @@ The commit messages follow the guidelines from https://chris.beams.io/posts/git-
 
 ## Change Log
 
+## v1.0.7 (2026-02-04)
+
+We propagate the changes and fixes; please refer to:
+* https://github.com/aas-core-works/aas-core-meta/pull/382
+* https://github.com/aas-core-works/aas-core-meta/pull/385
+* https://github.com/aas-core-works/aas-core-meta/pull/388
+
 ### v1.0.6 (2025-10-20)
 
 This is a patch release that propagates a fix for references index constraint
